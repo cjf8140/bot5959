@@ -22,7 +22,7 @@ client.on('message', msg => {
       reply += ' '+string[i];
     }
   }
-  else if(msg.content.includes(keyword)) {
+  if(msg.content.includes(keyword) && initial != '~') {
     msg.channel.send(reply);
   }
 
