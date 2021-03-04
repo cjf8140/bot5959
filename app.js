@@ -28,7 +28,7 @@ client.on('message', msg => {
     msg.channel.send('옥자년');
   }
   if (msg.content.includes('승주')) {
-    msg.channel.send('ㄴ착정을 원함');
+    msg.channel.send('ㄴ착정 당하기를 원함');
   }
   if (msg.content.includes('방과') || msg.content.includes('체육') || msg.content.includes('학교') || msg.content.includes('교실')) {
     msg.channel.send('떡각');
