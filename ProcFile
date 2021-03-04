@@ -1,1 +1,1 @@
-woker: node.js "app.js"
+woker: node "app.js"
