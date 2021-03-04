@@ -17,7 +17,6 @@ client.on('message', msg => {
 
   if (msg.content == '안녕') {
     msg.reply('안녕하세요.');
-    msg.channel.send('봇은 잠들었습니다. 봇을 다시 깨우려면');
   }
   if (msg.content.includes('진호') || msg.content.includes('jinho')) {
     msg.channel.send('육변기');
