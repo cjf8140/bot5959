@@ -20,7 +20,8 @@ client.on('message', msg => {
   }
   if(initial == '~') {
     keyword = string[0].substring(1,100);
-    for(var i = 1; string[i] != ''; i++) { 
+    reply = string[1];
+    for(var i = 2; i <string.length; i++) { 
       reply += string[i];
     }
   }
