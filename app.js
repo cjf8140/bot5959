@@ -32,14 +32,14 @@ client.on('message', msg => {
   if (msg.content.includes('진호') || msg.content.includes('jinho')) {
     msg.channel.send('육변기');
   }
-  if (msg.content.includes('호현')) {
+  if (msg.content.includes('호') && (msg.content.includes('연') || msg.content.includes('현')) ) {
     msg.channel.send('게이바');
   }
   if (msg.content.includes('동준')) {
     msg.channel.send('옥자년');
   }
   if (msg.content.includes('승주')) {
-    msg.channel.send('ㄴ착정 당하기를 원함');
+    msg.channel.send('https://media.tenor.co/videos/066d65e05d321d19edc1a5a21e1a1a01/mp4');
   }
   if (msg.content.includes('방과') || msg.content.includes('체육') || msg.content.includes('학교') || msg.content.includes('교실')) {
     msg.channel.send('떡각');
