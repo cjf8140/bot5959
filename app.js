@@ -9,7 +9,7 @@ var reply;
 
 var we = 0
 
-var sen;
+var sen = '';
 
 var url=[];
 
@@ -51,12 +51,13 @@ client.on('message', msg => {
     we = 1;
   }
   if (msg.content.includes('철종')) {
-    sen += '지켜보고 있음 https://cdn.discordapp.com/attachments/814514374072074303/817590241077493780/watch.png\n'
+    sen += '지켜보고 있음 \nhttps://cdn.discordapp.com/attachments/814514374072074303/817590241077493780/watch.png\n'
     we = 1;
   }
 
   if(we == 1) {
     msg.channel.send(sen);
+    we = 0;
   }
 
   if(initial == '#') {
