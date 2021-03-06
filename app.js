@@ -39,7 +39,7 @@ client.on('message', msg => {
     msg.channel.send('옥자년');
   }
   if (msg.content.includes('승주')) {
-    msg.channel.send('https://media.tenor.co/videos/066d65e05d321d19edc1a5a21e1a1a01/mp4');
+    msg.channel.send('https://tenor.com/view/kermit-freaking-out-crazy-gif-8832122');
   }
   if (msg.content.includes('방과') || msg.content.includes('체육') || msg.content.includes('학교') || msg.content.includes('교실')) {
     msg.channel.send('떡각');
