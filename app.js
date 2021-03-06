@@ -30,7 +30,7 @@ client.on('message', msg => {
     msg.channel.send(reply);
   }
 
-  if (msg.content.includes('진호') || msg.content.includes('jinho')) {
+  if ((msg.content.includes('진') && msg.content.includes('호') )  || msg.content.includes('jinho')) {
     sen += '육변기\n'
     we = 1;
   }
@@ -38,11 +38,11 @@ client.on('message', msg => {
     sen += '게이바\n'
     we = 1;
   }
-  if (msg.content.includes('동준')) {
+  if (msg.content.includes('동') && msg.content.includes('준')) {
     sen += '옥자년\n'
     we = 1;
   }
-  if (msg.content.includes('승주')) {
+  if (msg.content.includes('승') && msg.content.includes('주')) {
     sen += 'https://tenor.com/view/kermit-freaking-out-crazy-gif-8832122\n'
     we = 1;
   }
@@ -50,7 +50,7 @@ client.on('message', msg => {
     sen += '떡각+n'
     we = 1;
   }
-  if (msg.content.includes('철종')) {
+  if (msg.content.includes('철') && msg.content.includes(' ')) {
     sen += 'https://cdn.discordapp.com/attachments/814514374072074303/817590241077493780/watch.png\n'
     we = 1;
   }
