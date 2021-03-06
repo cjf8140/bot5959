@@ -7,6 +7,10 @@ const cheerio = require("cheerio");
 var keyword;
 var reply;
 
+var we = 0
+
+var sen;
+
 var url=[];
 
 client.on('message', msg => {
@@ -26,26 +30,33 @@ client.on('message', msg => {
     msg.channel.send(reply);
   }
 
-  if (msg.content == '안녕') {
-    msg.reply('안녕하세요.');
-  }
   if (msg.content.includes('진호') || msg.content.includes('jinho')) {
-    msg.channel.send('육변기');
+    sen += '육변기\n'
+    we = 1;
   }
   if (msg.content.includes('호') && (msg.content.includes('연') || msg.content.includes('현')) ) {
-    msg.channel.send('게이바');
+    sen += '게이바\n'
+    we = 1;
   }
   if (msg.content.includes('동준')) {
-    msg.channel.send('옥자년');
+    sen += '옥자년\n'
+    we = 1;
   }
   if (msg.content.includes('승주')) {
-    msg.channel.send('https://tenor.com/view/kermit-freaking-out-crazy-gif-8832122');
+    sen += 'https://tenor.com/view/kermit-freaking-out-crazy-gif-8832122\n'
+    we = 1;
   }
   if (msg.content.includes('방과') || msg.content.includes('체육') || msg.content.includes('학교') || msg.content.includes('교실')) {
-    msg.channel.send('떡각');
+    sen += '떡각+n'
+    we = 1;
   }
   if (msg.content.includes('철종')) {
-    msg.channel.send('지켜보고 있음', {files: ["img/watch.png"] });
+    sen += '지켜보고 있음 https://cdn.discordapp.com/attachments/814514374072074303/817590241077493780/watch.png\n'
+    we = 1;
+  }
+
+  if(we == 1) {
+    msg.channel.send(sen);
   }
 
   if(initial == '#') {
