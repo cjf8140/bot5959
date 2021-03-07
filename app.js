@@ -76,7 +76,7 @@ client.on('message', msg => {
   }
 
   if(string[0] == '!생일') {
-    if(string[1] == '') {
+    if(string[1] == undefined) {
       msg.channel.send('철종: **3월 6일**: __' +date(3, 6)+ '__일 남음.\n'+
                        '승주: **10월 11일**: __' +date(10, 11)+ '__일 남음.\n'+
                        '호현: **3월 31일**: __' +date(3, 31)+ '__일 남음.\n'+
@@ -85,25 +85,25 @@ client.on('message', msg => {
                        '수민: **5월 15일**: __' +date(5, 15)+ '__일 남음.\n'+
                        '건화: **12월 1일**: __' +date(12, 1)+ '__일 남음.');
     }
-    if(string[1].includes('철')) {
+    if(string[1] && string[1].includes('철')) {
       msg.channel.send('철종: **3월 6일**: __' +date(3, 6)+ '__일 남음.');
     }
-    if(string[1].includes('승')) {
+    if(string[1] && string[1].includes('승')) {
       msg.channel.send('승주: **10월 11일**: __' +date(10, 11)+ '__일 남음.');
     }
-    if(string[1].includes('호')) {
-      msg.channel.send('호현: **3월 31일**: __' +date(3, 31)+ '__일 남음.');
-    }
-    if(string[1].includes('진')) {
+    if(string[1] && string[1].includes('진')) {
       msg.channel.send('진호: **9월 14일**: __' +date(9, 14)+ '__일 남음.');
     }
-    if(string[1].includes('동')) {
+    if(string[1] && string[1].includes('호')) {
+      msg.channel.send('호현: **3월 31일**: __' +date(3, 31)+ '__일 남음.');
+    }
+    if(string[1] && string[1].includes('동')) {
       msg.channel.send('동준: **1월 14일**: __' +date(1, 14)+ '__일 남음.');
     }
-    if(string[1].includes('수')) {
+    if(string[1] && string[1].includes('수')) {
       msg.channel.send('수민: **5월 15일**: __' +date(5, 15)+ '__일 남음.');
     }
-    if(string[1].includes('건')) {
+    if(string[1] && string[1].includes('건')) {
       msg.channel.send('건화: **12월 1일**: __' +date(12, 1)+ '__일 남음.');
     }
   }
