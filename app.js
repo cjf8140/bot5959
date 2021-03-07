@@ -62,6 +62,51 @@ client.on('message', msg => {
     we = 0;
   }
 
+  if(msg.content == '!사관') {
+    msg.channel.send('철종이 해방까지 '+ date(4, 7)+ '일 남음.')
+  }
+
+  if(msg.content == '!수능') {
+    msg.channel.send('지구멸망까지 '+ date(11, 18)+ '일 남음.')
+  }
+
+  if(string[0] == '!생일') {
+    if(string[1] == '') {
+      msg.channel.send('철종: **3월 6일**: __' +date(3, 6)+ '__일 남음.\n'+
+                       '승주: **10월 11일**: __' +date(10, 11)+ '__일 남음.\n'+
+                       '호현: **3월 31일**: __' +date(3, 31)+ '__일 남음.\n'+
+                       '진호: **9월 14일**: __' +date(9, 14)+ '__일 남음.\n'+
+                       '동준: **1월 14일**: __' +date(1, 14)+ '__일 남음.\n'+
+                       '수민: **5월 15일**: __' +date(5, 15)+ '__일 남음.\n'+
+                       '건화: **12월 1일**: __' +date(12, 1)+ '__일 남음.');
+    }
+    if(string[1].includes('철')) {
+      msg.channel.send('철종: **3월 6일**: __' +date(3, 6)+ '__일 남음.');
+    }
+    if(string[1].includes('승')) {
+      msg.channel.send('승주: **10월 11일**: __' +date(10, 11)+ '__일 남음.');
+    }
+    if(string[1].includes('호')) {
+      msg.channel.send('호현: **3월 31일**: __' +date(3, 31)+ '__일 남음.');
+    }
+    if(string[1].includes('진')) {
+      msg.channel.send('진호: **9월 14일**: __' +date(9, 14)+ '__일 남음.');
+    }
+    if(string[1].includes('동')) {
+      msg.channel.send('동준: **1월 14일**: __' +date(1, 14)+ '__일 남음.');
+    }
+    if(string[1].includes('수')) {
+      msg.channel.send('수민: **5월 15일**: __' +date(5, 15)+ '__일 남음.');
+    }
+    if(string[1].includes('건')) {
+      msg.channel.send('건화: **12월 1일**: __' +date(12, 1)+ '__일 남음.');
+    }
+  }
+
+  if(string[0] == '!date') {
+    msg.channel.send(date(Number(string[1]), Number(string[2])) + '일 남음');
+  }
+
   if(initial == '#') {
     if(!isNaN(string[0].substring(1,10))) {
       msg.channel.send("https://hiyobi.me/reader/"+string[0].substring(1,10));
@@ -102,12 +147,23 @@ client.on('message', msg => {
 
 });
 
+function date(month, day) {
+  var tday = new Date();
+  var nowYear = tday.getFullYear();
+  var dday = new Date(nowYear, month-1, day);
+  if(dday -tday < 0) {
+    dday = new Date(nowYear+1, month-1, day);
+  }
+  return Math.ceil( (dday-tday) / (1000*60*60*24) );
+}
+
 var generateRandom = function(max) {
   var ranNum = Math.floor(Math.random()*(max));
   return ranNum;
 }
 
-client.login(process.env.TOKEN);
+// client.login(process.env.TOKEN);
+client.login('ODE2Mjg4NTc3MDI1MDgxMzQ0.YD4x-g.nuFX8V0I7JeQKWVsOe8SjVOi8u8');
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
