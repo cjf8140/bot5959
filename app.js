@@ -56,6 +56,11 @@ client.on('message', msg => {
     we = 1;
   }
 
+  if (msg.content.includes('지') && msg.content.includes('능')) {
+    sen += '처참\n'
+    we = 1;
+  }
+
   if(we == 1) {
     msg.channel.send(sen);
     sen = ''
