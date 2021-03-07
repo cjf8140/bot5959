@@ -27,7 +27,8 @@ client.on('message', msg => {
     }
   }
   if(msg.content.includes(keyword) && initial != '~') {
-    msg.channel.send(reply);
+    we = 1;
+    sen += reply+'\n';
   }
 
   if ((msg.content.includes('진') && msg.content.includes('호') )  || msg.content.includes('jinho')) {
@@ -47,10 +48,10 @@ client.on('message', msg => {
     we = 1;
   }
   if (msg.content.includes('방과') || msg.content.includes('체육') || msg.content.includes('학교') || msg.content.includes('교실')) {
-    sen += '떡각+n'
+    sen += '떡각\n'
     we = 1;
   }
-  if (msg.content.includes('철') && msg.content.includes(' ')) {
+  if (msg.content.includes('철') && msg.content.includes('종')) {
     sen += 'https://cdn.discordapp.com/attachments/814514374072074303/817590241077493780/watch.png\n'
     we = 1;
   }
