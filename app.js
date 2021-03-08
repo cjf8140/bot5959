@@ -108,6 +108,31 @@ client.on('message', msg => {
     }
   }
 
+  if(string[0] == '/생일') {
+    if(string[1] == undefined) {
+      msg.channel.send('동준: **1월 14일**: __' +date(1, 14)+ '__일 남음.\n'+
+                       '철종: **3월 6일**: __' +date(3, 6)+ '__일 남음.\n'+
+                       '승주: **10월 11일**: __' +date(10, 11)+ '__일 남음.\n'+
+                       '연주: **10월 21일**: __' +date(10, 21)+ '__일 남음.\n'+
+                       '성수: **12월 19일**: __' +date(12, 19)+ '__일 남음.');
+    }
+    if(string[1] && string[1].includes('철')) {
+      msg.channel.send('철종: **3월 6일**: __' +date(3, 6)+ '__일 남음.');
+    }
+    if(string[1] && string[1].includes('승')) {
+      msg.channel.send('승주: **10월 11일**: __' +date(10, 11)+ '__일 남음.');
+    }
+    if(string[1] && string[1].includes('연')) {
+      msg.channel.send('연주: **10월 21일**: __' +date(10, 21)+ '__일 남음.');
+    }
+    if(string[1] && string[1].includes('성')) {
+      msg.channel.send('성수: **12월 19일**: __' +date(12, 19)+ '__일 남음.');
+    }
+    if(string[1] && string[1].includes('동')) {
+      msg.channel.send('동준: **1월 14일**: __' +date(1, 14)+ '__일 남음.');
+    }
+  }
+
   if(string[0] == '!date') {
     msg.channel.send(date(Number(string[1]), Number(string[2])) + '일 남음');
   }
@@ -159,7 +184,7 @@ function date(month, day) {
   if(dday -tday < 0) {
     dday = new Date(nowYear+1, month-1, day);
   }
-  return Math.ceil( (dday-tday+32400) / (1000*60*60*24) );
+  return Math.ceil( (dday-tday-32400) / (1000*60*60*24) );
 }
 
 var generateRandom = function(max) {
