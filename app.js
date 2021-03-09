@@ -40,7 +40,7 @@ client.on('message', msg => {
     we = 1;
   }
   if (msg.content.includes('동') && msg.content.includes('준')) {
-    sen += '옥자년\n'
+    sen += '옥자\n'
     we = 1;
   }
   if (msg.content.includes('승') && msg.content.includes('주')) {
