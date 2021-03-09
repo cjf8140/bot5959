@@ -120,13 +120,13 @@ client.on('message', msg => {
     if(string[1] && string[1].includes('철')) {
       msg.channel.send('철종: **3월 6일**: __' +date(3, 6)+ '__일 남음.');
     }
-    if(string[1] && string[1].includes('연')) {
+    if(string[1] && string[1].includes('수')) {
       msg.channel.send('연수: **9월 10일**: __' +date(9, 10)+ '__일 남음.');
     }
     if(string[1] && string[1].includes('승')) {
       msg.channel.send('승주: **10월 11일**: __' +date(10, 11)+ '__일 남음.');
     }
-    if(string[1] && string[1].includes('연')) {
+    if(string[1] && string[1].includes('주')) {
       msg.channel.send('연주: **10월 21일**: __' +date(10, 21)+ '__일 남음.');
     }
     if(string[1] && string[1].includes('성')) {
