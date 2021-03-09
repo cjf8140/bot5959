@@ -184,7 +184,7 @@ function date(month, day) {
   if(dday -tday < 0) {
     dday = new Date(nowYear+1, month-1, day);
   }
-  return Math.ceil( (dday-(tday+9*60*60*1000) ) / (1000*60*60*24) );
+  return Math.ceil( (dday-tday-9*60*60*1000) / (1000*60*60*24) );
 }
 
 var generateRandom = function(max) {
