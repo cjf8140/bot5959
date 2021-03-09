@@ -75,6 +75,10 @@ client.on('message', msg => {
     msg.channel.send('지구멸망까지 '+ date(11, 18)+ '일 남음.')
   }
 
+  if(msg.content == ':thumbsup:') {
+    msg.channel.send(':thumbsup:')
+  }
+
   if(string[0] == '!생일') {
     if(string[1] == undefined) {
       msg.channel.send('철종: **3월 6일**: __' +date(3, 6)+ '__일 남음.\n'+
