@@ -51,7 +51,7 @@ client.on('message', msg => {
     sen += '떡각\n'
     we = 1;
   }
-  if (msg.content.includes('철') && msg.content.includes('종')) {
+  if (msg.content.includes('종') && msg.content.includes('철')) {
     sen += 'https://cdn.discordapp.com/attachments/814514374072074303/817590241077493780/watch.png\n'
     we = 1;
   }
