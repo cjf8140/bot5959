@@ -181,7 +181,7 @@ function date(month, day) {
   var tday = new Date();
   var nowYear = tday.getFullYear();
   var dday = new Date(nowYear, month-1, day);
-  if(dday -tday < 0) {
+  if(dday -tday < -1) {
     dday = new Date(nowYear+1, month-1, day);
   }
   return Math.ceil( (dday-tday-9*60*60*1000) / (1000*60*60*24) );
