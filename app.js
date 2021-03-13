@@ -19,6 +19,10 @@ client.on('message', msg => {
   var string = msg.content.split(' ');
   var initial = msg.content.charAt(0);
 
+  if(msg.content == 'ㅎㅇ') {
+    msg.edit('ㅇㅎ');
+  }
+
   if(initial == '=') {
     keyword = string[0].substring(1,100);
     reply = string[1];
