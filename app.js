@@ -26,7 +26,7 @@ client.on('message', msg => {
       reply += ' '+string[i];
     }
   }
-  if(msg.content.includes(keyword) && initial != '~') {
+  if(msg.content.includes(keyword) && initial != '=') {
     we = 1;
     sen += reply+'\n';
   }
