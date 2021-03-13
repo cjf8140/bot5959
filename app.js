@@ -44,16 +44,14 @@ client.on('message', msg => {
     we = 1;
   }
   if (msg.content.includes('승') && msg.content.includes('주')) {
-    sen += 'https://tenor.com/view/kermit-freaking-out-crazy-gif-8832122\n'
-    we = 1;
+    msg.channel.send('https://tenor.com/view/kermit-freaking-out-crazy-gif-8832122');
   }
   if (msg.content.includes('방과') || msg.content.includes('체육') || msg.content.includes('학교') || msg.content.includes('교실')) {
     sen += '떡각\n'
     we = 1;
   }
   if (msg.content.includes('종') && msg.content.includes('철')) {
-    sen += 'https://cdn.discordapp.com/attachments/814514374072074303/817590241077493780/watch.png\n'
-    we = 1;
+    msg.channel.send('https://cdn.discordapp.com/attachments/814514374072074303/817590241077493780/watch.png');
   }
 
   if (msg.content.includes('지') && msg.content.includes('능')) {
@@ -73,10 +71,6 @@ client.on('message', msg => {
 
   if(msg.content == '!수능') {
     msg.channel.send('지구멸망까지 '+ date(11, 18)+ '일 남음.')
-  }
-
-  if(msg.content == ':thumbsup:') {
-    msg.channel.send(':thumbsup:')
   }
 
   if(string[0] == '!생일') {
