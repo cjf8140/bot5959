@@ -52,7 +52,7 @@ client.on('message', msg => {
     we = 1;
   }
   if (msg.content.includes('호') && (msg.content.includes('연') || msg.content.includes('현')) ) {
-    sen += '게이바\n'
+    sen += '게이바.\n'
     we = 1;
   }
   if (msg.content.includes('동') && msg.content.includes('준')) {
