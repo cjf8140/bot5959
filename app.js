@@ -71,7 +71,7 @@ client.on('message', msg => {
   }
 
   if (msg.content.includes('지') && msg.content.includes('능')) {
-    sen += '처참\n'
+    sen += '처참.\n'
     we = 1;
   }
 
