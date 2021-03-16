@@ -157,7 +157,12 @@ client.on('message', msg => {
 
   if(initial == '#') {
     if(!isNaN(string[0].substring(1,10))) {
-      msg.channel.send("https://hiyobi.me/reader/"+string[0].substring(1,10));
+      if(msg.content == '#') {
+        msg.channel.send("https://hiyobi.me/");
+      }
+      else {
+        msg.channel.send("https://hiyobi.me/reader/"+string[0].substring(1,10));
+      }
     }
     else {
       var url = "https://hiyobi.me/search/"+string[0].substring(1,100);
