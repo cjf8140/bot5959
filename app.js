@@ -48,7 +48,7 @@ client.on('message', msg => {
   }
 
   if ((msg.content.includes('진') && msg.content.includes('호') )  || msg.content.includes('jinho')) {
-    sen += '육변기\n'
+    sen += '육변기.\n'
     we = 1;
   }
   if (msg.content.includes('호') && (msg.content.includes('연') || msg.content.includes('현')) ) {
