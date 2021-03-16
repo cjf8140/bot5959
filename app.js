@@ -4,8 +4,12 @@ const client = new Discord.Client();
 const axios = require("axios");
 const cheerio = require("cheerio");
 
-var keyword;
-var reply;
+var keyword=[];
+var reply=[];
+
+var adr = 0;
+
+var rewr = 0;
 
 var we = 0
 
@@ -20,15 +24,27 @@ client.on('message', msg => {
   var initial = msg.content.charAt(0);
 
   if(initial == '=') {
-    keyword = string[0].substring(1,100);
-    reply = string[1];
-    for(var i = 2; i <string.length; i++) {
-      reply += ' '+string[i];
+    for(var i = 0; i <= keyword.length; i++) {
+      if(keyword[i] == string[0].substring(1,100)) {
+        keyword[i] = string[0].substring(1,100);
+        reply[i] = string[1];
+        for(var i = 2; i <string.length; i++) {
+          reply[i] += ' '+string[i];
+        }
+        rewr = 1;
+      }
     }
+    if(rewr == 0) {
+      keyword[keyword.length+1] = string[0].substring(1,100);
+      reply[reply.length+1] = string[1];
+      for(var i = 2; i <string.length; i++) {
+        reply[keyword.length+1] += ' '+string[i];
+      }
+    }
+    rewr = 0;
   }
-  if(msg.content.includes(keyword) && initial != '=') {
-    we = 1;
-    sen += reply+'\n';
+  if(keyword.includes(msg.content) && initial != '=') {
+    msg.channel.send(reply[keyword.indexOf(msg.content)]);
   }
 
   if ((msg.content.includes('진') && msg.content.includes('호') )  || msg.content.includes('jinho')) {
