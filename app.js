@@ -32,7 +32,7 @@ client.on('message', msg => {
     adr++;
   }
   if(keyword.includes(msg.content) && initial != '=') {
-    msg.channel.send(reply[keyword.lastindexOf(msg.content)]);
+    msg.channel.send(reply[keyword.lastIndexOf(msg.content)]);
   }
 
   if ((msg.content.includes('진') && msg.content.includes('호') )  || msg.content.includes('jinho')) {
