@@ -24,24 +24,12 @@ client.on('message', msg => {
   var initial = msg.content.charAt(0);
 
   if(initial == '=') {
-    for(var i = 0; i <= keyword.length; i++) {
-      if(keyword[i] == string[0].substring(1,100)) {
-        keyword[i] = string[0].substring(1,100);
-        reply[i] = string[1];
-        for(var i = 2; i <string.length; i++) {
-          reply[i] += ' '+string[i];
-        }
-        rewr = 1;
-      }
+    keyword[adr] = string[0].substring(1,100);
+    reply[adr] = string[1];
+    for(var i = 2; i <string.length; i++) {
+      reply[adr] += ' '+string[i];
     }
-    if(rewr == 0) {
-      keyword[keyword.length+1] = string[0].substring(1,100);
-      reply[reply.length+1] = string[1];
-      for(var i = 2; i <string.length; i++) {
-        reply[keyword.length+1] += ' '+string[i];
-      }
-    }
-    rewr = 0;
+    adr++;
   }
   if(keyword.includes(msg.content) && initial != '=') {
     msg.channel.send(reply[keyword.indexOf(msg.content)]);
@@ -63,7 +51,7 @@ client.on('message', msg => {
     msg.channel.send('https://tenor.com/view/kermit-freaking-out-crazy-gif-8832122');
   }
   if (msg.content.includes('방과') || msg.content.includes('체육') || msg.content.includes('학교') || msg.content.includes('교실')) {
-    sen += '떡각\n'
+    sen += '떡각.\n'
     we = 1;
   }
   if (msg.content.includes('종') && msg.content.includes('철')) {
