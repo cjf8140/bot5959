@@ -52,10 +52,6 @@ client.on('message', msg => {
   if (msg.content.includes('승') && msg.content.includes('주')) {
     msg.channel.send('https://cdn.discordapp.com/attachments/818359643713175555/822748239211659284/ko1.png');
   }
-  if (msg.content.includes('방과') || msg.content.includes('체육') || msg.content.includes('학교') || msg.content.includes('교실') || msg.content.includes('음악실')) {
-    sen += '떡각.\n'
-    we = 1;
-  }
   if (msg.content.includes('종') && msg.content.includes('철')) {
     msg.channel.send('https://cdn.discordapp.com/attachments/818359643713175555/822748364939722762/watch.png');
   }
@@ -63,6 +59,14 @@ client.on('message', msg => {
   if (msg.content.includes('지') && msg.content.includes('능')) {
     sen += '처참.\n'
     we = 1;
+  }
+
+  if (msg.content.includes('방과') || msg.content.includes('체육') || msg.content.includes('학교') || msg.content.includes('교실') || msg.content.includes('음악실')) {
+    sen += '떡각.\n'
+    we = 1;
+  }
+  if (msg.content.includes('sm')) {
+    msg.channel.send("https://arca.live/b/smpeople");
   }
 
   if(we == 1) {
