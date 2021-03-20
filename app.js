@@ -157,48 +157,9 @@ client.on('message', msg => {
     msg.channel.send(date(Number(string[1]), Number(string[2])) + '일 남음');
   }
 
-  if(initial == '#') {
-    if(!isNaN(string[0].substring(1,10))) {
-      if(msg.content == '#') {
-        msg.channel.send("https://hiyobi.me/");
-      }
-      else {
-        msg.channel.send("https://hiyobi.me/reader/"+string[0].substring(1,10));
-      }
-    }
-    else {
-      var url = "https://hiyobi.me/search/"+string[0].substring(1,100);
-      for(var i = 1; i < 5; i++) {
-        if(!string[i]=='') {
-          url += "%20"+string[i];
-        }
-      }
-      msg.channel.send(url);
-    }
+  if(string[0] == '!해석') {
+    msg.channel.send(btoa(string[1]));
   }
-
-  if(string[0] == 'ㅍ') {
-    url = encodeURI("http://pixiv.navirank.com/search/?words="+string[1]+"&mode=0&type=0&comp=0");
-    getHTML()
-      .then(html => {
-        let titleList = [];
-        const $ = cheerio.load(html.data);
-        const bodyList = $("div.rank ol li.rank ul.irank").children("li.img");
-
-        bodyList.each(function(i, elem) {
-          titleList[i] = {
-            title: $(this).find('a').attr('href')
-          };
-        });
-        return titleList;
-      })
-      .then(res => {
-        msg.channel.send("1. https://www.pixiv.net/artworks/"+res[0].title.substring(4,12));
-        for(var i = 1; i < Number(string[2]); i++) {
-          msg.channel.send((i+1)+". https://www.pixiv.net/artworks/"+res[i].title.substring(4,12));
-        }
-      });
-    }
 
 });
 
