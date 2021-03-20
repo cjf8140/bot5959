@@ -31,8 +31,10 @@ client.on('message', msg => {
     }
     adr++;
   }
-  if(keyword.includes(msg.content) && initial != '=') {
-    msg.channel.send(reply[keyword.lastIndexOf(msg.content)]);
+  for(var i = keyword.length; i >= 0; i ++) {
+    if(msg.content.includes(keyword[i]) ) {
+      msg.channel.send(reply[i]);
+    }
   }
 
   if ((msg.content.includes('진') && msg.content.includes('호') )  || msg.content.includes('jinho')) {
@@ -50,7 +52,7 @@ client.on('message', msg => {
   if (msg.content.includes('승') && msg.content.includes('주')) {
     msg.channel.send('https://tenor.com/view/kermit-freaking-out-crazy-gif-8832122');
   }
-  if (msg.content.includes('방과') || msg.content.includes('체육') || msg.content.includes('학교') || msg.content.includes('교실')) {
+  if (msg.content.includes('방과') || msg.content.includes('체육') || msg.content.includes('학교') || msg.content.includes('교실') || msg.content.includes('음악실')) {
     sen += '떡각.\n'
     we = 1;
   }
