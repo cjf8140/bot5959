@@ -31,7 +31,7 @@ client.on('message', msg => {
     }
     adr++;
   }
-  for(var i = keyword.length; i >= 0; i ++) {
+  for(var i = keyword.length; i >= 0; i--) {
     if(msg.content.includes(keyword[i]) ) {
       msg.channel.send(reply[i]);
     }
