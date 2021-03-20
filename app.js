@@ -23,6 +23,11 @@ client.on('message', msg => {
   var string = msg.content.split(' ');
   var initial = msg.content.charAt(0);
 
+  for(var i = keyword.length; i >= 0; i--) {
+    if(msg.content.includes(keyword[i]) ) {
+      msg.channel.send(reply[i]);
+    }
+  }
   if(initial == '=') {
     keyword[adr] = string[0].substring(1,100);
     reply[adr] = string[1];
@@ -30,11 +35,6 @@ client.on('message', msg => {
       reply[adr] += ' '+string[i];
     }
     adr++;
-  }
-  for(var i = keyword.length; i >= 0; i--) {
-    if(msg.content.includes(keyword[i]) ) {
-      msg.channel.send(reply[i]);
-    }
   }
 
   if ((msg.content.includes('진') && msg.content.includes('호') )  || msg.content.includes('jinho')) {
