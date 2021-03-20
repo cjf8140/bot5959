@@ -158,7 +158,7 @@ client.on('message', msg => {
   }
 
   if(string[0] == '!해석') {
-    msg.channel.send(btoa(string[1]));
+    msg.channel.send( Buffer.from(string[1], 'base64').toString() );
   }
 
 });
