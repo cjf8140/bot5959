@@ -57,10 +57,10 @@ client.on('message', msg => {
     we = 1;
   }
   if (msg.content.includes('승') && msg.content.includes('주')) {
-    msg.channel.send('https://cdn.discordapp.com/attachments/818359643713175555/822748239211659284/ko1.png');
+    msg.channel.send('https://cdn.discordapp.com/attachments/818606409293234236/823452252030107648/ko1.png');
   }
   if (msg.content.includes('종') && msg.content.includes('철')) {
-    msg.channel.send('https://cdn.discordapp.com/attachments/818359643713175555/822748364939722762/watch.png');
+    msg.channel.send('https://cdn.discordapp.com/attachments/818606409293234236/823452255398920232/watch.png');
   }
 
   if (msg.content.includes('지') && msg.content.includes('능')) {
