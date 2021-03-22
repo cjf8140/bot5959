@@ -39,7 +39,7 @@ client.on('message', msg => {
   }
   if(msg.content == '==') {
     var list = '';
-    for(var i = keyword.length; i > 0; i--) {
+    for(var i = keyword.length-1; i >= 0; i--) {
         list += keyword[i] + ' = ' + reply[i] + '\n';
     }
     msg.channel.send(list);
