@@ -26,9 +26,10 @@ client.on('message', msg => {
   for(var i = keyword.length; i >= 0; i--) {
     if(msg.content.includes(keyword[i]) ) {
       msg.channel.send(reply[i]);
+      break;
     }
   }
-  if(initial == '=') {
+  if(initial == '=' && string[0]!= '==') {
     keyword[adr] = string[0].substring(1,100);
     reply[adr] = string[1];
     for(var i = 2; i <string.length; i++) {
@@ -36,7 +37,13 @@ client.on('message', msg => {
     }
     adr++;
   }
-
+  if(msg.content == '==') {
+    var list = '';
+    for(var i = keyword.length; i > 0; i--) {
+        list += keyword[i] + ' = ' + reply[i] + '\n';
+    }
+    msg.channel.send(list);
+  }
   if ((msg.content.includes('진') && msg.content.includes('호') )  || msg.content.includes('jinho')) {
     sen += '육변기.\n'
     we = 1;
@@ -161,6 +168,12 @@ client.on('message', msg => {
     msg.channel.send( Buffer.from(string[1], 'base64').toString() );
   }
 
+  if(msg.content.includes("온") &&  msg.content.includes("클")) {
+    msg.channel.send("https://www.ebsoc.co.kr/");
+  }
+  if(msg.content == '.') {
+    msg.channel.send(".\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.");
+  }
 });
 
 function date(month, day) {
