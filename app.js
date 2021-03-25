@@ -26,16 +26,20 @@ client.on('message', msg => {
   for(var i = keyword.length; i >= 0; i--) {
     if(msg.content.includes(keyword[i]) ) {
       msg.channel.send(reply[i]);
-      break;
     }
   }
   if(initial == '=' && string[0]!= '==') {
-    keyword[adr] = string[0].substring(1,100);
-    reply[adr] = string[1];
-    for(var i = 2; i <string.length; i++) {
-      reply[adr] += ' '+string[i];
+    if(keyword.includes(string[0].substring(1,100)) {
+      reply[keyword.index(string[0].substring(1,100))] = string[0].substring(1,100);
     }
-    adr++;
+    else {
+      keyword[adr] = string[0].substring(1,100);
+      reply[adr] = string[1];
+      for(var i = 2; i <string.length; i++) {
+        reply[adr] += ' '+string[i];
+      }
+      adr++;
+    }
   }
   if(msg.content == '==') {
     var list = '';
