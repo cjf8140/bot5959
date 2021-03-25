@@ -29,7 +29,7 @@ client.on('message', msg => {
     }
   }
   if(initial == '=' && string[0]!= '==') {
-    if(keyword.includes(string[0].substring(1,100)) {
+    if(keyword.includes(string[0].substring(1,100))) {
       reply[keyword.index(string[0].substring(1,100))] = string[0].substring(1,100);
     }
     else {
