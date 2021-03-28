@@ -187,7 +187,7 @@ client.on('message', msg => {
     }
   }
   if(initial == '$') {
-    msg.channel.send(msg.substring(1));
+    msg.channel.send(msg.substring(1, 1023));
   }
 });
 
