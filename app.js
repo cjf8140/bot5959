@@ -195,6 +195,7 @@ client.on('message', msg => {
     }
   }
   if(initial == '$') {
+    msg.delete();
     msg.channel.send(msg.substring(1));
   }
 });
