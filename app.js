@@ -87,7 +87,7 @@ client.on('message', msg => {
   }
 
   if(msg.content == '!사관') {
-    msg.channel.send('철종이 해방까지 '+ date(4, 7)+ '일 남음.')
+    msg.channel.send('철종이 해방으로부터 '+ (-date(4, 7)+365)+ '일 지남.')
   }
 
   if(msg.content == '!수능') {
@@ -100,9 +100,11 @@ client.on('message', msg => {
                        '철종: **3월 6일**: __' +date(3, 6)+ '__일 남음.\n'+
                        '호현: **3월 31일**: __' +date(3, 31)+ '__일 남음.\n'+
                        '수민: **5월 15일**: __' +date(5, 15)+ '__일 남음.\n'+
-                       '준희: **8월 23일**: __' +date(8, 26)+ '__일 남음.\n'+
+                       '준희: **8월 26일**: __' +date(8, 26)+ '__일 남음.\n'+
+                       '연수: **9월 10일**: __' +date(9, 10)+ '__일 남음.\n'+
                        '진호: **9월 14일**: __' +date(9, 14)+ '__일 남음.\n'+
                        '승주: **10월 11일**: __' +date(10, 11)+ '__일 남음.\n'+
+                       '연주: **10월 21일**: __' +date(10, 21)+ '__일 남음.\n'+
                        '민혁: **11월 22일**: __' +date(11, 22)+ '__일 남음.\n'+
                        '건화: **12월 1일**: __' +date(12, 1)+ '__일 남음.');
     }
@@ -132,6 +134,12 @@ client.on('message', msg => {
     }
     if(string[1] && string[1].includes('민')) {
       msg.channel.send('민혁: **11월 22일**: __' +date(11, 22)+ '__일 남음.');
+    }
+    if(string[1] && string[1].includes('수')) {
+      msg.channel.send('연수: **9월 10일**: __' +date(9, 10)+ '__일 남음.');
+    }
+    if(string[1] && string[1].includes('주')) {
+      msg.channel.send('연주: **10월 21일**: __' +date(10, 21)+ '__일 남음.');
     }
   }
 
@@ -188,7 +196,11 @@ client.on('message', msg => {
   }
   if(initial == '$') {
     msg.delete();
+<<<<<<< HEAD
     msg.channel.send( msg.content.substring(1) );
+=======
+    msg.channel.send(msg.content.substring(1));
+>>>>>>> 21e70281e078349779df6521631bb17fb8368d90
   }
 });
 
