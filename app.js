@@ -15,11 +15,16 @@ var we = 0
 
 var sen = '';
 
+var on = 1;
+
 var url=[];
 
 client.on('message', msg => {
   if (msg.author.bot) return;
-
+  if(on) {
+    msg.channel.send("봇이 리셋(패치)됨");
+    on = 0;
+  }
   var string = msg.content.split(' ');
   var initial = msg.content.charAt(0);
 
