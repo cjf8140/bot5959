@@ -196,11 +196,7 @@ client.on('message', msg => {
   }
   if(initial == '$') {
     msg.delete();
-<<<<<<< HEAD
     msg.channel.send( msg.content.substring(1) );
-=======
-    msg.channel.send(msg.content.substring(1));
->>>>>>> 21e70281e078349779df6521631bb17fb8368d90
   }
 });
 
