@@ -87,7 +87,7 @@ client.on('message', msg => {
   }
 
   if(msg.content == '!사관') {
-    msg.channel.send('철종이 해방까지 '+ date(4, 7)+ '일 남음.')
+    msg.channel.send('철종이 해방으로부터 '+ (-date(4, 7)+365)+ '일 지남.')
   }
 
   if(msg.content == '!수능') {
