@@ -65,7 +65,7 @@ client.on('message', msg => {
     sen += '脫毛\n'
     we = 1;
   }
-  if (msg.content.includes('연') && (msg.content.includes('준') || (msg.content.includes('죽')) {
+  if (msg.content.includes('연') && (msg.content.includes('주') || (msg.content.includes('죽')) {
     sen += '천박해\n'
     we = 1;
   }
