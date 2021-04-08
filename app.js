@@ -66,7 +66,7 @@ client.on('message', msg => {
     we = 1;
   }
   if (msg.content.includes('연') && (msg.content.includes('주') || msg.content.includes('죽'))  ) {
-    sen += '천박해\n'
+    msg.channel.send('https://cdn.discordapp.com/attachments/829731525520130078/829731539713523792/unknown.png');
     we = 1;
   }
   if (msg.content.includes('승') && msg.content.includes('주')) {
