@@ -14,7 +14,6 @@ const gup = async function (){
   meal1 = getMeal();
 };
 
-gup();
 
 var keyword=[];
 var reply=[];
@@ -32,6 +31,7 @@ var on = 1;
 var url=[];
 
 client.on('message', msg => {
+  gup();
   if (msg.author.bot) return;
   if(on) {
     msg.channel.send("봇이 리셋(패치)됨");
