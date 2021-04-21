@@ -1,1 +1,2 @@
 git+https://github.com/discordjs/discord.js
+git+https://github.com/leegeunhyeok/school-kr

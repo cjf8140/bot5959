@@ -1,15 +1,16 @@
 {
   "name": "bot5959",
-    "version": "1.0.0",
-    "description": "5959",
-    "main": "app.js",
+  "version": "1.0.0",
+  "description": "5959",
+  "main": "app.js",
   "dependencies": {
     "@discordjs/uws": "^10.149.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "balanced-match": "^1.0.0",
     "cheerio": "^1.0.0-rc.3",
     "discord.js": "^11.5.1",
     "node.js": "0.0.0",
+    "school-kr": "^3.1.2",
     "util": "^0.12.3"
   },
   "devDependencies": {

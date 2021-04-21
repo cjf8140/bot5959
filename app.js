@@ -3,6 +3,17 @@ const client = new Discord.Client();
 
 const axios = require("axios");
 const cheerio = require("cheerio");
+const School = require('school-kr');
+const school = new School();
+var meal1;
+const gup = async function (){
+  school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288")  //효문
+  const meal = await school.getMeal();
+  const calendar = await school.getCalendar();
+  meal1 = meal.today;
+};
+
+gup();
 
 var keyword=[];
 var reply=[];
@@ -28,10 +39,15 @@ client.on('message', msg => {
   var string = msg.content.split(' ');
   var initial = msg.content.charAt(0);
 
+  if(initial == '$') return;
+
   for(var i = keyword.length; i >= 0; i--) {
     if(msg.content.includes(keyword[i]) ) {
       msg.channel.send(reply[i]);
     }
+  }
+  if(msg.content.includes("급식")) {
+    msg.channel.send(meal1);
   }
   if(initial == '=' && string[0]!= '==') {
     if(keyword.includes(string[0].substring(1,100))) {
