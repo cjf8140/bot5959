@@ -11,6 +11,7 @@ const gup = async function (){
   const meal = await school.getMeal();
   const calendar = await school.getCalendar();
   meal1 = meal.today;
+  meal1 = getMeal();
 };
 
 gup();
@@ -232,7 +233,7 @@ function date(month, day) {
   if(dday -tday < -1) {
     dday = new Date(nowYear+1, month-1, day);
   }
-  return Math.ceil( (dday-tday-9*60*60*1000) / (1000*60*60*24) );
+  return Math.ceil( (dday-tday) / (1000*60*60*24) ); //-9*60*60*1000
 }
 
 var generateRandom = function(max) {
