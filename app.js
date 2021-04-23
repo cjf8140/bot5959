@@ -6,15 +6,16 @@ const cheerio = require("cheerio");
 const School = require('school-kr');
 const school = new School();
 var meal1;
+var meal2;
 const gup = async function (){
   school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288")  //효문
   const meal = await school.getMeal();
   const calendar = await school.getCalendar();
   meal1 = meal.today;
-  meal1 = getMeal();
+  var tom = meal.day +1
+  meal2 = meal[tom];
 };
 
-gup();
 
 var keyword=[];
 var reply=[];
@@ -32,6 +33,7 @@ var on = 1;
 var url=[];
 
 client.on('message', msg => {
+  gup();
   if (msg.author.bot) return;
   if(on) {
     msg.channel.send("봇이 리셋(패치)됨");
@@ -40,7 +42,11 @@ client.on('message', msg => {
   var string = msg.content.split(' ');
   var initial = msg.content.charAt(0);
 
-  if(initial == '$') return;
+  if(initial == '$') {
+    msg.delete();
+    msg.channel.send( msg.content.substring(1,) );
+    return;
+  }
 
   for(var i = keyword.length; i >= 0; i--) {
     if(msg.content.includes(keyword[i]) ) {
@@ -48,7 +54,23 @@ client.on('message', msg => {
     }
   }
   if(msg.content.includes("급식")) {
-    msg.channel.send(meal1);
+    var tday = new Date();
+    if(tday.getHours() < 13) {
+      if(meal1 == "") {
+        msg.channel.send("오늘 급식 없음");
+      }
+      else {
+        msg.channel.send(meal1);
+      }
+    }
+    else {
+      if(meal2 == "") {
+        msg.channel.send("내일 급식 없음");
+      }
+      else {
+        msg.channel.send(meal2);
+      }
+    }
   }
   if(initial == '=' && string[0]!= '==') {
     if(keyword.includes(string[0].substring(1,100))) {
@@ -113,7 +135,7 @@ client.on('message', msg => {
   }
 
   if(msg.content == '!사관') {
-    msg.channel.send('\'즐거움\'까지 '+ date(11, 18)+ '일 .')
+    msg.channel.send('\'즐거움\'까지 '+ date(5, 20)+ '일 .')
   }
 
   if(msg.content == '!수능') {
@@ -210,7 +232,7 @@ client.on('message', msg => {
     msg.channel.send("https://www.ebsoc.co.kr/");
   }
   if(msg.content == '.') {
-    msg.channel.send(".\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.");
+    msg.channel.send(".\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.");
   }
   if(initial == '#') {
     if(msg.content == '#') {
@@ -219,10 +241,6 @@ client.on('message', msg => {
     else {
       msg.channel.send("https://hiyobi.me/reader/"+string[0].substring(1,100));
     }
-  }
-  if(initial == '$') {
-    msg.delete();
-    msg.channel.send( msg.content.substring(1,) );
   }
 });
 
