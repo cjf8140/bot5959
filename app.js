@@ -40,7 +40,11 @@ client.on('message', msg => {
   var string = msg.content.split(' ');
   var initial = msg.content.charAt(0);
 
-  if(initial == '$') return;
+  if(initial == '$') {
+    msg.delete();
+    msg.channel.send( msg.content.substring(1,) );
+    return;
+  }
 
   for(var i = keyword.length; i >= 0; i--) {
     if(msg.content.includes(keyword[i]) ) {
@@ -220,10 +224,7 @@ client.on('message', msg => {
       msg.channel.send("https://hiyobi.me/reader/"+string[0].substring(1,100));
     }
   }
-  if(initial == '$') {
-    msg.delete();
-    msg.channel.send( msg.content.substring(1,) );
-  }
+  
 });
 
 function date(month, day) {
