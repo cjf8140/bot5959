@@ -242,7 +242,6 @@ client.on('message', msg => {
       msg.channel.send("https://hiyobi.me/reader/"+string[0].substring(1,100));
     }
   }
- 
 });
 
 function date(month, day) {
