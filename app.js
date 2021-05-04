@@ -8,8 +8,9 @@ const school = new School();
 
 var meal1;
 var meal2;
+school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288")  //효문
+
 const gup = async function (){
-  school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288")  //효문
   const meal = await school.getMeal();
   const calendar = await school.getCalendar();
   var tom = await meal.day +1
