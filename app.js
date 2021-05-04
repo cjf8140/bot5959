@@ -95,13 +95,13 @@ client.on('message', msg => {
     msg.channel.send(list);
   }
   if (msg.content.includes('진호') || msg.content.includes('찐호')  || msg.content.includes('jinho') ) {
-    msg.channel.send('https://cdn.discordapp.com/attachments/831420571803713547/839118758584254524/dccon.png\n');
+    msg.channel.send('https://cdn.discordapp.com/attachments/831420571803713547/839118758584254524/dccon.png');
   }
   if (msg.content.includes('호연') || msg.content.includes('호현') ) {
-    msg.channel.send('https://cdn.discordapp.com/attachments/831420571803713547/839119285016199188/4297ecf05c6b430496f584d7b01ca945638f22b985b415defb816a961e30083b.png\n');
+    msg.channel.send('https://cdn.discordapp.com/attachments/831420571803713547/839120955133395004/unknown.png');
   }
   if (msg.content.includes('동준') || msg.content.includes('춘향') || msg.content.includes('김던전')) {
-    msg.channel.send('https://cdn.discordapp.com/attachments/831420571803713547/839119046808961075/59bbbab821aa5fe3104c3e81f53ec0430bc69e3ff287358d4c380c67545e79a0.png\n');
+    msg.channel.send('https://cdn.discordapp.com/attachments/831420571803713547/839119046808961075/59bbbab821aa5fe3104c3e81f53ec0430bc69e3ff287358d4c380c67545e79a0.png');
   }
   if (msg.content.includes('연주') || msg.content.includes('연죽')) {
     msg.channel.send('https://cdn.discordapp.com/attachments/829731525520130078/829731539713523792/unknown.png');
