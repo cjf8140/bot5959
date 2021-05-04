@@ -5,15 +5,16 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const School = require('school-kr');
 const school = new School();
+
 var meal1;
 var meal2;
 const gup = async function (){
   school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288")  //효문
   const meal = await school.getMeal();
   const calendar = await school.getCalendar();
-  meal1 = meal.today;
-  var tom = meal.day +1
-  meal2 = meal[tom];
+  var tom = await meal.day +1
+  meal1 = await meal.today;
+  meal2 = await meal[tom];
 };
 
 
@@ -33,7 +34,6 @@ var on = 1;
 var url=[];
 
 client.on('message', msg => {
-  gup();
   if (msg.author.bot) return;
   if(on) {
     msg.channel.send("봇이 리셋(패치)됨");
@@ -54,6 +54,7 @@ client.on('message', msg => {
     }
   }
   if(msg.content.includes("급식")) {
+    gup();
     var tday = new Date();
     if(tday.getHours() < 13) {
       if(meal1 == "") {
