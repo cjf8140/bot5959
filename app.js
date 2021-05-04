@@ -35,7 +35,7 @@ var url=[];
 
 client.on('message', msg => {
   if (msg.author.bot) return;
-  if(on) {
+  if(on && msg.content=="봇") {
     msg.channel.send("봇이 리셋(패치)됨");
     on = 0;
   }
