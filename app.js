@@ -121,6 +121,9 @@ client.on('message', msg => {
   if (msg.content.includes('준희')) {
     msg.channel.send('https://cdn.discordapp.com/attachments/831420571803713547/839122148563484722/unknown.png');
   }
+  if (msg.content.includes('연수')) {
+    msg.channel.send('https://cdn.discordapp.com/attachments/831420571803713547/839126426509770802/unknown.png');
+  }
   if (msg.content.includes('건화') || msg.content.includes('건희')) {
     msg.channel.send('https://cdn.discordapp.com/attachments/831420571803713547/839124146738692126/unknown.png');
   }
