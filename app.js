@@ -49,6 +49,7 @@ client.on('message', msg => {
   }
   if(msg.content.includes("급식")) {
     (async function() {
+      lm = await msg.channel.send("불러오는 중...");
       const meal = await school.getMeal();
       const calendar = await school.getCalendar();
 
@@ -69,6 +70,7 @@ client.on('message', msg => {
           msg.channel.send(meal[meal.day+1]);
         }
       }
+      await lm.delete();
     }());
   }
   if(initial == '=' && string[0]!= '==') {
