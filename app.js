@@ -10,13 +10,6 @@ var meal1;
 var meal2;
 school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288")  //효문
 
-var gup = async function (){
-  const meal = await school.getMeal();
-  const calendar = await school.getCalendar();
-  var tom = await meal.day +1
-  meal1 = await meal.today;
-  meal2 = await meal[tom];
-};
 
 
 var keyword=[];
@@ -55,24 +48,28 @@ client.on('message', msg => {
     }
   }
   if(msg.content.includes("급식")) {
-    gup();
-    var tday = new Date();
-    if(tday.getHours() < 13) {
-      if(meal1 == "") {
-        msg.channel.send("오늘 급식 없음");
+    (async function() {
+      const meal = await school.getMeal();
+      const calendar = await school.getCalendar();
+
+      var tday = new Date();
+      if(tday.getHours() < 13) {
+        if(meal1 == null) {
+          msg.channel.send("오늘 급식 없음");
+        }
+        else {
+          msg.channel.send(meal.today);
+        }
       }
       else {
-        msg.channel.send(meal1);
+        if(meal2 == null) {
+          msg.channel.send("내일 급식 없음");
+        }
+        else {
+          msg.channel.send(meal[meal.day+1]);
+        }
       }
-    }
-    else {
-      if(meal2 == "") {
-        msg.channel.send("내일 급식 없음");
-      }
-      else {
-        msg.channel.send(meal2);
-      }
-    }
+    }());
   }
   if(initial == '=' && string[0]!= '==') {
     if(keyword.includes(string[0].substring(1,100))) {
