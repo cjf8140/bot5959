@@ -47,32 +47,24 @@ client.on('message', msg => {
       msg.channel.send(reply[i]);
     }
   }
-  if(msg.content.includes("00000000000000000000000000000000000000000000급식")) {
+  if(msg.content.includes("급식")) {
     (async function() {
       lm = await msg.channel.send("불러오는 중...");
       const meal = await school.getMeal();
       const calendar = await school.getCalendar();
 
       var tday = new Date();
-      if(tday.getHours() < 13) {
-        if(ameal.today == undefined) {
-          console.log("1");
-          msg.channel.send("오늘 급식 없음");
-        }
-        else {
-          console.log("2");
-          msg.channel.send(meal.today);
-        }
+      if(tday.getHours() < 12 && tday.getMinutes() < 30) {
+        var dayadder = 0;
       }
       else {
-        if(meal[meal.day+1] == undefined) {
-          console.log("3");
-          msg.channel.send("내일 급식 없음");
+        var dayadder = 1;
+      }
+      if(meal[meal.day+1] == "") {
+        while(meal[meal.day+dayadder] == "") {
+          dayadder++;
         }
-        else {
-          console.log("4");
-          msg.channel.send(meal[meal.day+1]);
-        }
+        msg.channel.send(meal.month+"월 "+ (meal.day+dayadder)+"일 "+meal[meal.day+dayadder]);
       }
       await lm.delete();
     }());
