@@ -105,7 +105,7 @@ client.on('message', msg => {
     msg.channel.send('https://cdn.discordapp.com/attachments/818606409293234236/823452252030107648/ko1.png');
   }
   if (msg.content.includes('철종') ) {
-    msg.channel.send('https://cdn.discordapp.com/attachments/818606409293234236/823452255398920232/watch.png');
+    msg.channel.send('https://cdn.discordapp.com/attachments/789780000827113533/840536978084855869/unknown.png');
   }
   if (msg.content.includes('민혁')) {
     msg.channel.send('https://cdn.discordapp.com/attachments/831420571803713547/839123211429871616/ezgif-3-0b85860b65b7.gif');
