@@ -234,14 +234,6 @@ client.on('message', msg => {
   if(msg.content == '.') {
     msg.channel.send(".\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.");
   }
-  if(initial == '#') {
-    if(msg.content == '#') {
-      msg.channel.send("https://www.hiyobi.me/");
-    }
-    else {
-      msg.channel.send("https://hiyobi.me/reader/"+string[0].substring(1,100));
-    }
-  }
 });
 
 function date(month, day) {
