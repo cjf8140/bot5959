@@ -124,7 +124,7 @@ client.on('message', msg => {
   }
 
   if (msg.content.includes('방과') || msg.content.includes('체육') || msg.content.includes('학교') || msg.content.includes('교실') || msg.content.includes('음악실')) {
-    sen += '공부.\n'
+    sen += '람각\n'
     we = 1;
   }
 
