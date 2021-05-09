@@ -6,8 +6,7 @@ const cheerio = require("cheerio");
 const School = require('school-kr');
 const school = new School();
 
-var meal1;
-var meal2;
+var dayadder;
 school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288")  //효문
 
 
@@ -53,19 +52,53 @@ client.on('message', msg => {
       const meal = await school.getMeal();
       const calendar = await school.getCalendar();
 
-      var tday = new Date();
-      if(tday.getHours() < 12 && tday.getMinutes() < 30) {
-        var dayadder = 0;
+      var day = new Date();
+      var tday = new Date(day.getFullYear, )
+      dayadder = 0;
+      if(msg.content.includes("월")) {
+        while(tday.getDay() != 1) {
+          dayadder +=1;
+          tday = new Date(day.getFullYear(), day.getMonth(), day.getDate()+dayadder);
+        }
+      }
+      else if(msg.content.includes("화")) {
+        while(tday.getDay() != 2) {
+          dayadder +=1;
+          tday = new Date(day.getFullYear(), day.getMonth(), day.getDate()+dayadder);
+        }
+      }
+      else if(msg.content.includes("수")) {
+        while(tday.getDay() != 3) {
+          dayadder +=1;
+          tday = new Date(day.getFullYear(), day.getMonth(), day.getDate()+dayadder);
+        }
+      }
+      else if(msg.content.includes("목")) {
+        while(tday.getDay() != 4) {
+          dayadder +=1;
+          tday = new Date(day.getFullYear(), day.getMonth(), day.getDate()+dayadder);
+        }
+      }
+      else if(msg.content.includes("금")) {
+        while(tday.getDay() != 5) {
+          dayadder +=1;
+          tday = new Date(day.getFullYear(), day.getMonth(), day.getDate()+dayadder);
+        }
       }
       else {
-        var dayadder = 1;
-      }
-      if(meal[meal.day+1] == "") {
-        while(meal[meal.day+dayadder] == "") {
-          dayadder++;
+        if(day.getHours() < 12 && day.getMinutes() < 30) {
+          dayadder = 0;
         }
-        msg.channel.send(meal.month+"월 "+ (meal.day+dayadder)+"일 "+meal[meal.day+dayadder]);
+        else {
+          dayadder = 1;
+        }
+        if(meal[meal.day+1] == "") {
+          while(meal[meal.day+dayadder] == "") {
+            dayadder++;
+          }
+        }
       }
+      msg.channel.send(meal.month+"월 "+ (meal.day+dayadder)+"일 "+meal[meal.day+dayadder]);
       await lm.delete();
     }());
   }
