@@ -86,7 +86,7 @@ client.on('message', msg => {
         }
       }
       else {
-        if(day.getHours() < 12 && day.getMinutes() < 30) {
+        if(day.getHours() < 13) {
           dayadder = 0;
         }
         else {
