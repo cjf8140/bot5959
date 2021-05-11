@@ -42,10 +42,13 @@ client.on('message', msg => {
     return;
   }
 
-  if(msg.content == "슈슉슈") {
+  if(string[0] == "슈슈슉") {
+    if(Number(string[1] > 90)) {
+      return;
+    }
     (async function() {
       msg.delete();
-      const fetched = await msg.channel.fetchMessages({limit: 3});
+      const fetched = await msg.channel.fetchMessages({Number(string[1]+1});
       msg.channel.bulkDelete(fetched);
     }());
   }
