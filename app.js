@@ -41,6 +41,7 @@ client.on('message', msg => {
     msg.channel.send( msg.content.substring(1,) );
     return;
   }
+
   if(msg.content == "슈슈") {
     async function clear() {
       msg.delete();
@@ -48,6 +49,7 @@ client.on('message', msg => {
       msg.channel.bulkDelete(fetched);
     }
   }
+  
   for(var i = keyword.length; i >= 0; i--) {
     if(msg.content.includes(keyword[i]) ) {
       msg.channel.send(reply[i]);
