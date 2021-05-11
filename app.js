@@ -272,6 +272,9 @@ client.on('message', msg => {
   if(string[0] == '!해석') {
     msg.channel.send( Buffer.from(string[1], 'base64').toString() );
   }
+  if(string[0] == '!석해') {
+    msg.channel.send( string[1].toString('base64') );
+  }
 
   if(msg.content.includes("온") &&  msg.content.includes("클")) {
     msg.channel.send("https://www.ebsoc.co.kr/");
