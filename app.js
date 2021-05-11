@@ -161,6 +161,11 @@ client.on('message', msg => {
     we = 1;
   }
 
+
+  if (msg.content.includes("처갓집")) {
+    msg.channel.send('02-992-8881');
+  }
+
   if(we == 1) {
     msg.channel.send(sen);
     sen = ''
