@@ -45,7 +45,7 @@ client.on('message', msg => {
     async function clear() {
       msg.delete();
       const fetched = await msg.channel.fetchMessages({limit: 99});
-      client.channels.cache.get(`818779173824364545`).bulkDelete(fetched);
+      client.channels.cache.get(818779173824364545).bulkDelete(fetched);
     }
   }
   for(var i = keyword.length; i >= 0; i--) {
