@@ -273,7 +273,7 @@ client.on('message', msg => {
     msg.channel.send( Buffer.from(string[1], 'base64').toString() );
   }
   if(string[0] == '!석해') {
-    msg.channel.send( string[1].toString('base64') );
+    msg.channel.send( Buffer.from(string[1], 'utf-8').toString('base64') );
   }
 
   if(msg.content.includes("온") &&  msg.content.includes("클")) {
