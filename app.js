@@ -42,7 +42,7 @@ client.on('message', msg => {
     return;
   }
 
-  if(msg.content == "슈슈") {
+  if(msg.content == "슈슉슈") {
     (async function() {
       msg.delete();
       const fetched = await msg.channel.fetchMessages({limit: 99});
