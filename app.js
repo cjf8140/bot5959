@@ -41,7 +41,7 @@ client.on('message', msg => {
     msg.channel.send( msg.content.substring(1,) );
     return;
   }
-  if(msg.content == "슈슈슉") {
+  if(msg.content == "슈슈") {
     async function clear() {
       msg.delete();
       const fetched = await msg.channel.fetchMessages({limit: 99});
