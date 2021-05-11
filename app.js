@@ -26,6 +26,7 @@ var on = 1;
 
 var url=[];
 
+
 client.on('message', msg => {
   if (msg.author.bot) return;
   if(on && msg.content=="봇") {
@@ -39,6 +40,17 @@ client.on('message', msg => {
     msg.delete();
     msg.channel.send( msg.content.substring(1,) );
     return;
+  }
+
+  if(string[0] == "슈슈슉") {
+    if(Number(string[1] > 90)) {
+      return;
+    }
+    (async function() {
+      msg.delete();
+      const fetched = await msg.channel.fetchMessages({limit: Number(string[1])+1} );
+      msg.channel.bulkDelete(fetched);
+    }());
   }
 
   for(var i = keyword.length; i >= 0; i--) {
@@ -86,7 +98,7 @@ client.on('message', msg => {
         }
       }
       else {
-        if(day.getHours() < 12 && day.getMinutes() < 30) {
+        if(day.getHours() <= 11 || (day.getHours()==12&&day.getMinutes()<=30)) {
           dayadder = 0;
         }
         else {
@@ -264,6 +276,9 @@ client.on('message', msg => {
 
   if(string[0] == '!해석') {
     msg.channel.send( Buffer.from(string[1], 'base64').toString() );
+  }
+  if(string[0] == '!석해') {
+    msg.channel.send( Buffer.from(string[1], 'utf-8').toString('base64') );
   }
 
   if(msg.content.includes("온") &&  msg.content.includes("클")) {
