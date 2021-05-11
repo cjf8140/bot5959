@@ -48,7 +48,7 @@ client.on('message', msg => {
     }
     (async function() {
       msg.delete();
-      const fetched = await msg.channel.fetchMessages({Number(string[1]+1});
+      const fetched = await msg.channel.fetchMessages( Number(string[1])+1 );
       msg.channel.bulkDelete(fetched);
     }());
   }
