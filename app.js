@@ -26,6 +26,7 @@ var on = 1;
 
 var url=[];
 
+
 client.on('message', msg => {
   if (msg.author.bot) return;
   if(on && msg.content=="봇") {
@@ -40,7 +41,13 @@ client.on('message', msg => {
     msg.channel.send( msg.content.substring(1,) );
     return;
   }
-
+  if(msg.content == "슈슈슉") {
+    async function clear() {
+      msg.delete();
+      const fetched = await msg.channel.fetchMessages({limit: 99});
+      client.channels.cache.get(`818779173824364545`).bulkDelete(fetched);
+    }
+  }
   for(var i = keyword.length; i >= 0; i--) {
     if(msg.content.includes(keyword[i]) ) {
       msg.channel.send(reply[i]);
