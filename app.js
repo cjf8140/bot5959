@@ -44,7 +44,7 @@ client.on('message', msg => {
   if(msg.content == "슈슈") {
     async function clear() {
       msg.delete();
-      const fetched = await msg.channel.fetchMessages({limit: 99});
+      const fetched = await client.channels.cache.get(818779173824364545).fetchMessages({limit: 99});
       client.channels.cache.get(818779173824364545).bulkDelete(fetched);
     }
   }
