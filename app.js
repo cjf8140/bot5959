@@ -43,13 +43,13 @@ client.on('message', msg => {
   }
 
   if(msg.content == "슈슈") {
-    async function clear() {
+    (async function() {
       msg.delete();
       const fetched = await msg.channel.fetchMessages({limit: 99});
       msg.channel.bulkDelete(fetched);
-    }
+    }());
   }
-  
+
   for(var i = keyword.length; i >= 0; i--) {
     if(msg.content.includes(keyword[i]) ) {
       msg.channel.send(reply[i]);
