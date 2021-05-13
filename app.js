@@ -65,7 +65,7 @@ client.on('message', msg => {
       const calendar = await school.getCalendar();
 
       var day = new Date();
-      var tday = new Date(day.getFullYear, )
+      var tday = new Date();
       dayadder = 0;
       if(msg.content.includes("월")) {
         while(tday.getDay() != 1) {
