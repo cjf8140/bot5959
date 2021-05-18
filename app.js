@@ -279,7 +279,7 @@ client.on('message', msg => {
       cheat = 0;
     }
   }
-  if(string[0] == ("사기")) {
+  if(string[0] == ("!!사기")) {
     cheat = Number( string[1] );
     msg.reply("👍");
   }
