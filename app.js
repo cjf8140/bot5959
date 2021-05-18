@@ -281,6 +281,7 @@ client.on('message', msg => {
   }
   if(string[0] == ("사기")) {
     cheat = Number( string[1] );
+    msg.reply("👍");
   }
 
   if(msg.content.includes("온") &&  msg.content.includes("클")) {
