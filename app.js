@@ -280,7 +280,7 @@ client.on('message', msg => {
     }
   }
   if(string[0] == ("사기")) {
-    cheat = Number(String[1]);
+    cheat = Number( string[1] );
   }
 
   if(msg.content.includes("온") &&  msg.content.includes("클")) {
