@@ -270,7 +270,7 @@ client.on('message', msg => {
     msg.channel.send( Buffer.from(string[1], 'utf-8').toString('base64') );
   }
 
-  if(msg.content.includes("주사위")) {
+  if(msg.content == "주사위" ) {
     if(cheat == 0) {
       msg.channel.send( gr(6)+1 );
     }
