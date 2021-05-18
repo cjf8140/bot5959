@@ -18,14 +18,11 @@ var adr = 0;
 
 var rewr = 0;
 
-var we = 0
-
-var sen = '';
-
 var on = 1;
 
 var url=[];
 
+var cheat = 0;
 
 client.on('message', msg => {
   if (msg.author.bot) return;
@@ -169,18 +166,11 @@ client.on('message', msg => {
   }
 
   if (msg.content.includes('방과') || msg.content.includes('체육') || msg.content.includes('학교') || msg.content.includes('교실') || msg.content.includes('음악실')) {
-    sen += '람각\n'
-    we = 1;
+    msg.channel.send('각');
   }
 
   if (msg.content.includes("처갓집")) {
     msg.channel.send('02-992-8881');
-  }
-
-  if(we == 1) {
-    msg.channel.send(sen);
-    sen = ''
-    we = 0;
   }
 
   if(msg.content == '!사관') {
@@ -280,6 +270,19 @@ client.on('message', msg => {
     msg.channel.send( Buffer.from(string[1], 'utf-8').toString('base64') );
   }
 
+  if(msg.content.includes("주사위")) {
+    if(cheat == 0) {
+      msg.channel.send( gr(6)+1 );
+    }
+    else {
+      msg.channel.send( cheat );
+      cheat = 0;
+    }
+  }
+  if(string[0] == ("사기")) {
+    cheat = Number(String[1]);
+  }
+
   if(msg.content.includes("온") &&  msg.content.includes("클")) {
     msg.channel.send("https://www.ebsoc.co.kr/");
   }
@@ -298,7 +301,7 @@ function date(month, day) {
   return Math.ceil( (dday-tday) / (1000*60*60*24) ); //-9*60*60*1000
 }
 
-var generateRandom = function(max) {
+var gr = function(max) {
   var ranNum = Math.floor(Math.random()*(max));
   return ranNum;
 }
