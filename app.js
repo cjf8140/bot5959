@@ -30,7 +30,7 @@ var wave= [
              ["준희", 'https://cdn.discordapp.com/attachments/831420571803713547/839122148563484722/unknown.png'],
              ["연수", 'https://cdn.discordapp.com/attachments/831420571803713547/839126426509770802/unknown.png'],
              ["건화", 'https://cdn.discordapp.com/attachments/831420571803713547/839124146738692126/unknown.png'],
-             ["건희", 'https://cdn.discordapp.com/attachments/831420571803713547/839124146738692126/unknown.png'].
+             ["건희", 'https://cdn.discordapp.com/attachments/831420571803713547/839124146738692126/unknown.png'],
              ["바보", 'https://cdn.discordapp.com/attachments/829731525520130078/848932776753233930/98a68a5c7da65743.png']
            ];
 
