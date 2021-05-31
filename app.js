@@ -31,6 +31,15 @@ var wave= [
              ["연수", 'https://cdn.discordapp.com/attachments/831420571803713547/839126426509770802/unknown.png'],
              ["건화", 'https://cdn.discordapp.com/attachments/831420571803713547/839124146738692126/unknown.png'],
              ["건희", 'https://cdn.discordapp.com/attachments/831420571803713547/839124146738692126/unknown.png'],
+
+             ["엄마", 'https://cdn.discordapp.com/attachments/829731525520130078/848934345719676948/1c107dbe3ddee3ba1c75075598c701a5e6a3b1b061d1d85ac59e2fd9a8d21edd.png'],
+             ["언니", 'https://cdn.discordapp.com/attachments/829731525520130078/848934426409959484/0b7a6f4000c666252fbad2445d562be915aee5b1f84a77722249aaa18e565685.png'],
+             ["순애", 'https://cdn.discordapp.com/attachments/829731525520130078/848934541226016819/d17957728f0a90be7913fd8ae121df317d3d9dc29f3d7e0d83fb8c073e3fee63.png'],
+             ["모녀", 'https://cdn.discordapp.com/attachments/829731525520130078/848934581674835988/e3f5f8f3346cedced4bef1c24df0746359797a77fd19b7663356769ac186aa57.png'],
+             ["자매", 'https://cdn.discordapp.com/attachments/829731525520130078/848934611433160784/dee4a798727b4ad1706d2270df58d3e4d1565332fcd250de0046c31311c4b04b.png'],
+             ["공포", 'https://cdn.discordapp.com/attachments/829731525520130078/848934638206451752/6bc73e6f223831976922e6d848972ef52a8c1dda35845e165c33ecbd351421bc.png'],
+             ["야한거돼", 'https://cdn.discordapp.com/attachments/829731525520130078/848934659945660456/dccon.png'],
+             ["ips", 'https://cdn.discordapp.com/attachments/829731525520130078/848934659945660456/dccon.png'],
              ["바보", 'https://cdn.discordapp.com/attachments/829731525520130078/848932776753233930/98a68a5c7da65743.png']
            ];
 
@@ -152,6 +161,13 @@ client.on('message', msg => {
     msg.channel.send(list);
   }
   if(initial=='~') {
+    if(msg.content == '~도움') {
+      var str="";
+      for(var i = 0; i < wave.length; i++) {
+        str+=wave[i][0] + ', ';
+      }
+      msg.channel.send(str);
+    }
      for(var i = 0; i < wave.length; i++) {
       if(msg.content == ('~'+wave[i][0]) ) {
         msg.channel.send(wave[i][1]);
