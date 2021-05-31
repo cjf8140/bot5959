@@ -38,8 +38,10 @@ var wave= [
              ["모녀", 'https://cdn.discordapp.com/attachments/829731525520130078/848934581674835988/e3f5f8f3346cedced4bef1c24df0746359797a77fd19b7663356769ac186aa57.png'],
              ["자매", 'https://cdn.discordapp.com/attachments/829731525520130078/848934611433160784/dee4a798727b4ad1706d2270df58d3e4d1565332fcd250de0046c31311c4b04b.png'],
              ["공포", 'https://cdn.discordapp.com/attachments/829731525520130078/848934638206451752/6bc73e6f223831976922e6d848972ef52a8c1dda35845e165c33ecbd351421bc.png'],
-             ["야한거돼", 'https://cdn.discordapp.com/attachments/829731525520130078/848934659945660456/dccon.png'],
+             ["야한거돼", 'https://cdn.discordapp.com/attachments/829731525520130078/848934682820083759/dccon.png'],
+             ["야한거", 'https://cdn.discordapp.com/attachments/829731525520130078/848934659945660456/dccon.png'],
              ["ips", 'https://cdn.discordapp.com/attachments/829731525520130078/848934659945660456/dccon.png'],
+             ["가학", 'https://cdn.discordapp.com/attachments/829731525520130078/848936617595109391/909e2941776192bbce51f4228e3ac161f15cf04e0f6fd7a696fa4ad18c46b4c2.png'],
              ["바보", 'https://cdn.discordapp.com/attachments/829731525520130078/848932776753233930/98a68a5c7da65743.png']
            ];
 
