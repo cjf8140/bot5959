@@ -14,23 +14,24 @@ school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288")  //효문
 var keyword=[];
 var reply=[];
 
-var wave[] ={{"진호", 'https://cdn.discordapp.com/attachments/831420571803713547/839118758584254524/dccon.png'},
-             {"찐호", 'https://cdn.discordapp.com/attachments/831420571803713547/839118758584254524/dccon.png'},
-             {"호현", 'https://cdn.discordapp.com/attachments/831420571803713547/839120955133395004/unknown.png'},
-             {"호연", 'https://cdn.discordapp.com/attachments/831420571803713547/839120955133395004/unknown.png'},
-             {"동준", 'https://cdn.discordapp.com/attachments/831420571803713547/839119046808961075/59bbbab821aa5fe3104c3e81f53ec0430bc69e3ff287358d4c380c67545e79a0.png'},
-             {"춘향", 'https://cdn.discordapp.com/attachments/831420571803713547/839119046808961075/59bbbab821aa5fe3104c3e81f53ec0430bc69e3ff287358d4c380c67545e79a0.png'},
-             {"연주", 'https://cdn.discordapp.com/attachments/829731525520130078/829731539713523792/unknown.png'},
-             {"연죽", 'https://cdn.discordapp.com/attachments/829731525520130078/829731539713523792/unknown.png'},
-             {"승주", 'https://cdn.discordapp.com/attachments/818606409293234236/823452252030107648/ko1.png'},
-             {"철종", 'https://cdn.discordapp.com/attachments/789780000827113533/840536978084855869/unknown.png'},
-             {"민혁", 'https://cdn.discordapp.com/attachments/831420571803713547/839123211429871616/ezgif-3-0b85860b65b7.gif'},
-             {"수민", "https://ac.namu.la/fd/fdf706f14d0d470f69e8f788a5f84a3c1665f4ad83bdf6652c44c68f757c21fe.gif"},
-             {"준희", 'https://cdn.discordapp.com/attachments/831420571803713547/839122148563484722/unknown.png'},
-             {"연수", 'https://cdn.discordapp.com/attachments/831420571803713547/839126426509770802/unknown.png'},
-             {"건화", 'https://cdn.discordapp.com/attachments/831420571803713547/839124146738692126/unknown.png'},
-             {"건희", 'https://cdn.discordapp.com/attachments/831420571803713547/839124146738692126/unknown.png'}
-           };
+var wave= [
+            ["진호", 'https://cdn.discordapp.com/attachments/831420571803713547/839118758584254524/dccon.png'],
+             ["찐호", 'https://cdn.discordapp.com/attachments/831420571803713547/839118758584254524/dccon.png'],
+             ["호현", 'https://cdn.discordapp.com/attachments/831420571803713547/839120955133395004/unknown.png'],
+             ["호연", 'https://cdn.discordapp.com/attachments/831420571803713547/839120955133395004/unknown.png'],
+             ["동준", 'https://cdn.discordapp.com/attachments/831420571803713547/839119046808961075/59bbbab821aa5fe3104c3e81f53ec0430bc69e3ff287358d4c380c67545e79a0.png'],
+             ["춘향", 'https://cdn.discordapp.com/attachments/831420571803713547/839119046808961075/59bbbab821aa5fe3104c3e81f53ec0430bc69e3ff287358d4c380c67545e79a0.png'],
+             ["연주", 'https://cdn.discordapp.com/attachments/829731525520130078/829731539713523792/unknown.png'],
+             ["연죽", 'https://cdn.discordapp.com/attachments/829731525520130078/829731539713523792/unknown.png'],
+             ["승주", 'https://cdn.discordapp.com/attachments/818606409293234236/823452252030107648/ko1.png'],
+             ["철종", 'https://cdn.discordapp.com/attachments/789780000827113533/840536978084855869/unknown.png'],
+             ["민혁", 'https://cdn.discordapp.com/attachments/831420571803713547/839123211429871616/ezgif-3-0b85860b65b7.gif'],
+             ["수민", "https://ac.namu.la/fd/fdf706f14d0d470f69e8f788a5f84a3c1665f4ad83bdf6652c44c68f757c21fe.gif"],
+             ["준희", 'https://cdn.discordapp.com/attachments/831420571803713547/839122148563484722/unknown.png'],
+             ["연수", 'https://cdn.discordapp.com/attachments/831420571803713547/839126426509770802/unknown.png'],
+             ["건화", 'https://cdn.discordapp.com/attachments/831420571803713547/839124146738692126/unknown.png'],
+             ["건희", 'https://cdn.discordapp.com/attachments/831420571803713547/839124146738692126/unknown.png']
+           ];
 
 var adr = 0;
 
@@ -149,9 +150,11 @@ client.on('message', msg => {
     }
     msg.channel.send(list);
   }
-  for(var i = 0; i <= wave.length; i++) {
-    if(msg.content == "~"+wave[i, 0]) {
-      msg.channel.send(wave[i,1]);
+  if(initial=='~') {
+     for(var i = 0; i < wave.length; i++) {
+      if(msg.content == ('~'+wave[i][0]) ) {
+        msg.channel.send(wave[i][1]);
+      }
     }
   }
 
