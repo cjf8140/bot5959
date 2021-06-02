@@ -42,7 +42,17 @@ var wave= [
              ["야한거", 'https://cdn.discordapp.com/attachments/829731525520130078/848934659945660456/dccon.png'],
              ["ips", 'https://cdn.discordapp.com/attachments/829731525520130078/848934659945660456/dccon.png'],
              ["가학", 'https://cdn.discordapp.com/attachments/829731525520130078/848936617595109391/909e2941776192bbce51f4228e3ac161f15cf04e0f6fd7a696fa4ad18c46b4c2.png'],
-             ["바보", 'https://cdn.discordapp.com/attachments/829731525520130078/848932776753233930/98a68a5c7da65743.png']
+             ["바보", 'https://cdn.discordapp.com/attachments/829731525520130078/848932776753233930/98a68a5c7da65743.png'],
+             ["그만먹어", 'https://cdn.discordapp.com/attachments/831420571803713547/849668708431429662/dccon.png'],
+             ["뉴비", 'https://cdn.discordapp.com/attachments/831420571803713547/849668838077104198/dccon.png'],
+             ["백합", 'https://cdn.discordapp.com/attachments/831420571803713547/849668854468706364/dccon.png'],
+             ["미워요", 'https://cdn.discordapp.com/attachments/831420571803713547/849669296116465754/dccon.png'],
+             ["또야한말", 'https://cdn.discordapp.com/attachments/831420571803713547/849669311370493963/dccon.png'],
+             ["야한말그만해", 'https://cdn.discordapp.com/attachments/831420571803713547/849669504668794880/dccon.png'],
+             ["고마워요", 'https://cdn.discordapp.com/attachments/831420571803713547/849669555868663808/dccon.png'],
+             ["왜괴롭혀", 'https://cdn.discordapp.com/attachments/831420571803713547/849669600420560906/dccon.png'],
+             ["왜욕해", 'https://cdn.discordapp.com/attachments/831420571803713547/849669619936526396/dccon.png'],
+             ["못댔어", 'https://cdn.discordapp.com/attachments/831420571803713547/849669196266340362/dccon.png']
            ];
 
 var adr = 0;
