@@ -52,7 +52,8 @@ var wave= [
              ["고마워요", 'https://cdn.discordapp.com/attachments/831420571803713547/849669555868663808/dccon.png'],
              ["왜괴롭혀", 'https://cdn.discordapp.com/attachments/831420571803713547/849669600420560906/dccon.png'],
              ["왜욕해", 'https://cdn.discordapp.com/attachments/831420571803713547/849669619936526396/dccon.png'],
-             ["못댔어", 'https://cdn.discordapp.com/attachments/831420571803713547/849669196266340362/dccon.png']
+             ["못댔어", 'https://cdn.discordapp.com/attachments/831420571803713547/849669196266340362/dccon.png'],
+             ["팔딱", 'https://tenor.com/view/genshin-gif-19434226']
            ];
 
 var adr = 0;
