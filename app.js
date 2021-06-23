@@ -253,7 +253,7 @@ client.on('message', msg => {
     msg.channel.send( Buffer.from(string[1], 'base64').toString() );
   }
   if(string[0] == '!석해') {
-    msg.channel.send( Buffer.from(msg.content.substring(1,), 'utf-8').toString('base64') );
+    msg.channel.send( Buffer.from(msg.content.substring(4,), 'utf-8').toString('base64') );
   }
 
   if(msg.content == "주사위" ) {
