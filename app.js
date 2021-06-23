@@ -308,7 +308,7 @@ async function getHTML() {
   }
 }
 var wave= [
-            ["진호", 'https://cdn.discordapp.com/attachments/831420571803713547/839118758584254524/dccon.png'],
+             ["진호", 'https://cdn.discordapp.com/attachments/831420571803713547/839118758584254524/dccon.png'],
              ["찐호", 'https://cdn.discordapp.com/attachments/831420571803713547/839118758584254524/dccon.png'],
              ["호현", 'https://cdn.discordapp.com/attachments/831420571803713547/839120955133395004/unknown.png'],
              ["호연", 'https://cdn.discordapp.com/attachments/831420571803713547/839120955133395004/unknown.png'],
