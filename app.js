@@ -260,11 +260,11 @@ client.on('message', msg => {
 
   if(string[0] == '!해석') {
     msg.delete();
-    msg.reply( Buffer.from(string[1], 'base64').toString() );
+    msg.channel.send(msg.author.tag+': '+ Buffer.from(string[1], 'base64').toString() );
   }
   if(string[0] == '!석해') {
     msg.delete();
-    msg.reply( Buffer.from(msg.content.substring(4,), 'utf-8').toString('base64') );
+    msg.channel.send(msg.author.tag+': '+ Buffer.from(msg.content.substring(4,), 'utf-8').toString('base64') );
   }
 
   if(msg.content == "주사위" ) {
