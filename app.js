@@ -23,10 +23,25 @@ var on = 1;
 
 var url=[];
 
+var log_c = [];
+var log_t = [];
+var log_n = 0;
+
 var cheat = 0;
 
 client.on('message', msg => {
   if (msg.author.bot) return;
+  log_c[log_n] = msg.content;
+  log_t[log_n] = msg.author.tag;
+  log_n++;
+  if(msg.content=='!log5959') {
+    var message = [];
+    for(i < 0; i<log_n; i++) {
+      message=log_c[i]+': '+log_t[i]+'\n';
+    }
+    msg.reply(message);
+  }
+
   if(on && msg.content=="봇") {
     msg.channel.send("봇이 리셋(패치)됨");
     on = 0;
