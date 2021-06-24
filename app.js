@@ -37,7 +37,7 @@ client.on('message', msg => {
   if(msg.content=='!log5959') {
     var message = [];
     for(i = 0; i<log_n-1; i++) {
-      message+=log_c[i]+': '+log_t[i]+'\n';
+      message+=log_t[i]+': '+log_c[i]+'\n';
     }
     msg.channel.send(message);
   }
