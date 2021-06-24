@@ -34,12 +34,6 @@ client.on('message', msg => {
   var string = msg.content.split(' ');
   var initial = msg.content.charAt(0);
 
-  if(initial == '$') {
-    msg.delete();
-    msg.channel.send( msg.content.substring(1,) );
-    return;
-  }
-
   if(string[0] == "슈슈슉") {
     if(Number(string[1] > 90)) {
       return;
