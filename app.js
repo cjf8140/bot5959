@@ -34,12 +34,15 @@ client.on('message', msg => {
   log_c[log_n] = msg.content;
   log_t[log_n] = msg.author.tag;
   log_n++;
+  console.log(log_c + log_t);
   if(msg.content=='!log5959') {
     var message = [];
-    for(i < 0; i<log_n; i++) {
-      message=log_c[i]+': '+log_t[i]+'\n';
+    for(i = 0; i<log_n-1; i++) {
+      console.log(log_c[i]+': '+log_t[i]+'\n');
+      message+=log_c[i]+': '+log_t[i]+'\n';
     }
-    msg.reply(message);
+    console.log(message);
+    msg.channel.send(message);
   }
 
   if(on && msg.content=="봇") {
