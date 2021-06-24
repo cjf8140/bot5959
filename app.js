@@ -34,14 +34,11 @@ client.on('message', msg => {
   log_c[log_n] = msg.content;
   log_t[log_n] = msg.author.tag;
   log_n++;
-  console.log(log_c + log_t);
   if(msg.content=='!log5959') {
     var message = [];
     for(i = 0; i<log_n-1; i++) {
-      console.log(log_c[i]+': '+log_t[i]+'\n');
       message+=log_c[i]+': '+log_t[i]+'\n';
     }
-    console.log(message);
     msg.channel.send(message);
   }
 
@@ -262,10 +259,12 @@ client.on('message', msg => {
   }
 
   if(string[0] == '!해석') {
-    msg.channel.send( Buffer.from(string[1], 'base64').toString() );
+    msg.delete();
+    msg.reply( Buffer.from(string[1], 'base64').toString() );
   }
   if(string[0] == '!석해') {
-    msg.channel.send( Buffer.from(msg.content.substring(4,), 'utf-8').toString('base64') );
+    msg.delete();
+    msg.reply( Buffer.from(msg.content.substring(4,), 'utf-8').toString('base64') );
   }
 
   if(msg.content == "주사위" ) {
