@@ -39,7 +39,8 @@ client.on('message', msg => {
     for(i = 0; i<log_n-1; i++) {
       message+=log_t[i]+': '+log_c[i]+'\n';
     }
-    msg.channel.send(message);
+    attachment = new Attachment(Buffer.from(message, 'utf-8'), 'myfile.txt');
+    msg.channel.send(':0', attachment);
   }
 
   if(on && msg.content=="봇") {
