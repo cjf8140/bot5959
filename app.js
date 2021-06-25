@@ -28,19 +28,23 @@ var log_t = [];
 var log_n = 0;
 
 var cheat = 0;
-
+const { MessageAttachment } = require('discord.js')
 client.on('message', msg => {
   if (msg.author.bot) return;
   log_c[log_n] = msg.content;
   log_t[log_n] = msg.author.tag;
   log_n++;
-  if(msg.content=='!log5959') {
+  if(msg.content=='!5959') {
     var message = [];
     for(i = 0; i<log_n-1; i++) {
       message+=log_t[i]+': '+log_c[i]+'\n';
     }
-    attachment = new Attachment(Buffer.from(message, 'utf-8'), 'myfile.txt');
-    msg.channel.send(':0', attachment);
+    for(i = 0; i < message.length; i+=2000) {
+      if(message.substring(i,i+2000) == "") {
+        break;
+      }
+      msg.channel.send(message.substring(i, i+2000));
+    }
   }
 
   if(on && msg.content=="봇") {
@@ -174,7 +178,7 @@ client.on('message', msg => {
   }
 
   if(msg.content == '!수능') {
-    msg.channel.send('지구멸망까지 '+ date(11, 18)+ '일 남음.')
+    msg.channel.send('까지 '+ date(11, 18)+ '일 남음.')
   }
 
   if(string[0] == '!생일') {
