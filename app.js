@@ -156,9 +156,9 @@ client.on('message', msg => {
       for(var i = 0; i < wave.length; i++) {
         str+=wave[i][0] + ', ';
       }
-      msg.channel.send(str);
+      msg.channel.send(str.substring(0 ,str.length-2) );
     }
-     for(var i = 0; i < wave.length; i++) {
+    for(var i = 0; i < wave.length; i++) {
       if(msg.content == ('~'+wave[i][0]) ) {
         msg.channel.send(wave[i][1]);
       }
