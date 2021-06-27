@@ -23,22 +23,36 @@ var on = 1;
 
 var url=[];
 
-var cheat = 0;
+var log_c = [];
+var log_t = [];
+var log_n = 0;
 
+var cheat = 0;
+const { MessageAttachment } = require('discord.js')
 client.on('message', msg => {
   if (msg.author.bot) return;
+  log_c[log_n] = msg.content;
+  log_t[log_n] = msg.author.tag;
+  log_n++;
+  if(msg.content=='!5959') {
+    var message = [];
+    for(i = 0; i<log_n-1; i++) {
+      message+=log_t[i]+': '+log_c[i]+'\n';
+    }
+    for(i = 0; i < message.length; i+=2000) {
+      if(message.substring(i,i+2000) == "") {
+        break;
+      }
+      msg.channel.send(message.substring(i, i+2000));
+    }
+  }
+
   if(on && msg.content=="봇") {
     msg.channel.send("봇이 리셋(패치)됨");
     on = 0;
   }
   var string = msg.content.split(' ');
   var initial = msg.content.charAt(0);
-
-  if(initial == '$') {
-    msg.delete();
-    msg.channel.send( msg.content.substring(1,) );
-    return;
-  }
 
   if(string[0] == "슈슈슉") {
     if(Number(string[1] > 90)) {
@@ -164,7 +178,7 @@ client.on('message', msg => {
   }
 
   if(msg.content == '!수능') {
-    msg.channel.send('지구멸망까지 '+ date(11, 18)+ '일 남음.')
+    msg.channel.send('까지 '+ date(11, 18)+ '일 남음.')
   }
 
   if(string[0] == '!생일') {
@@ -250,10 +264,12 @@ client.on('message', msg => {
   }
 
   if(string[0] == '!해석') {
-    msg.channel.send( Buffer.from(string[1], 'base64').toString() );
+    msg.delete();
+    msg.channel.send(Buffer.from(string[1], 'base64').toString() );
   }
   if(string[0] == '!석해') {
-    msg.channel.send( Buffer.from(msg.content.substring(4,), 'utf-8').toString('base64') );
+    msg.delete();
+    msg.channel.send(Buffer.from(msg.author.tag+": "+msg.content.substring(4,), 'utf-8').toString('base64') );
   }
 
   if(msg.content == "주사위" ) {
