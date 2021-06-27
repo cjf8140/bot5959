@@ -262,7 +262,9 @@ client.on('message', msg => {
   if(string[0] == '!date') {
     msg.channel.send(date(Number(string[1]), Number(string[2])) + '일 남음');
   }
-
+  if(msg.content == "!해석" || msg.content == "!석해") {
+    return;
+  }
   if(string[0] == '!해석') {
     msg.delete();
     msg.channel.send(Buffer.from(string[1], 'base64').toString() );
