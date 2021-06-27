@@ -382,6 +382,5 @@ var wave= [/*
              ["폭탄", "https://cdn.discordapp.com/attachments/831420571803713547/858627916941623345/unknown.png"],
              ["사약", "https://cdn.discordapp.com/attachments/831420571803713547/858627938999992330/5d2ade2fc6a32fccea154f1bd2cd90323ce9723e41fffef8753e78af9ee195e1.png"],
              ["아잉", "https://cdn.discordapp.com/attachments/831420571803713547/858628045534789642/unknown.png"],
-             ["공부", "https://cdn.discordapp.com/attachments/831420571803713547/858628525333544980/unknown.png"],
              ["자살", "https://cdn.discordapp.com/attachments/831420571803713547/858630412707168257/8ee99845eaa34664561834cebd8c176f61e33ad5d4d94943c3322cb30684728f.png"]
            ];
