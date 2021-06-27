@@ -323,7 +323,7 @@ async function getHTML() {
     console.error(error);
   }
 }
-var wave= [
+var wave= [/*
              ["진호", 'https://cdn.discordapp.com/attachments/831420571803713547/839118758584254524/dccon.png'],
              ["찐호", 'https://cdn.discordapp.com/attachments/831420571803713547/839118758584254524/dccon.png'],
              ["호현", 'https://cdn.discordapp.com/attachments/831420571803713547/839120955133395004/unknown.png'],
@@ -339,7 +339,7 @@ var wave= [
              ["준희", 'https://cdn.discordapp.com/attachments/831420571803713547/839122148563484722/unknown.png'],
              ["연수", 'https://cdn.discordapp.com/attachments/831420571803713547/839126426509770802/unknown.png'],
              ["건화", 'https://cdn.discordapp.com/attachments/831420571803713547/839124146738692126/unknown.png'],
-             ["건희", 'https://cdn.discordapp.com/attachments/831420571803713547/839124146738692126/unknown.png'],
+             ["건희", 'https://cdn.discordapp.com/attachments/831420571803713547/839124146738692126/unknown.png'],*/
 
              ["엄마", 'https://cdn.discordapp.com/attachments/829731525520130078/848934345719676948/1c107dbe3ddee3ba1c75075598c701a5e6a3b1b061d1d85ac59e2fd9a8d21edd.png'],
              ["언니", 'https://cdn.discordapp.com/attachments/829731525520130078/848934426409959484/0b7a6f4000c666252fbad2445d562be915aee5b1f84a77722249aaa18e565685.png'],
