@@ -347,5 +347,25 @@ var wave= [
              ["왜욕해", 'https://cdn.discordapp.com/attachments/831420571803713547/849669619936526396/dccon.png'],
              ["못댔어", 'https://cdn.discordapp.com/attachments/831420571803713547/849669196266340362/dccon.png'],
              ["팔딱", 'https://tenor.com/view/genshin-gif-19434226'],
-             ["잘자", "https://cdn.discordapp.com/attachments/831420571803713547/853769991668498462/4b74eccb5992e990.png"]
+             ["잘자", "https://cdn.discordapp.com/attachments/831420571803713547/853769991668498462/4b74eccb5992e990.png"],
+             //2차 업뎃
+             ["주먹", "https://cdn.discordapp.com/attachments/831420571803713547/858627145043542076/dccon.png"],
+             ["맞아", "https://cdn.discordapp.com/attachments/831420571803713547/858627193088638976/dccon.png"],
+             ["아니", "https://cdn.discordapp.com/attachments/831420571803713547/858627206343557120/dccon.png"],
+             ["비백합", "https://cdn.discordapp.com/attachments/831420571803713547/858627216015097866/dccon.png"],
+             ["준비", "https://cdn.discordapp.com/attachments/831420571803713547/858627232901234698/a0aae90f2ba749d29f03d559ce8a3a191ce2a930ffb4efe8c1ae6367a3f4f224.png"],
+             ["손가락", "https://cdn.discordapp.com/attachments/831420571803713547/858627276647563294/dccon.png"],
+             ["젖줘", "https://cdn.discordapp.com/attachments/831420571803713547/858627257328467968/ad94ed73711ffb3b9c03ff2fe825eee7602bee269b9db339d2abbe73124fa35d.png"],
+             ["현질", "https://cdn.discordapp.com/attachments/831420571803713547/858627317303214080/22cdf0426c379b22950de975a2f9e7c8c8b4c9d34e9b1619312fa35eef46eaa0.png"],
+             ["ㄹㅇㅋㅋ", "https://cdn.discordapp.com/attachments/831420571803713547/858630240636239902/ce2a434a05e47698babd8f4c1376d040bdad3eb603c8e51ceeb68d2324b50186.png"],
+             ["스고이", "https://cdn.discordapp.com/attachments/858398420951760916/858404543183847444/8ba046b81cb8c2212f5f66416cfb7319b5485a5c2465bb582fe6432dcd1f617a.gif"],
+             ["회로", "https://cdn.discordapp.com/attachments/831420571803713547/858627419317338122/196393abd466a9d430d5b031445fd033fc00ce5ca2bad02b71c5dbe15753e728.png"],
+             ["너만봐", "https://cdn.discordapp.com/attachments/831420571803713547/858627432122941460/f22103be8905ceea668feb66060e6b76660531f036217c1e8a503f553b798625.png"],
+             ["꿀벌", "https://cdn.discordapp.com/attachments/831420571803713547/858627558325223444/unknown.png"],
+             ["좋은건", "https://cdn.discordapp.com/attachments/831420571803713547/858627601870749746/01ebe4b38963e891867e7694ff623cb525cf5d04bdaf892ec63d674b10121927.png"],
+             ["폭탄", "https://cdn.discordapp.com/attachments/831420571803713547/858627916941623345/unknown.png"],
+             ["사약", "https://cdn.discordapp.com/attachments/831420571803713547/858627938999992330/5d2ade2fc6a32fccea154f1bd2cd90323ce9723e41fffef8753e78af9ee195e1.png"],
+             ["아잉", "https://cdn.discordapp.com/attachments/831420571803713547/858628045534789642/unknown.png"],
+             ["공부", "https://cdn.discordapp.com/attachments/831420571803713547/858628525333544980/unknown.png"],
+             ["자살", "https://cdn.discordapp.com/attachments/831420571803713547/858630412707168257/8ee99845eaa34664561834cebd8c176f61e33ad5d4d94943c3322cb30684728f.png"]
            ];
