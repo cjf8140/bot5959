@@ -273,6 +273,14 @@ client.on('message', msg => {
     msg.delete();
     msg.channel.send(Buffer.from(msg.author.tag+": "+msg.content.substring(4,), 'utf-8').toString('base64') );
   }
+  if(string[0] == '!!석해') {
+    msg.delete();
+    var ms = msg.content.substring(5,);
+    for(var i = 0; i <10; i++) {
+      ms = Buffer.from(ms, 'utf-8').toString('base64');
+    }
+    msg.channel.send(ms);
+  }
 
   if(msg.content == "주사위" ) {
     if(cheat == 0) {
