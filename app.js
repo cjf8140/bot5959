@@ -30,11 +30,11 @@ var log_n = 0;
 var cheat = 0;
 const { MessageAttachment } = require('discord.js')
 client.on('message', msg => {
-  if (msg.author.bot) return;
+  
   log_c[log_n] = msg.content;
   log_t[log_n] = msg.author.tag;
   log_n++;
-  if(msg.content=='!5959') {
+  if(msg.content=='!bot5959') {
     var message = [];
     for(i = 0; i<log_n-1; i++) {
       message+=log_t[i]+': '+log_c[i]+'\n';
@@ -46,7 +46,7 @@ client.on('message', msg => {
       msg.channel.send(message.substring(i, i+2000));
     }
   }
-
+  if (msg.author.bot) return;
   if(on && msg.content=="봇") {
     msg.channel.send("봇이 리셋(패치)됨");
     on = 0;
