@@ -17,8 +17,6 @@ var reply=[];
 
 var adr = 0;
 
-var rewr = 0;
-
 var on = 1;
 
 var url=[];
