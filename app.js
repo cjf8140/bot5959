@@ -367,7 +367,7 @@ var wave= [/*
              ["팔딱", 'https://tenor.com/view/genshin-gif-19434226'],
              ["잘자", "https://cdn.discordapp.com/attachments/831420571803713547/853769991668498462/4b74eccb5992e990.png"],
             //  1차 업뎃
-             ["\n,", ""],
+            
              //2차 업뎃
              ["주먹", "https://cdn.discordapp.com/attachments/831420571803713547/858627145043542076/dccon.png"],
              ["맞아", "https://cdn.discordapp.com/attachments/831420571803713547/858627193088638976/dccon.png"],
@@ -388,7 +388,7 @@ var wave= [/*
              ["아잉", "https://cdn.discordapp.com/attachments/831420571803713547/858628045534789642/unknown.png"],
              ["자살", "https://cdn.discordapp.com/attachments/831420571803713547/858630412707168257/8ee99845eaa34664561834cebd8c176f61e33ad5d4d94943c3322cb30684728f.png"],
             //  2차 업뎃
-            ["\n,", ""],
+
              //  3차 업뎃
              ["진짜네", "https://cdn.discordapp.com/attachments/831420571803713547/859746472860844042/dccon.png"],
              ["시러요", "https://cdn.discordapp.com/attachments/831420571803713547/859746614503407636/dccon.png"],
