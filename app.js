@@ -30,7 +30,7 @@ var log_n = 0;
 var cheat = 0;
 const { MessageAttachment } = require('discord.js')
 client.on('message', msg => {
-  
+
   log_c[log_n] = msg.content;
   log_t[log_n] = msg.author.tag;
   log_n++;
@@ -392,5 +392,34 @@ var wave= [/*
              ["폭탄", "https://cdn.discordapp.com/attachments/831420571803713547/858627916941623345/unknown.png"],
              ["사약", "https://cdn.discordapp.com/attachments/831420571803713547/858627938999992330/5d2ade2fc6a32fccea154f1bd2cd90323ce9723e41fffef8753e78af9ee195e1.png"],
              ["아잉", "https://cdn.discordapp.com/attachments/831420571803713547/858628045534789642/unknown.png"],
-             ["자살", "https://cdn.discordapp.com/attachments/831420571803713547/858630412707168257/8ee99845eaa34664561834cebd8c176f61e33ad5d4d94943c3322cb30684728f.png"]
+             ["자살", "https://cdn.discordapp.com/attachments/831420571803713547/858630412707168257/8ee99845eaa34664561834cebd8c176f61e33ad5d4d94943c3322cb30684728f.png"],
+             ["진짜", ""],
+             ["시러요", ""],
+             ["진짜싫어", ""],
+             ["ㅋ", ""],
+             ["딱대", ""],
+             ["망겜", ""],
+             ["씨발", ""],
+             ["고수", ""],
+             ["왤캐", ""],
+             ["주작", ""],
+             ["흑우", ""],
+             ["노잼", ""],
+             ["병신", ""],
+             ["개꼴림", ""],
+             ["비추", ""],
+             ["개추", ""],
+             ["전쟁", ""],
+             ["각넘약", ""],
+             ["이미봄", ""],
+             ["몰라응애", ""],
+             ["따봉", ""],
+             ["까먹음", ""],
+             ["꿀잠", ""],
+             ["", ""],
+             ["", ""],
+             ["", ""],
+             ["", ""],
+             ["", ""],
+             ["", ""],
            ];
