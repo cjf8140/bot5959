@@ -230,7 +230,7 @@ client.on('message', msg => {
                        '승주: **10월 11일**: __' +date(10, 11)+ '__일 남음.\n'+
                        '연주: **10월 21일**: __' +date(10, 21)+ '__일 남음.\n'+
                        '성수: **12월 19일**: __' +date(12, 19)+ '__일 남음.');
-    }
+    }s
     if(string[1] && string[1].includes('철')) {
       msg.channel.send('철종: **3월 6일**: __' +date(3, 6)+ '__일 남음.');
     }
@@ -367,7 +367,7 @@ var wave= [/*
              ["팔딱", 'https://tenor.com/view/genshin-gif-19434226'],
              ["잘자", "https://cdn.discordapp.com/attachments/831420571803713547/853769991668498462/4b74eccb5992e990.png"],
             //  1차 업뎃
-            
+
              //2차 업뎃
              ["주먹", "https://cdn.discordapp.com/attachments/831420571803713547/858627145043542076/dccon.png"],
              ["맞아", "https://cdn.discordapp.com/attachments/831420571803713547/858627193088638976/dccon.png"],
@@ -418,5 +418,3 @@ var wave= [/*
              ["ㅗ", "https://cdn.discordapp.com/attachments/831420571803713547/861683054317928458/cfb5985dcc1f94724ef140c0401162150235bf4df1ddab475111054b6116195d.png"],
             //  3차 업뎃
            ];
-
-           
