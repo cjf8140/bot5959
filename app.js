@@ -9,7 +9,7 @@ const school = new School();
 var dayadder;
 school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288")  //효문
 
-
+logword = "!log5959";
 
 var keyword=[];
 var reply=[];
@@ -30,7 +30,7 @@ client.on('message', msg => {
   log_c[log_n] = msg.content;
   log_t[log_n] = msg.author.tag;
   log_n++;
-  if(msg.content=='!bot5959') {
+  if(msg.content==logword) {
     var message = [];
     for(i = 0; i<log_n-1; i++) {
       message+=log_t[i]+': '+log_c[i]+'\n';
