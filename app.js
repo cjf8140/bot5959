@@ -46,7 +46,7 @@ client.on('message', msg => {
   var string = msg.content.split(' ');
   var initial = msg.content.charAt(0);
 
-  if(string[0] == "슈슈슉") {
+  if(string[0] == "슈!슉") {
     if(Number(string[1] > 90)) {
       return;
     }
