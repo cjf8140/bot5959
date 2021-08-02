@@ -9,6 +9,8 @@ const school = new School();
 var dayadder;
 school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288")  //효문
 
+logword = "!log5959";
+
 var keyword=[];
 var reply=[];
 
@@ -28,7 +30,7 @@ client.on('message', msg => {
   log_c[log_n] = msg.content;
   log_t[log_n] = msg.author.tag;
   log_n++;
-  if(msg.content=='!bot5959') {
+  if(msg.content==logword) {
     var message = [];
     for(i = 0; i<log_n-1; i++) {
       message+=log_t[i]+': '+log_c[i]+'\n';
@@ -44,7 +46,7 @@ client.on('message', msg => {
   var string = msg.content.split(' ');
   var initial = msg.content.charAt(0);
 
-  if(string[0] == "슈슈슉") {
+  if(string[0] == "슈!슉" && msg.channel.id != 829402170930626591 && msg.channel.id != 818359643713175555) {
     if(Number(string[1] > 90)) {
       return;
     }
@@ -228,7 +230,7 @@ client.on('message', msg => {
                        '승주: **10월 11일**: __' +date(10, 11)+ '__일 남음.\n'+
                        '연주: **10월 21일**: __' +date(10, 21)+ '__일 남음.\n'+
                        '성수: **12월 19일**: __' +date(12, 19)+ '__일 남음.');
-    }
+    }s
     if(string[1] && string[1].includes('철')) {
       msg.channel.send('철종: **3월 6일**: __' +date(3, 6)+ '__일 남음.');
     }
@@ -416,5 +418,3 @@ var wave= [/*
              ["ㅗ", "https://cdn.discordapp.com/attachments/831420571803713547/861683054317928458/cfb5985dcc1f94724ef140c0401162150235bf4df1ddab475111054b6116195d.png"],
             //  3차 업뎃
            ];
-
-           
