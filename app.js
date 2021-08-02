@@ -9,8 +9,6 @@ const school = new School();
 var dayadder;
 school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288")  //효문
 
-
-
 var keyword=[];
 var reply=[];
 
@@ -367,7 +365,7 @@ var wave= [/*
              ["팔딱", 'https://tenor.com/view/genshin-gif-19434226'],
              ["잘자", "https://cdn.discordapp.com/attachments/831420571803713547/853769991668498462/4b74eccb5992e990.png"],
             //  1차 업뎃
-            
+
              //2차 업뎃
              ["주먹", "https://cdn.discordapp.com/attachments/831420571803713547/858627145043542076/dccon.png"],
              ["맞아", "https://cdn.discordapp.com/attachments/831420571803713547/858627193088638976/dccon.png"],
