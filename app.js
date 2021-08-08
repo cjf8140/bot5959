@@ -166,7 +166,7 @@ client.on('message', msg => {
   }
 
   if(msg.content == '!사관') {
-    msg.channel.send('\'즐거움\'까지 '+ date(8, 8)+ '일 .')
+    msg.channel.send('\'즐거움\'까지 '+ date(8, 11)+ '일 .')
   }
 
   if(msg.content == '!수능') {
