@@ -2,7 +2,9 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 const axios = require("axios");
+const request = require("request");
 const cheerio = require("cheerio");
+
 const School = require('school-kr');
 const school = new School();
 
@@ -42,6 +44,88 @@ client.on('message', msg => {
       msg.channel.send(message.substring(i, i+2000));
     }
   }
+
+var temM;
+var temm;
+var wet;
+
+async function realTimeWeather() {
+    
+  var today = new Date();
+  var week = new Array('일','월','화','수','목','금','토');
+  var year = today.getFullYear();
+  var month = today.getMonth()+1;
+  var day = today.getDate();
+  var hours = today.getHours();
+  var minutes = today.getMinutes();
+
+  // $('.weather-date').html(month +"월 " + day + "일 " + week[today.getDay()]+"요일");
+
+  /*
+    * 기상청 30분마다 발표
+    * 30분보다 작으면, 한시간 전 hours 값
+    */
+  if(minutes < 30){
+      hours = hours - 1;
+      if(hours < 0){
+          // 자정 이전은 전날로 계산
+          today.setDate(today.getDate() - 1);
+          day = today.getDate();
+          month = today.getMonth()+1;
+          year = today.getFullYear();
+          hours = 23;
+      }
+  }
+    
+  /* example
+    * 9시 -> 09시 변경 필요
+    */
+  
+  if(hours < 10) {
+      hours = '0'+hours;
+  }
+  if(month < 10) {
+      month = '0' + month;
+  }    
+  if(day < 10) {
+      day = '0' + day;
+  } 
+
+  today = year+""+month+""+day;
+  
+  /* 좌표 */
+  var _nx = 61, 
+  _ny = 128,
+  apikey = "HpE4VOym0e8V23olABUZKlCd211wjgOJD80u0F9SL7%2BHhXkLkO9AnZnpOoXR2y6wqTCwEZ2p%2F6oxIFmPnkJPGA%3D%3D",    
+  ForecastGribURL = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst";
+  ForecastGribURL += "?ServiceKey=" + apikey;
+  ForecastGribURL += "&pageNo=1&numOfRows=10";
+  ForecastGribURL += "&dataType=JSON";
+  ForecastGribURL += "&base_date=20210808";
+  ForecastGribURL += "&base_time=0500";
+  ForecastGribURL += "&nx=" + _nx + "&ny=" + _ny;
+ console.log(ForecastGribURL);
+  request({
+    url: ForecastGribURL,
+    json: true
+  }, function (err, res, html) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    var text = html.response;
+    console.log(text);
+    text = text.replace(/(<([^>]+)>)/ig,""); //HTML 태그 모두 공백으로 대체
+    json = '[' + text + ']';
+    console.log(json);
+    wet = json[0].response.body.items.item[0].fcstValue;
+    temm = json[0].response.body.items.item[7].fcstValue.toFixed(1);;
+    temM = json[0].response.body.items.item[8].fcstValue.toFixed(1);;
+
+  } //success func 종료
+  )    
+}
+
   if (msg.author.bot) return;
   var string = msg.content.split(' ');
   var initial = msg.content.charAt(0);
@@ -56,7 +140,10 @@ client.on('message', msg => {
       msg.channel.bulkDelete(fetched);
     }());
   }
-
+  if(msg.content.includes("날씨")) {
+    realTimeWeather();
+    msg.channel.send("최고: "+temM + "˚c, 최저: " + temm + "˚c\n강수 확률: " + wet+ "%");
+  }
   if(msg.content=="!시험") {
     msg.channel.send("https://cdn.discordapp.com/attachments/818359643713175555/854365802421682206/20210614_100528.jpg");
   }
@@ -166,7 +253,7 @@ client.on('message', msg => {
   }
 
   if(msg.content == '!사관') {
-    msg.channel.send('\'즐거움\'까지 '+ date(8, 11)+ '일 .')
+    msg.channel.send('\'즐거움\'까지 '+ date(8, 12)+ '일 .')
   }
 
   if(msg.content == '!수능') {
