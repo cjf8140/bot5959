@@ -27,26 +27,8 @@ var log_n = 0;
 
 var cheat = 0;
 const { MessageAttachment } = require('discord.js')
-client.on('message', msg => {
 
-  log_c[log_n] = msg.content;
-  log_t[log_n] = msg.author.tag;
-  log_n++;
-  if(msg.content==logword) {
-    var message = [];
-    for(i = 0; i<log_n-1; i++) {
-      message+=log_t[i]+': '+log_c[i]+'\n';
-    }
-    for(i = 0; i < message.length; i+=2000) {
-      if(message.substring(i,i+2000) == "") {
-        break;
-      }
-      msg.channel.send(message.substring(i, i+2000));
-    }
-  }
-
-var temM;
-var temm;
+var t3h;
 var wet;
 
 async function realTimeWeather() {
@@ -99,12 +81,11 @@ async function realTimeWeather() {
   apikey = "HpE4VOym0e8V23olABUZKlCd211wjgOJD80u0F9SL7%2BHhXkLkO9AnZnpOoXR2y6wqTCwEZ2p%2F6oxIFmPnkJPGA%3D%3D",    
   ForecastGribURL = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst";
   ForecastGribURL += "?ServiceKey=" + apikey;
-  ForecastGribURL += "&pageNo=1&numOfRows=10";
+  ForecastGribURL += "&pageNo=1&numOfRows=8";
   ForecastGribURL += "&dataType=JSON";
-  ForecastGribURL += "&base_date=20210808";
-  ForecastGribURL += "&base_time=0500";
+  ForecastGribURL += "&base_date="+today;
+  ForecastGribURL += "&base_time="+(hours-1)+"00";
   ForecastGribURL += "&nx=" + _nx + "&ny=" + _ny;
- console.log(ForecastGribURL);
   request({
     url: ForecastGribURL,
     json: true
@@ -113,18 +94,28 @@ async function realTimeWeather() {
       console.log(err);
       return;
     }
-    var text = html.response;
-    console.log(text);
-    text = text.replace(/(<([^>]+)>)/ig,""); //HTML 태그 모두 공백으로 대체
-    json = '[' + text + ']';
-    console.log(json);
-    wet = json[0].response.body.items.item[0].fcstValue;
-    temm = json[0].response.body.items.item[7].fcstValue.toFixed(1);;
-    temM = json[0].response.body.items.item[8].fcstValue.toFixed(1);;
-
+    wet = html.response.body.items.item[0].fcstValue;
+    t3h = html.response.body.items.item[4].fcstValue;
   } //success func 종료
   )    
 }
+
+client.on('message', msg => {
+  log_c[log_n] = msg.content;
+  log_t[log_n] = msg.author.tag;
+  log_n++;
+  if(msg.content==logword) {
+    var message = [];
+    for(i = 0; i<log_n-1; i++) {
+      message+=log_t[i]+': '+log_c[i]+'\n';
+    }
+    for(i = 0; i < message.length; i+=2000) {
+      if(message.substring(i,i+2000) == "") {
+        break;
+      }
+      msg.channel.send(message.substring(i, i+2000));
+    }
+  }
 
   if (msg.author.bot) return;
   var string = msg.content.split(' ');
@@ -141,8 +132,7 @@ async function realTimeWeather() {
     }());
   }
   if(msg.content.includes("날씨")) {
-    realTimeWeather();
-    msg.channel.send("최고: "+temM + "˚c, 최저: " + temm + "˚c\n강수 확률: " + wet+ "%");
+      msg.channel.send("기온: "+Number(t3h) + "˚c\n강수 확률: " + Number(wet)+ "%");
   }
   if(msg.content=="!시험") {
     msg.channel.send("https://cdn.discordapp.com/attachments/818359643713175555/854365802421682206/20210614_100528.jpg");
@@ -403,6 +393,8 @@ client.login('ODE2Mjg4NTc3MDI1MDgxMzQ0.YD4x-g.nuFX8V0I7JeQKWVsOe8SjVOi8u8');
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+  realTimeWeather();
+  client.setInterval(realTimeWeather, 1800*1000);
 })
 
 async function getHTML() {
