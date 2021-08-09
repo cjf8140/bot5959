@@ -116,7 +116,7 @@ function realTimeWeather() {
   ForecastGribURL += "&pageNo=1&numOfRows=8";
   ForecastGribURL += "&dataType=JSON";
   ForecastGribURL += "&base_date="+today;
-  ForecastGribURL += "&base_time="+(hours-2)+"00";
+  ForecastGribURL += "&base_time="+(hours-6)+"00";
   ForecastGribURL += "&nx=" + _nx + "&ny=" + _ny;
   console.log(ForecastGribURL);
   request({
