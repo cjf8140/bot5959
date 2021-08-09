@@ -84,13 +84,16 @@ async function realTimeWeather() {
   ForecastGribURL += "&pageNo=1&numOfRows=8";
   ForecastGribURL += "&dataType=JSON";
   ForecastGribURL += "&base_date="+today;
-  ForecastGribURL += "&base_time="+(hours-1)+"00";
+  ForecastGribURL += "&base_time="+(hours-2)+"00";
   ForecastGribURL += "&nx=" + _nx + "&ny=" + _ny;
+  console.log(ForecastGribURL);
   request({
     url: ForecastGribURL,
     json: true
   }, function (err, res, html) {
-    if (err) {
+    if (err || html.header.resultCode == 99) {
+      wet =100;
+      t3h = 0;
       console.log(err);
       return;
     }
