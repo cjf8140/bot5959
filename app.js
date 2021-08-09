@@ -31,7 +31,39 @@ const { MessageAttachment } = require('discord.js')
 var t3h;
 var wet;
 
-async function realTimeWeather() {
+var dbK = [];
+var dbE = [];
+
+function updater() {
+  // dbUpdater();
+  realTimeWeather();
+}
+
+function dbUpdater() {
+  request({
+    url: "https://spreadsheets.google.com/feeds/cells/10htzKQieunSbSvAIsjFdVg3TS_BNecAIG72JpVbNFd4/od6/public/basic?alt=json",
+    json: true
+  }, function (err, res, html) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    var i = 0;
+    while(1) {
+      if(html.feed.entry[i] == undefined) {
+        break;
+      }
+      if(i%3 == 0) {  //key위치
+        dbK[i/3] = html.feed.entry[i].content.$t
+      }
+      else if(i%3 == 1) { //이미지링크위치
+        dbE[i/3] = html.feed.entry[i].content.$t
+      }
+    }
+  })    
+}
+
+function realTimeWeather() {
     
   var today = new Date();
   var week = new Array('일','월','화','수','목','금','토');
@@ -91,7 +123,7 @@ async function realTimeWeather() {
     url: ForecastGribURL,
     json: true
   }, function (err, res, html) {
-    if (err || html.header.resultCode == 99) {
+    if (err) {
       wet =100;
       t3h = 0;
       console.log(err);
@@ -236,6 +268,23 @@ client.on('message', msg => {
       }
     }
   }
+
+  // if(initial=='~') {
+  //   if(msg.content == '~도움') {
+  //     console.log("ad");
+  //     console.log(dbK);
+  //     var str="";
+  //     for(var i = 0; i < dbK; i++) {
+  //       str+=dbK[i] + ', ';
+  //     }
+  //     msg.channel.send(str.substring(0 ,str.length-2) );
+  //   }
+  //   for(var i = 0; i < dbK; i++) {
+  //     if(msg.content == ('~'+dbK[i])) {
+  //       msg.channel.send(dbE);
+  //     }
+  //   }
+  // }
 
   if (msg.content.includes('방과') || msg.content.includes('체육') || msg.content.includes('학교') || msg.content.includes('교실') || msg.content.includes('음악실')) {
     msg.channel.send('각');
@@ -396,8 +445,8 @@ client.login('ODE2Mjg4NTc3MDI1MDgxMzQ0.YD4x-g.nuFX8V0I7JeQKWVsOe8SjVOi8u8');
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  realTimeWeather();
-  client.setInterval(realTimeWeather, 1800*1000);
+  updater();
+  client.setInterval(updater, 1800*1000);
 })
 
 async function getHTML() {
