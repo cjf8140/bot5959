@@ -31,11 +31,11 @@ const { MessageAttachment } = require('discord.js')
 var t3h;
 var wet;
 
-var dbK = [];
-var dbE = [];
+var dbK=[];
+var dbE=[];
 
 function updater() {
-  // dbUpdater();
+  dbUpdater();
   realTimeWeather();
 }
 
@@ -59,7 +59,10 @@ function dbUpdater() {
       else if(i%3 == 1) { //이미지링크위치
         dbE[i/3] = html.feed.entry[i].content.$t
       }
+      i+=1;
     }
+    console.log(dbK);
+    console.log(dbE);
   })    
 }
 
@@ -70,26 +73,21 @@ function realTimeWeather() {
   var year = today.getFullYear();
   var month = today.getMonth()+1;
   var day = today.getDate();
-  var hours = today.getHours();
+  var hours = today.getHours()-1;
   var minutes = today.getMinutes();
 
-  // $('.weather-date').html(month +"월 " + day + "일 " + week[today.getDay()]+"요일");
-
-  /*
-    * 기상청 30분마다 발표
-    * 30분보다 작으면, 한시간 전 hours 값
-    */
-  if(minutes < 30){
-      hours = hours - 1;
-      if(hours < 0){
-          // 자정 이전은 전날로 계산
-          today.setDate(today.getDate() - 1);
-          day = today.getDate();
-          month = today.getMonth()+1;
-          year = today.getFullYear();
-          hours = 23;
-      }
-  }
+  //   */
+  // if(minutes < 30){
+  //     hours = hours - 1;
+  //     if(hours < 0){
+  //         // 자정 이전은 전날로 계산
+  //         today.setDate(today.getDate() - 1);
+  //         day = today.getDate();
+  //         month = today.getMonth()+1;
+  //         year = today.getFullYear();
+  //         hours = 23;
+  //     }
+  // }
     
   /* example
     * 9시 -> 09시 변경 필요
@@ -116,7 +114,7 @@ function realTimeWeather() {
   ForecastGribURL += "&pageNo=1&numOfRows=8";
   ForecastGribURL += "&dataType=JSON";
   ForecastGribURL += "&base_date="+today;
-  ForecastGribURL += "&base_time="+(hours-6)+"00";
+  ForecastGribURL += "&base_time="+"2000";
   ForecastGribURL += "&nx=" + _nx + "&ny=" + _ny;
   console.log(ForecastGribURL);
   request({
@@ -131,8 +129,7 @@ function realTimeWeather() {
     }
     wet = html.response.body.items.item[0].fcstValue;
     t3h = html.response.body.items.item[4].fcstValue;
-  } //success func 종료
-  )    
+  })    
 }
 
 client.on('message', msg => {
@@ -271,17 +268,19 @@ client.on('message', msg => {
 
   // if(initial=='~') {
   //   if(msg.content == '~도움') {
-  //     console.log("ad");
-  //     console.log(dbK);
   //     var str="";
-  //     for(var i = 0; i < dbK; i++) {
+  //     for(var i = 0; i < dbK.length; i++) {
+  //       console.log(dbK[i]);
   //       str+=dbK[i] + ', ';
   //     }
   //     msg.channel.send(str.substring(0 ,str.length-2) );
   //   }
-  //   for(var i = 0; i < dbK; i++) {
-  //     if(msg.content == ('~'+dbK[i])) {
-  //       msg.channel.send(dbE);
+  //   for(var i = 0; i < dbK.length; i++) {
+  //     console.log('a');
+  //     if(msg.content == '~'+dbK[i]) {
+  //       console.log(dbE[i]);
+  //       msg.channel.send(dbE[i]);
+  //       break;
   //     }
   //   }
   // }
