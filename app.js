@@ -90,20 +90,15 @@ function realTimeWeather() {
   var hours = today.getHours()-1;
   var minutes = today.getMinutes();
 
-  //   */
-  // if(minutes < 30){
-  //     hours = hours - 1;
-  //     if(hours < 0){
-  //         // 자정 이전은 전날로 계산
-  //         today.setDate(today.getDate() - 1);
-  //         day = today.getDate();
-  //         month = today.getMonth()+1;
-  //         year = today.getFullYear();
-  //         hours = 23;
-  //     }
-  // }
-  if(hours < 5) {
-    today.setDate(today.getDate() - 1);
+  if(minutes < 30){
+      hours = hours - 1;
+      if(hours < 0){
+          // 자정 이전은 전날로 계산
+          today.setDate(today.getDate() - 1);
+          month = today.getMonth()+1;
+          year = today.getFullYear();
+          hours = 23;
+      }
   }
   /* example
     * 9시 -> 09시 변경 필요
@@ -114,11 +109,11 @@ function realTimeWeather() {
   }
   if(month < 10) {
       month = '0' + month;
-  }    
+  }
+  day = today.getDate();
   if(day < 10) {
       day = '0' + day;
-  } 
-
+  }
   today = year+""+month+""+day;
   
   /* 좌표 */
@@ -130,7 +125,7 @@ function realTimeWeather() {
   ForecastGribURL += "&pageNo=1&numOfRows=8";
   ForecastGribURL += "&dataType=JSON";
   ForecastGribURL += "&base_date="+today;
-  ForecastGribURL += "&base_time="+"0500";
+  ForecastGribURL += "&base_time="+hours+"00";
   ForecastGribURL += "&nx=" + _nx + "&ny=" + _ny;
   // console.log(ForecastGribURL);
   request({
