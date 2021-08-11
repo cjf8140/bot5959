@@ -64,7 +64,7 @@ function dbUpdater() {
         if(i%3 == 0) {  //key위치
           dbK[i/3] = html.feed.entry[i].content.$t
           if(html.feed.entry[i] == "") {
-            break;
+            return;
           }
         }
         else if(i%3 == 1) { //이미지링크위치
