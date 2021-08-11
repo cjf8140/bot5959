@@ -34,9 +34,16 @@ var wet;
 var dbK=[];
 var dbE=[];
 
+var meal;
+var calendar;
+
 function updater() {
   dbUpdater();
   realTimeWeather();
+  (async function() {
+    meal = await school.getMeal();
+    calendar = await school.getCalendar();
+  }());
 }
 
 function dbUpdater() {
@@ -176,11 +183,6 @@ client.on('message', msg => {
     }
   }
   if(msg.content.includes("급식")) {
-    (async function() {
-      lm = await msg.channel.send("불러오는 중...");
-      const meal = await school.getMeal();
-      const calendar = await school.getCalendar();
-
       var day = new Date();
       var tday = new Date();
       dayadder = 0;
@@ -228,8 +230,6 @@ client.on('message', msg => {
         }
       }
       msg.channel.send(meal.month+"월 "+ (meal.day+dayadder)+"일 "+meal[meal.day+dayadder]);
-      await lm.delete();
-    }());
   }
   if(initial == '=' && string[0]!= '==') {
     if(keyword.includes(string[0].substring(1,100))) {
