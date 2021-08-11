@@ -61,7 +61,7 @@ function dbUpdater() {
         if(html.feed.entry[i] == undefined) {
           return;
         }
-        if(html.feed.entry[i] == "" && parseInt(i%3) == 3) {
+        if(html.feed.entry[i] == "" && parseInt(i%3) != 3) {
           break;
         }
         if(i%3 == 0) {  //key위치
