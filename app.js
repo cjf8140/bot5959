@@ -57,19 +57,23 @@ function dbUpdater() {
     }
     var i = 0;
     while(1) {
-      if(html.feed.entry[i] == undefined) {
-        break;
+      try {
+        if(html.feed.entry[i] == null) {
+          break;
+        }
+        if(i%3 == 0) {  //key위치
+          dbK[i/3] = html.feed.entry[i].content.$t
+        }
+        else if(i%3 == 1) { //이미지링크위치
+          dbE[parseInt(i/3)] = html.feed.entry[i].content.$t
+        }
+        i+=1;
+      } catch {
+        console.log("!");
+        dbUpdater;
+        return;
       }
-      if(i%3 == 0) {  //key위치
-        dbK[i/3] = html.feed.entry[i].content.$t
-      }
-      else if(i%3 == 1) { //이미지링크위치
-        dbE[parseInt(i/3)] = html.feed.entry[i].content.$t
-      }
-      i+=1;
     }
-    console.log(dbK);
-    console.log(dbE);
   })    
 }
 
@@ -123,7 +127,7 @@ function realTimeWeather() {
   ForecastGribURL += "&base_date="+today;
   ForecastGribURL += "&base_time="+"0500";
   ForecastGribURL += "&nx=" + _nx + "&ny=" + _ny;
-  console.log(ForecastGribURL);
+  // console.log(ForecastGribURL);
   request({
     url: ForecastGribURL,
     json: true
@@ -271,15 +275,12 @@ client.on('message', msg => {
     if(msg.content == '~도움') {
       var str="";
       for(var i = 0; i < dbK.length; i++) {
-        console.log(dbK[i]);
         str+=dbK[i] + ', ';
       }
       msg.channel.send(str.substring(0 ,str.length-2) );
     }
     for(var i = 0; i < dbK.length; i++) {
-      console.log('a');
       if(msg.content == '~'+dbK[i]) {
-        console.log(dbE[i]);
         msg.channel.send(dbE[i]);
         break;
       }
@@ -446,7 +447,7 @@ client.login('ODE2Mjg4NTc3MDI1MDgxMzQ0.YD4x-g.nuFX8V0I7JeQKWVsOe8SjVOi8u8');
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
   updater();
-  client.setInterval(updater, 1800*1000);
+  client.setInterval(updater, 10000);
 })
 
 async function getHTML() {
