@@ -61,11 +61,11 @@ function dbUpdater() {
         if(html.feed.entry[i] == undefined) {
           return;
         }
-        if(html.feed.entry[i] == "" && parseInt(i%3) != 3) {
-          break;
-        }
         if(i%3 == 0) {  //key위치
           dbK[i/3] = html.feed.entry[i].content.$t
+          if(html.feed.entry[i] == "") {
+            break;
+          }
         }
         else if(i%3 == 1) { //이미지링크위치
           dbE[parseInt(i/3)] = html.feed.entry[i].content.$t
