@@ -58,13 +58,13 @@ function dbUpdater() {
     var i = 0;
     while(1) {
       try {
-        if(html.feed.entry[i] == null) {
+        if(html.feed.entry[i] == undefined) {
+          return;
+        }
+        if(html.feed.entry[i] == "" && parseInt(i%3) == 3) {
           break;
         }
         if(i%3 == 0) {  //key위치
-          if(html.feed.entry[i].content.$t == "") {
-            return;
-          }
           dbK[i/3] = html.feed.entry[i].content.$t
         }
         else if(i%3 == 1) { //이미지링크위치
@@ -77,6 +77,9 @@ function dbUpdater() {
         return;
       }
     }
+    console.log(dbK);
+    console.log(dbE);
+    
   })    
 }
 
@@ -90,15 +93,9 @@ function realTimeWeather() {
   var hours = today.getHours()-1;
   var minutes = today.getMinutes();
 
-  if(minutes < 30){
-      hours = hours - 1;
-      if(hours < 0){
-          // 자정 이전은 전날로 계산
-          today.setDate(today.getDate() - 1);
-          month = today.getMonth()+1;
-          year = today.getFullYear();
-          hours = 23;
-      }
+  if(hours == -1) {
+    hours = 23;
+    day=day-1;
   }
   /* example
     * 9시 -> 09시 변경 필요
@@ -110,7 +107,6 @@ function realTimeWeather() {
   if(month < 10) {
       month = '0' + month;
   }
-  day = today.getDate();
   if(day < 10) {
       day = '0' + day;
   }
