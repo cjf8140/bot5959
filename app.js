@@ -99,7 +99,9 @@ function realTimeWeather() {
   //         hours = 23;
   //     }
   // }
-    
+  if(hours < 5) {
+    today.setDate(today.getDate() - 1);
+  }
   /* example
     * 9시 -> 09시 변경 필요
     */
