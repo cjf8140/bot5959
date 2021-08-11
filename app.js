@@ -86,13 +86,14 @@ function dbUpdater() {
 function realTimeWeather() {
     
   var today = new Date();
-  var week = new Array('일','월','화','수','목','금','토');
   var year = today.getFullYear();
   var month = today.getMonth()+1;
   var day = today.getDate();
-  var hours = today.getHours()-1;
-  var minutes = today.getMinutes();
+  var hours = today.getHours();
 
+  if(hours%3 !=2) {
+    hours = hours - hours%3 -1;
+  }
   if(hours == -1) {
     hours = 23;
     day=day-1;
@@ -123,7 +124,7 @@ function realTimeWeather() {
   ForecastGribURL += "&base_date="+today;
   ForecastGribURL += "&base_time="+hours+"00";
   ForecastGribURL += "&nx=" + _nx + "&ny=" + _ny;
-  // console.log(ForecastGribURL);
+  console.log(ForecastGribURL);
   request({
     url: ForecastGribURL,
     json: true
