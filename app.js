@@ -57,7 +57,7 @@ function dbUpdater() {
         dbK[i/3] = html.feed.entry[i].content.$t
       }
       else if(i%3 == 1) { //이미지링크위치
-        dbE[i/3] = html.feed.entry[i].content.$t
+        dbE[parseInt(i/3)] = html.feed.entry[i].content.$t
       }
       i+=1;
     }
@@ -114,7 +114,7 @@ function realTimeWeather() {
   ForecastGribURL += "&pageNo=1&numOfRows=8";
   ForecastGribURL += "&dataType=JSON";
   ForecastGribURL += "&base_date="+today;
-  ForecastGribURL += "&base_time="+"2000";
+  ForecastGribURL += "&base_time="+"0500";
   ForecastGribURL += "&nx=" + _nx + "&ny=" + _ny;
   console.log(ForecastGribURL);
   request({
@@ -251,39 +251,40 @@ client.on('message', msg => {
     }
     msg.channel.send(list);
   }
-  if(initial=='~') {
-    if(msg.content == '~도움') {
-      var str="";
-      for(var i = 0; i < wave.length; i++) {
-        str+=wave[i][0] + ', ';
-      }
-      msg.channel.send(str.substring(0 ,str.length-2) );
-    }
-    for(var i = 0; i < wave.length; i++) {
-      if(msg.content == ('~'+wave[i][0]) ) {
-        msg.channel.send(wave[i][1]);
-      }
-    }
-  }
 
   // if(initial=='~') {
   //   if(msg.content == '~도움') {
   //     var str="";
-  //     for(var i = 0; i < dbK.length; i++) {
-  //       console.log(dbK[i]);
-  //       str+=dbK[i] + ', ';
+  //     for(var i = 0; i < wave.length; i++) {
+  //       str+=wave[i][0] + ', ';
   //     }
   //     msg.channel.send(str.substring(0 ,str.length-2) );
   //   }
-  //   for(var i = 0; i < dbK.length; i++) {
-  //     console.log('a');
-  //     if(msg.content == '~'+dbK[i]) {
-  //       console.log(dbE[i]);
-  //       msg.channel.send(dbE[i]);
-  //       break;
+  //   for(var i = 0; i < wave.length; i++) {
+  //     if(msg.content == ('~'+wave[i][0]) ) {
+  //       msg.channel.send(wave[i][1]);
   //     }
   //   }
   // }
+
+  if(initial=='~') {
+    if(msg.content == '~도움') {
+      var str="";
+      for(var i = 0; i < dbK.length; i++) {
+        console.log(dbK[i]);
+        str+=dbK[i] + ', ';
+      }
+      msg.channel.send(str.substring(0 ,str.length-2) );
+    }
+    for(var i = 0; i < dbK.length; i++) {
+      console.log('a');
+      if(msg.content == '~'+dbK[i]) {
+        console.log(dbE[i]);
+        msg.channel.send(dbE[i]);
+        break;
+      }
+    }
+  }
 
   if (msg.content.includes('방과') || msg.content.includes('체육') || msg.content.includes('학교') || msg.content.includes('교실') || msg.content.includes('음악실')) {
     msg.channel.send('각');
