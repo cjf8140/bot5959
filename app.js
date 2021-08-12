@@ -135,8 +135,13 @@ function realTimeWeather() {
       console.log(err);
       return;
     }
-    wet = html.response.body.items.item[0].fcstValue;
-    t3h = html.response.body.items.item[4].fcstValue;
+    try {
+      wet = html.response.body.items.item[0].fcstValue;
+      t3h = html.response.body.items.item[4].fcstValue;
+    } catch {
+      wet = t3h = "<오류>";
+      console.log("?");
+    }
   })    
 }
 
