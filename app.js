@@ -282,7 +282,7 @@ client.on('message', msg => {
       msg.channel.send(str.substring(0 ,str.length-2) );
     }
     for(var i = 0; i < dbK.length; i++) {
-      if(msg.content == '~'+dbK[i]) {
+      if(msg.content.includes( '~'+dbK[i]) ) {
         msg.channel.send(dbE[i]);
         break;
       }
