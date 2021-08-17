@@ -136,12 +136,18 @@ function realTimeWeather() {
       return;
     }
     try {
-      wet = html.response.body.items.item[0].fcstValue;
+      if(html.response.body.items.item[0].fcstValue) {
+        wet = html.response.body.items.item[0].fcstValue;
+      }
       if(hours%2 == 0) {
-        t3h = html.response.body.items.item[6].fcstValue;
+        if(t3h = html.response.body.items.item[6].fcstValue) {
+          t3h = html.response.body.items.item[6].fcstValue;
+        }
       }
       else {
-        t3h = html.response.body.items.item[4].fcstValue;
+        if(t3h = html.response.body.items.item[4].fcstValue) {
+          t3h = html.response.body.items.item[4].fcstValue;
+        }
       }
     } catch {
       wet = t3h = "<오류>";
