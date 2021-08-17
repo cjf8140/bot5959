@@ -114,7 +114,7 @@ function realTimeWeather() {
   today = year+""+month+""+day;
   
   /* 좌표 */
-  var _nx = 61, 
+  var _nx = 37,
   _ny = 128,
   apikey = "HpE4VOym0e8V23olABUZKlCd211wjgOJD80u0F9SL7%2BHhXkLkO9AnZnpOoXR2y6wqTCwEZ2p%2F6oxIFmPnkJPGA%3D%3D",    
   ForecastGribURL = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst";
