@@ -170,7 +170,7 @@ client.on('message', msg => {
   }
   if(msg.content == "!업뎉") {
     updater();
-    msg.channel.send("업데이트 완료");
+    msg.channel.send("업데이트 완료!");
   }
   if (msg.author.bot) return;
   var string = msg.content.split(' ');
