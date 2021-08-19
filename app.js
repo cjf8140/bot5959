@@ -171,7 +171,9 @@ client.on('message', msg => {
       msg.channel.send(message.substring(i, i+2000));
     }
   }
-
+  if(msg.content == "!업뎉") {
+    updater();
+  }
   if (msg.author.bot) return;
   var string = msg.content.split(' ');
   var initial = msg.content.charAt(0);
@@ -267,21 +269,6 @@ client.on('message', msg => {
     }
     msg.channel.send(list);
   }
-
-  // if(initial=='~') {
-  //   if(msg.content == '~도움') {
-  //     var str="";
-  //     for(var i = 0; i < wave.length; i++) {
-  //       str+=wave[i][0] + ', ';
-  //     }
-  //     msg.channel.send(str.substring(0 ,str.length-2) );
-  //   }
-  //   for(var i = 0; i < wave.length; i++) {
-  //     if(msg.content == ('~'+wave[i][0]) ) {
-  //       msg.channel.send(wave[i][1]);
-  //     }
-  //   }
-  // }
 
   if(msg.content.includes('~')) {
     if(msg.content == '~도움') {
@@ -459,7 +446,7 @@ client.login('ODE2Mjg4NTc3MDI1MDgxMzQ0.YD4x-g.nuFX8V0I7JeQKWVsOe8SjVOi8u8');
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
   updater();
-  client.setInterval(updater, 3000);
+  client.setInterval(updater, 10*60*1000);
 })
 
 async function getHTML() {
@@ -469,96 +456,3 @@ async function getHTML() {
     console.error(error);
   }
 }
-var wave= [/*
-             ["진호", 'https://cdn.discordapp.com/attachments/831420571803713547/839118758584254524/dccon.png'],
-             ["찐호", 'https://cdn.discordapp.com/attachments/831420571803713547/839118758584254524/dccon.png'],
-             ["호현", 'https://cdn.discordapp.com/attachments/831420571803713547/839120955133395004/unknown.png'],
-             ["호연", 'https://cdn.discordapp.com/attachments/831420571803713547/839120955133395004/unknown.png'],
-             ["동준", 'https://cdn.discordapp.com/attachments/831420571803713547/839119046808961075/59bbbab821aa5fe3104c3e81f53ec0430bc69e3ff287358d4c380c67545e79a0.png'],
-             ["춘향", 'https://cdn.discordapp.com/attachments/831420571803713547/839119046808961075/59bbbab821aa5fe3104c3e81f53ec0430bc69e3ff287358d4c380c67545e79a0.png'],
-             ["연주", 'https://cdn.discordapp.com/attachments/829731525520130078/829731539713523792/unknown.png'],
-             ["연죽", 'https://cdn.discordapp.com/attachments/829731525520130078/829731539713523792/unknown.png'],
-             ["승주", 'https://cdn.discordapp.com/attachments/818606409293234236/823452252030107648/ko1.png'],
-             ["철종", 'https://cdn.discordapp.com/attachments/789780000827113533/840536978084855869/unknown.png'],
-             ["민혁", 'https://cdn.discordapp.com/attachments/831420571803713547/839123211429871616/ezgif-3-0b85860b65b7.gif'],
-             ["수민", "https://ac.namu.la/fd/fdf706f14d0d470f69e8f788a5f84a3c1665f4ad83bdf6652c44c68f757c21fe.gif"],
-             ["준희", 'https://cdn.discordapp.com/attachments/831420571803713547/839122148563484722/unknown.png'],
-             ["연수", 'https://cdn.discordapp.com/attachments/831420571803713547/839126426509770802/unknown.png'],
-             ["건화", 'https://cdn.discordapp.com/attachments/831420571803713547/839124146738692126/unknown.png'],
-             ["건희", 'https://cdn.discordapp.com/attachments/831420571803713547/839124146738692126/unknown.png'],*/
-
-             ["엄마", 'https://cdn.discordapp.com/attachments/829731525520130078/848934345719676948/1c107dbe3ddee3ba1c75075598c701a5e6a3b1b061d1d85ac59e2fd9a8d21edd.png'],
-             ["언니", 'https://cdn.discordapp.com/attachments/829731525520130078/848934426409959484/0b7a6f4000c666252fbad2445d562be915aee5b1f84a77722249aaa18e565685.png'],
-             ["순애", 'https://cdn.discordapp.com/attachments/829731525520130078/848934541226016819/d17957728f0a90be7913fd8ae121df317d3d9dc29f3d7e0d83fb8c073e3fee63.png'],
-             ["모녀", 'https://cdn.discordapp.com/attachments/829731525520130078/848934581674835988/e3f5f8f3346cedced4bef1c24df0746359797a77fd19b7663356769ac186aa57.png'],
-             ["자매", 'https://cdn.discordapp.com/attachments/829731525520130078/848934611433160784/dee4a798727b4ad1706d2270df58d3e4d1565332fcd250de0046c31311c4b04b.png'],
-             ["공포", 'https://cdn.discordapp.com/attachments/829731525520130078/848934638206451752/6bc73e6f223831976922e6d848972ef52a8c1dda35845e165c33ecbd351421bc.png'],
-             ["야한거돼", 'https://cdn.discordapp.com/attachments/829731525520130078/848934682820083759/dccon.png'],
-             ["야한거", 'https://cdn.discordapp.com/attachments/829731525520130078/848934659945660456/dccon.png'],
-             ["ips", 'https://cdn.discordapp.com/attachments/829731525520130078/848934659945660456/dccon.png'],
-             ["가학", 'https://cdn.discordapp.com/attachments/829731525520130078/848936617595109391/909e2941776192bbce51f4228e3ac161f15cf04e0f6fd7a696fa4ad18c46b4c2.png'],
-             ["바보", 'https://cdn.discordapp.com/attachments/829731525520130078/848932776753233930/98a68a5c7da65743.png'],
-             ["그만먹어", 'https://cdn.discordapp.com/attachments/831420571803713547/849668708431429662/dccon.png'],
-             ["뉴비", 'https://cdn.discordapp.com/attachments/831420571803713547/849668838077104198/dccon.png'],
-             ["백합", 'https://cdn.discordapp.com/attachments/831420571803713547/849668854468706364/dccon.png'],
-             ["미워요", 'https://cdn.discordapp.com/attachments/831420571803713547/849669296116465754/dccon.png'],
-             ["또야한말", 'https://cdn.discordapp.com/attachments/831420571803713547/849669311370493963/dccon.png'],
-             ["야한말그만해", 'https://cdn.discordapp.com/attachments/831420571803713547/849669504668794880/dccon.png'],
-             ["고마워요", 'https://cdn.discordapp.com/attachments/831420571803713547/849669555868663808/dccon.png'],
-             ["왜괴롭혀", 'https://cdn.discordapp.com/attachments/831420571803713547/849669600420560906/dccon.png'],
-             ["왜욕해", 'https://cdn.discordapp.com/attachments/831420571803713547/849669619936526396/dccon.png'],
-             ["못댔어", 'https://cdn.discordapp.com/attachments/831420571803713547/849669196266340362/dccon.png'],
-             ["팔딱", 'https://tenor.com/view/genshin-gif-19434226'],
-             ["잘자", "https://cdn.discordapp.com/attachments/831420571803713547/853769991668498462/4b74eccb5992e990.png"],
-            //  1차 업뎃
-
-             //2차 업뎃
-             ["주먹", "https://cdn.discordapp.com/attachments/831420571803713547/858627145043542076/dccon.png"],
-             ["맞아", "https://cdn.discordapp.com/attachments/831420571803713547/858627193088638976/dccon.png"],
-             ["아니", "https://cdn.discordapp.com/attachments/831420571803713547/858627206343557120/dccon.png"],
-             ["비백합", "https://cdn.discordapp.com/attachments/831420571803713547/858627216015097866/dccon.png"],
-             ["준비", "https://cdn.discordapp.com/attachments/831420571803713547/858627232901234698/a0aae90f2ba749d29f03d559ce8a3a191ce2a930ffb4efe8c1ae6367a3f4f224.png"],
-             ["손가락", "https://cdn.discordapp.com/attachments/831420571803713547/858627276647563294/dccon.png"],
-             ["젖줘", "https://cdn.discordapp.com/attachments/831420571803713547/858627257328467968/ad94ed73711ffb3b9c03ff2fe825eee7602bee269b9db339d2abbe73124fa35d.png"],
-             ["현질", "https://cdn.discordapp.com/attachments/831420571803713547/858627317303214080/22cdf0426c379b22950de975a2f9e7c8c8b4c9d34e9b1619312fa35eef46eaa0.png"],
-             ["ㄹㅇㅋㅋ", "https://cdn.discordapp.com/attachments/831420571803713547/858630240636239902/ce2a434a05e47698babd8f4c1376d040bdad3eb603c8e51ceeb68d2324b50186.png"],
-             ["스고이", "https://cdn.discordapp.com/attachments/858398420951760916/858404543183847444/8ba046b81cb8c2212f5f66416cfb7319b5485a5c2465bb582fe6432dcd1f617a.gif"],
-             ["회로", "https://cdn.discordapp.com/attachments/831420571803713547/858627419317338122/196393abd466a9d430d5b031445fd033fc00ce5ca2bad02b71c5dbe15753e728.png"],
-             ["너만봐", "https://cdn.discordapp.com/attachments/831420571803713547/858627432122941460/f22103be8905ceea668feb66060e6b76660531f036217c1e8a503f553b798625.png"],
-             ["꿀벌", "https://cdn.discordapp.com/attachments/831420571803713547/858627558325223444/unknown.png"],
-             ["좋은건", "https://cdn.discordapp.com/attachments/831420571803713547/858627601870749746/01ebe4b38963e891867e7694ff623cb525cf5d04bdaf892ec63d674b10121927.png"],
-             ["폭탄", "https://cdn.discordapp.com/attachments/831420571803713547/858627916941623345/unknown.png"],
-             ["사약", "https://cdn.discordapp.com/attachments/831420571803713547/858627938999992330/5d2ade2fc6a32fccea154f1bd2cd90323ce9723e41fffef8753e78af9ee195e1.png"],
-             ["아잉", "https://cdn.discordapp.com/attachments/831420571803713547/858628045534789642/unknown.png"],
-             ["자살", "https://cdn.discordapp.com/attachments/831420571803713547/858630412707168257/8ee99845eaa34664561834cebd8c176f61e33ad5d4d94943c3322cb30684728f.png"],
-            //  2차 업뎃
-
-             //  3차 업뎃
-             ["진짜네", "https://cdn.discordapp.com/attachments/831420571803713547/859746472860844042/dccon.png"],
-             ["시러요", "https://cdn.discordapp.com/attachments/831420571803713547/859746614503407636/dccon.png"],
-             ["진짜싫어", "https://cdn.discordapp.com/attachments/831420571803713547/859746672074424360/dccon.png"],
-             ["ㅋ", "https://cdn.discordapp.com/attachments/831420571803713547/859746908091973683/icon_35.jpg"],
-             ["딱대", "https://cdn.discordapp.com/attachments/831420571803713547/859747031186407434/icon_43.jpg"],
-             ["왤케망겜", "https://cdn.discordapp.com/attachments/831420571803713547/859751333183488020/357afe74c90283e7a6cef37cac21c30dc16e831d9fda61d1907b340c8d5867ed.png"],
-             ["왤케씨발", "https://cdn.discordapp.com/attachments/831420571803713547/859751379081625650/0da184aa5781cbf022b7987cbfb4e0fc436f7b7e40faf9d5707ba82af97fb225.png"],
-             ["왤케고수", "https://cdn.discordapp.com/attachments/831420571803713547/859751407384133672/b626d70cc6841ae939540f9f71cfa45c2eadb55437a3688e74b01b9e905b5a65.png"],
-             ["왤케왤케", "https://cdn.discordapp.com/attachments/831420571803713547/859751452016771132/7db881043f694060357d9ae4d07a3cf6b9ae8849ba230a40ec3560205a757f87.png"],
-             ["왤케주작", "https://cdn.discordapp.com/attachments/831420571803713547/859751476762116126/9c5798ff8a00394b0a5ccda1c61a6a3bb886251207ba00fd2eb9a0ce06703219.png"],
-             ["왤케흑우", "https://cdn.discordapp.com/attachments/831420571803713547/859751504289595392/73093ecf13a4a3e125f7ed725a74d308fbef4eb02af6900fef04f5f3bc3121ea.png"],
-             ["왤케노잼", "https://cdn.discordapp.com/attachments/831420571803713547/859751528737669130/5aea5645c71d9b735f458e7ceb39b7f932a7cf09583f0d83a69bcf7ca1e2988e.png"],
-             ["왤케병신", "https://cdn.discordapp.com/attachments/831420571803713547/859751555640066048/35b0b9025a779a7fae4088f39cac47e14a02ed11156805dc6c822d620663e050.png"],
-             ["왤케개꼴림", "https://cdn.discordapp.com/attachments/831420571803713547/859751704559222794/ee56795996caaf81b6a8442b374886b9b22d24b8b75beced23cc3bcbb2bb3a6a.png"],
-             ["비추", "https://cdn.discordapp.com/attachments/831420571803713547/859751809760886794/icon_2.gif"],
-             ["개추", "https://cdn.discordapp.com/attachments/831420571803713547/859751858254774282/icon_1.gif"],
-             ["전쟁", "https://cdn.discordapp.com/attachments/831420571803713547/859751895412375622/dccon.png"],
-             ["각넘약", "https://cdn.discordapp.com/attachments/831420571803713547/859751920529178634/63513ac947e44e8392deaa838c17a831f7991a62765355c8127a2af481f03acf.png"],
-             ["각청이미", "https://cdn.discordapp.com/attachments/831420571803713547/859751944460566568/c2c94e41b301e52ccae78a819a148c9d3f7d5067f3816867dc014fd73cf0b58f.png"],
-             ["몰라응애", "https://cdn.discordapp.com/attachments/831420571803713547/859751974815399946/9ebfdc96c7213603f1b407b0f33783188e57d7e5295c2be292d8bc96dc86c1a1.png"],
-             ["응애", "https://cdn.discordapp.com/attachments/831420571803713547/859751996571910154/22126fb906838c339643c437eab3fc1f16604ef80518b691aa7dc50dffcaacc1.png"],
-             ["따봉", "https://cdn.discordapp.com/attachments/831420571803713547/859752018691227668/184e242c42c5485b21a6b91b426c13ecbfef85b7df751b8e7d2fcd59aedb9299.png"],
-             ["까먹었어", "https://cdn.discordapp.com/attachments/831420571803713547/859752051499073556/6c563ad274c095431c49c9b6a6e197db690c9475f002ba558f6c4d2e2ed3b7fa.png"],
-             ["꿀잠", "https://cdn.discordapp.com/attachments/831420571803713547/859752087860150292/6ceff9846abce80660113c8627ddc52950a921379f8e57631007b07f39956a98.png"],
-             ["내", "https://cdn.discordapp.com/attachments/831420571803713547/861283103866748958/c8a1069ab5b9365f690d829375905f7e534abe134076533c1cb2a8b9887e41bc.png"],
-             ["ㅗ", "https://cdn.discordapp.com/attachments/831420571803713547/861683054317928458/cfb5985dcc1f94724ef140c0401162150235bf4df1ddab475111054b6116195d.png"],
-            //  3차 업뎃
-           ];
