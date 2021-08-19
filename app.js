@@ -283,7 +283,7 @@ client.on('message', msg => {
   //   }
   // }
 
-  if(initial=='~') {
+  if(msg.content.includes('~')) {
     if(msg.content == '~도움') {
       var str="";
       for(var i = 0; i < dbK.length; i++) {
