@@ -41,45 +41,43 @@ function updater() {
   dbUpdater();
   realTimeWeather();
   (async function() {
-    meal = await school.getMeal();
-    calendar = await school.getCalendar();
+    try{
+      meal = await school.getMeal();
+      calendar = await school.getCalendar();
+    } catch(err) {
+      console.log(err);
+    }
   }());
 }
 
 function dbUpdater() {
   request({
-    url: "https://spreadsheets.google.com/feeds/cells/10htzKQieunSbSvAIsjFdVg3TS_BNecAIG72JpVbNFd4/od6/public/basic?alt=json",
+    url: "https://docs.google.com/spreadsheets/d/10htzKQieunSbSvAIsjFdVg3TS_BNecAIG72JpVbNFd4/gviz/tq?tqx=out:json",
     json: true
   }, function (err, res, html) {
     if (err) {
       console.log(err);
       return;
     }
+    html = JSON.parse(html.substr(47).slice(0, -2));
     var i = 0;
     while(1) {
       try {
-        if(html.feed.entry[i] == undefined) {
+        if(html.table.rows[i] == undefined) {
           break;
         }
-        if(i%3 == 0) {  //key위치
-          dbK[i/3] = html.feed.entry[i].content.$t
-          if(html.feed.entry[i].content.$t == "") {
-            break;
-          }
-        }
-        else if(i%3 == 1) { //이미지링크위치
-          dbE[parseInt(i/3)] = html.feed.entry[i].content.$t
-        }
+        dbK[i] = html.table.rows[i].c[0].v;
+        dbE[i] = html.table.rows[i].c[1].v;
         i+=1;
-      } catch {
-        console.log("!");
+      } catch(err) {
+        console.log(err);
         dbUpdater;
-        return;
+        break;
       }
     }
+    console.log("아");
     console.log(dbK);
     console.log(dbE);
-    
   })    
 }
 
@@ -114,7 +112,7 @@ function realTimeWeather() {
   today = year+""+month+""+day;
   
   /* 좌표 */
-  var _nx = 61, 
+  var _nx = 37,
   _ny = 128,
   apikey = "HpE4VOym0e8V23olABUZKlCd211wjgOJD80u0F9SL7%2BHhXkLkO9AnZnpOoXR2y6wqTCwEZ2p%2F6oxIFmPnkJPGA%3D%3D",    
   ForecastGribURL = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst";
@@ -136,16 +134,23 @@ function realTimeWeather() {
       return;
     }
     try {
-      wet = html.response.body.items.item[0].fcstValue;
+      if(html.response.body.items.item[0].fcstValue) {
+        wet = html.response.body.items.item[0].fcstValue;
+      }
       if(hours%2 == 0) {
-        t3h = html.response.body.items.item[6].fcstValue;
+        if(t3h = html.response.body.items.item[6].fcstValue) {
+          t3h = html.response.body.items.item[6].fcstValue;
+        }
       }
       else {
-        t3h = html.response.body.items.item[4].fcstValue;
+        if(t3h = html.response.body.items.item[4].fcstValue) {
+          t3h = html.response.body.items.item[4].fcstValue;
+        }
       }
+      console.log("날씨 업뎃 O");
     } catch {
       wet = t3h = "<오류>";
-      console.log("?");
+      console.log("날씨 업뎃 X");
     }
   })    
 }
@@ -284,7 +289,7 @@ client.on('message', msg => {
       for(var i = 0; i < dbK.length; i++) {
         str+=dbK[i] + ', ';
       }
-      msg.channel.send(str.substring(0 ,str.length-2) );
+      msg.channel.send(str.substring(0 ,str.length-3) );
     }
     for(var i = 0; i < dbK.length; i++) {
       if(msg.content.includes( '~'+dbK[i]) ) {
