@@ -75,9 +75,6 @@ function dbUpdater() {
         break;
       }
     }
-    console.log("아");
-    console.log(dbK);
-    console.log(dbE);
   })    
 }
 
@@ -122,7 +119,7 @@ function realTimeWeather() {
   ForecastGribURL += "&base_date="+today;
   ForecastGribURL += "&base_time="+hours+"00";
   ForecastGribURL += "&nx=" + _nx + "&ny=" + _ny;
-  console.log(ForecastGribURL);
+  // console.log(ForecastGribURL);
   request({
     url: ForecastGribURL,
     json: true
@@ -147,7 +144,7 @@ function realTimeWeather() {
           t3h = html.response.body.items.item[4].fcstValue;
         }
       }
-      console.log("날씨 업뎃 O");
+      // console.log("날씨 업뎃 O");
     } catch {
       wet = t3h = "<오류>";
       console.log("날씨 업뎃 X");
@@ -173,6 +170,7 @@ client.on('message', msg => {
   }
   if(msg.content == "!업뎉") {
     updater();
+    msg.channel.send("업데이트 완료");
   }
   if (msg.author.bot) return;
   var string = msg.content.split(' ');
