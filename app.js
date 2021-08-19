@@ -289,7 +289,7 @@ client.on('message', msg => {
       for(var i = 0; i < dbK.length; i++) {
         str+=dbK[i] + ', ';
       }
-      msg.channel.send(str.substring(0 ,-2) );
+      msg.channel.send(str.slice(0 ,-2) );
     }
     for(var i = 0; i < dbK.length; i++) {
       if(msg.content.includes( '~'+dbK[i]) ) {
