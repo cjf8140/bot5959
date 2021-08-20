@@ -33,7 +33,7 @@ var wet;
 
 var dbK=[];
 var dbE=[];
-
+var dbT=[];
 var meal;
 var calendar;
 
@@ -59,6 +59,7 @@ function dbUpdater() {
       console.log(err);
       return;
     }
+    console.log(html);
     html = JSON.parse(html.substr(47).slice(0, -2));
     var i = 0;
     while(1) {
@@ -68,6 +69,7 @@ function dbUpdater() {
         }
         dbK[i] = html.table.rows[i].c[0].v;
         dbE[i] = html.table.rows[i].c[1].v;
+        dbT[i] = html.table.rows[i].c[3].v;
         i+=1;
       } catch(err) {
         console.log(err);
@@ -273,6 +275,15 @@ client.on('message', msg => {
       var str="";
       for(var i = 0; i < dbK.length; i++) {
         str+=dbK[i] + ', ';
+      }
+      msg.channel.send(str.slice(0 ,-2) );
+    }
+    else if(string[0] == "~도움") {
+      var str="";
+      for(var i = 0; i < dbK.length; i++) {
+        if(dbT[i] == string[1]) {
+          str+=dbK[i] + ', ';
+        }
       }
       msg.channel.send(str.slice(0 ,-2) );
     }
