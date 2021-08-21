@@ -295,8 +295,8 @@ client.on('message', msg => {
     }
   }
 
-  if (msg.content.includes('방과') || msg.content.includes('체육') || msg.content.includes('학교') || msg.content.includes('교실') || msg.content.includes('음악실')) {
-    msg.channel.send('각');
+  if(initial == "&") {
+    msg.channel.send("https://hitomi.la/galleries/"+msg.content.slice(1)+".html");
   }
 
   if (msg.content.includes("처갓집")) {
