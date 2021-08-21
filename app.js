@@ -296,6 +296,7 @@ client.on('message', msg => {
   }
 
   if(initial == "&") {
+    msg.delete();
     msg.channel.send("https://hitomi.la/galleries/"+msg.content.slice(1)+".html");
   }
 
