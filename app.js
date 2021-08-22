@@ -281,7 +281,7 @@ client.on('message', msg => {
     else if(string[0] == "~도움") {
       var str="";
       for(var i = 0; i < dbK.length; i++) {
-        if(dbT[i] == string[1]) {
+        if(dbT[i].includes(string[1]) || dbK[i].includes(string[1])) {
           str+=dbK[i] + ', ';
         }
       }
