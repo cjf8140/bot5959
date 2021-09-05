@@ -188,6 +188,16 @@ client.on('message', msg => {
       msg.channel.bulkDelete(fetched);
     }());
   }
+  if(msg.content == "." && msg.channel.id == 818779173824364545) {
+    if(Number(string[1] > 90)) {
+      return;
+    }
+    (async function() {
+      msg.delete();
+      const fetched = await msg.channel.fetchMessages({limit: 100} );
+      msg.channel.bulkDelete(fetched);
+    }());
+  }
   if(msg.content.includes("날씨")) {
       msg.channel.send("기온: "+Number(t3h) + "˚c\n강수 확률: " + Number(wet)+ "%");
   }
