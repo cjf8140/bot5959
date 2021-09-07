@@ -37,6 +37,10 @@ var dbT=[];
 var meal;
 var calendar;
 
+var stream;
+
+const { createCanvas, loadImage } = require('canvas');
+
 function updater() {
   dbUpdater();
   realTimeWeather();
@@ -154,7 +158,7 @@ function realTimeWeather() {
   })    
 }
 
-client.on('message', msg => {
+client.on('message', async msg => {
   log_c[log_n] = msg.content;
   log_t[log_n] = msg.author.tag;
   log_n++;
@@ -279,8 +283,17 @@ client.on('message', msg => {
         list += keyword[i] + ' = ' + reply[i] + '\n';
     }
     msg.channel.send(list);
-  }
-
+  }/*
+  if(initial == '^') {
+    const canvas = createCanvas(100, 100);
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.font = '33px Impact';
+    ctx.fillStyle = "black";
+    ctx.fillText(msg.content.substring(1), 15, 60);
+    msg.channel.send({ files: [canvas.toBuffer()] });
+  }*/
   if(msg.content.includes('~')) {
     if(msg.content == '~도움') {
       var str="";
