@@ -188,7 +188,7 @@ client.on('message', msg => {
       msg.channel.bulkDelete(fetched);
     }());
   }
-  if(msg.content == "." && msg.channel.id == 818779173824364545) {
+  if(msg.content == "." && msg.channel.id == 890911625475919902) {
     if(Number(string[1] > 90)) {
       return;
     }
