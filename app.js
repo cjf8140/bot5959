@@ -444,15 +444,21 @@ client.on('message', msg => {
   if(msg.content == '.') {
     msg.channel.send(".\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.");
   }
-  if(msg.content == "쉬는"&&msg.content == "시간") {
+  if(msg.content.includes("쉬는")&& msg.content.includes("시간")) {
     var now = new Date();
+    var hour = now.getHours();
     var minute = now.getMinutes();
     var second = now.getSeconds();
-    if(minute > 20) {
-      msg.channel.send((69-minute) +"분 " +(60-second)+"초 남음");
-    }
-    if(minute < 10) {
-      msg.channel.send((9-minute) +"분 " +(60-second)+"초 남음");
+    if(hour < 13) {
+      if(minute > 20) {
+        msg.channel.send((69-minute) +"분 " +(60-second)+"초 남음");
+      }
+      else if(minute < 10) {
+        msg.channel.send((9-minute) +"분 " +(60-second)+"초 남음");
+      }
+      else {
+        msg.channel.send((9-minute) +"분 " +(60-second)+"초 남음");
+      }
     }
   }
 });
