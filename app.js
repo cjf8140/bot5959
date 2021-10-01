@@ -445,7 +445,7 @@ client.on('message', msg => {
     msg.channel.send(".\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.");
   }
   if(msg.content == "!쉬는시간") {
-    var now = new Data();
+    var now = new Date();
     var minute = now.getMinutes();
     var second = now.getSeconds();
     if(minute > 20) {
