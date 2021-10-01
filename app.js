@@ -449,10 +449,10 @@ client.on('message', msg => {
     var minute = now.getMinutes();
     var second = now.getSeconds();
     if(minute > 20) {
-      msg.channel.send(69-minute +"분," +60-second+"초 남음");
+      msg.channel.send((69-minute) +"분," +(60-second)+"초 남음");
     }
     if(minute < 10) {
-      msg.channel.send(9-minute +"분," +60-second+"초 남음");
+      msg.channel.send((9-minute) +"분," +(60-second)+"초 남음");
     }
   }
 });
