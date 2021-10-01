@@ -449,7 +449,7 @@ client.on('message', msg => {
     var hour = now.getHours();
     var minute = now.getMinutes();
     var second = now.getSeconds();
-    if(hour < 13) {
+    if(hour < 12) {
       if(minute > 20) {
         msg.channel.send((69-minute) +"분 " +(60-second)+"초 남음");
       }
