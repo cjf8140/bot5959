@@ -460,7 +460,7 @@ client.on('message', msg => {
         msg.channel.send((19-minute) +"분 " +(60-second)+"초 남음");
       }
     }
-    else if(hours < 16) {
+    else if(hour < 16) {
       if(minute > 10) {
         msg.channel.send((59-minute) +"분 " +(60-second)+"초 남음");
       }
