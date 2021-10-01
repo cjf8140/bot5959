@@ -444,6 +444,17 @@ client.on('message', msg => {
   if(msg.content == '.') {
     msg.channel.send(".\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.");
   }
+  if(msg.content == "!쉬는시간") {
+    var now = new Data();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    if(minute > 20) {
+      msg.channel.send(69-minute +"분," +60-second+"초 남음");
+    }
+    if(minute < 10) {
+      msg.channel.send(9-minute +"분," +60-second+"초 남음");
+    }
+  }
 });
 
 function date(month, day) {
