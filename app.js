@@ -380,7 +380,7 @@ client.on('message', msg => {
                        '승주: **10월 11일**: __' +date(10, 11)+ '__일 남음.\n'+
                        '연주: **10월 21일**: __' +date(10, 21)+ '__일 남음.\n'+
                        '성수: **12월 19일**: __' +date(12, 19)+ '__일 남음.');
-    }s
+    }
     if(string[1] && string[1].includes('철')) {
       msg.channel.send('철종: **3월 6일**: __' +date(3, 6)+ '__일 남음.');
     }
@@ -444,15 +444,15 @@ client.on('message', msg => {
   if(msg.content == '.') {
     msg.channel.send(".\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.");
   }
-  if(msg.content == "!쉬는시간") {
+  if(msg.content == "쉬는"&&msg.content == "시간") {
     var now = new Date();
     var minute = now.getMinutes();
     var second = now.getSeconds();
     if(minute > 20) {
-      msg.channel.send((69-minute) +"분," +(60-second)+"초 남음");
+      msg.channel.send((69-minute) +"분 " +(60-second)+"초 남음");
     }
     if(minute < 10) {
-      msg.channel.send((9-minute) +"분," +(60-second)+"초 남음");
+      msg.channel.send((9-minute) +"분 " +(60-second)+"초 남음");
     }
   }
 });
