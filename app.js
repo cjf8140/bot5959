@@ -59,7 +59,7 @@ function dbUpdater() {
       console.log(err);
       return;
     }
-    console.log(html);
+//     console.log(html);
     html = JSON.parse(html.substr(47).slice(0, -2));
     var i = 0;
     while(1) {
