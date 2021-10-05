@@ -462,7 +462,7 @@ client.on('message', async msg => {
     var hour = now.getHours();
     var minute = now.getMinutes();
     var second = now.getSeconds();
-    if(hour < 12) {
+    if(hour < 12 || (hour ==12 && minute < 10)) {
       if(minute > 20) {
         msg.channel.send((69-minute) +"분 " +(60-second)+"초 남음");
       }
@@ -482,7 +482,49 @@ client.on('message', async msg => {
       }
     }
   }
+  if(msg.content == "!쉬는") {
+    BTCid = msg.channel.id;
+    await msg.channel.send("Stuff").then(sent => { // 'sent' is that message you just sent
+      BTMid = sent.id;
+    });
+    console.log(BTCid+ ", "+BTMid);
+    BTimer;
+    client.setInterval(BTimer, 1700);
+  }
 });
+
+var BTCid;
+var BTMid;
+var nah = 0;
+function BTimer() {
+  var now = new Date();
+  var hour = now.getHours();
+  var minute = now.getMinutes();
+  var second = now.getSeconds();
+  var min, sec;
+  sec = 60-second;
+  if( hour>7&&(hour < 12 || (hour ==12 && minute < 10)) ) {
+    if(minute > 20) {
+      min = 69-minute;
+    }
+    else if(minute < 10) {
+      min = 9-minute;
+    }
+    else {
+      min = 19-minute;
+    }
+    client.channels.get(BTCid).fetchMessage(BTMid).then(msg => msg.edit( min+"분 " +sec+"초 남음"));
+  }
+  else if(hour < 16) {
+    if(minute > 10) {
+      min = 59-minute;
+    }
+    else {
+      min = 9-minute;
+    }
+    client.channels.get(BTCid).fetchMessage(BTMid).then(msg => msg.edit( min+"분 " +sec+"초 남음"));
+  }
+}
 
 function date(month, day) {
   var tday = new Date();
