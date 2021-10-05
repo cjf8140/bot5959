@@ -478,7 +478,7 @@ client.on('message', async msg => {
     });
     console.log(BTCid+ ", "+BTMid);
     BTimer;
-    client.setInterval(BTimer, 1700);
+    client.setInterval(BTimer, 3000);
   }
 });
 
