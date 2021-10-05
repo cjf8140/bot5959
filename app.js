@@ -63,7 +63,7 @@ function dbUpdater() {
       console.log(err);
       return;
     }
-    console.log(html);
+//     console.log(html);
     html = JSON.parse(html.substr(47).slice(0, -2));
     var i = 0;
     while(1) {
@@ -192,7 +192,7 @@ client.on('message', async msg => {
       msg.channel.bulkDelete(fetched);
     }());
   }
-  if(msg.content == "." && msg.channel.id == 818779173824364545) {
+  if(msg.content == "." && msg.channel.id == 890911625475919902) {
     if(Number(string[1] > 90)) {
       return;
     }
@@ -393,7 +393,7 @@ client.on('message', async msg => {
                        '승주: **10월 11일**: __' +date(10, 11)+ '__일 남음.\n'+
                        '연주: **10월 21일**: __' +date(10, 21)+ '__일 남음.\n'+
                        '성수: **12월 19일**: __' +date(12, 19)+ '__일 남음.');
-    }s
+    }
     if(string[1] && string[1].includes('철')) {
       msg.channel.send('철종: **3월 6일**: __' +date(3, 6)+ '__일 남음.');
     }
@@ -456,6 +456,31 @@ client.on('message', async msg => {
   }
   if(msg.content == '.') {
     msg.channel.send(".\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.");
+  }
+  if(msg.content.includes("쉬는")&& msg.content.includes("시간")) {
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    if(hour < 12) {
+      if(minute > 20) {
+        msg.channel.send((69-minute) +"분 " +(60-second)+"초 남음");
+      }
+      else if(minute < 10) {
+        msg.channel.send((9-minute) +"분 " +(60-second)+"초 남음");
+      }
+      else {
+        msg.channel.send((19-minute) +"분 " +(60-second)+"초 남음");
+      }
+    }
+    else if(hour < 16) {
+      if(minute > 10) {
+        msg.channel.send((59-minute) +"분 " +(60-second)+"초 남음");
+      }
+      else {
+        msg.channel.send((9-minute) +"분 " +(60-second)+"초 남음");
+      }
+    }
   }
 });
 
