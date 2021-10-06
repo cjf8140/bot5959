@@ -486,6 +486,7 @@ var BTCid;
 var BTMid;
 var nah = 0;
 function BTimer() {
+  console.log("wow");
   var now = new Date();
   var hour = now.getHours();
   var minute = now.getMinutes();
