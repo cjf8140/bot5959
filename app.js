@@ -124,7 +124,7 @@ function realTimeWeather() {
   ForecastGribURL += "&base_date="+today;
   ForecastGribURL += "&base_time="+hours+"00";
   ForecastGribURL += "&nx=" + _nx + "&ny=" + _ny;
-  // console.log(ForecastGribURL);
+  console.log(ForecastGribURL);
   request({
     url: ForecastGribURL,
     json: true
@@ -149,9 +149,10 @@ function realTimeWeather() {
           t3h = html.response.body.items.item[4].fcstValue;
         }
       }
-      // console.log("날씨 업뎃 O");
+      console.log("날씨 업뎃 O");
     } catch {
-      wet = t3h = "<오류>";
+      wet = "<오류>";
+      t3h = "<오류>";
       console.log("날씨 업뎃 X");
     }
   })    
@@ -203,7 +204,7 @@ client.on('message', async msg => {
     return;
   }
   if(msg.content.includes("날씨")) {
-      msg.channel.send("기온: "+Number(t3h) + "˚c\n강수 확률: " + Number(wet)+ "%");
+      msg.channel.send("기온: "+t3h + "˚c\n강수 확률: " + wet+ "%");
   }
   if(msg.content=="!시험") {
     msg.channel.send("https://cdn.discordapp.com/attachments/818359643713175555/854365802421682206/20210614_100528.jpg");
