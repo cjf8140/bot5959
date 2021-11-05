@@ -290,7 +290,8 @@ client.on('message', async msg => {
       for(var i = 0; i < dbK.length; i++) {
         str+=dbK[i] + ', ';
       }
-      msg.channel.send(str.slice(0 ,-2) );
+      msg.channel.send(str.slice(0 ,2000) );
+      msg.channel.send(str.slice(2000 ,-2) );
     }
     else if(string[0] == "~도움") {
       var str="";
@@ -299,7 +300,8 @@ client.on('message', async msg => {
           str+=dbK[i] + ', ';
         }
       }
-      msg.channel.send(str.slice(0 ,-2) );
+      msg.channel.send(str.slice(0 ,2000) );
+      msg.channel.send(str.slice(2000 ,-2) );
     }
     for(var i = 0; i < dbK.length; i++) {
       if(msg.content.includes( '~'+dbK[i]) ) {
