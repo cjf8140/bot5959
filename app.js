@@ -293,16 +293,17 @@ client.on('message', async msg => {
       msg.channel.send(str.slice(0 ,2000) );
       msg.channel.send(str.slice(2000 ,-2) );
     }
-    else if(string[0] == "~도움") {
-      var str="";
-      for(var i = 0; i < dbK.length; i++) {
-        if(dbT[i].includes(string[1]) || dbK[i].includes(string[1])) {
-          str+=dbK[i] + ', ';
-        }
-      }
-      msg.channel.send(str.slice(0 ,2000) );
-      msg.channel.send(str.slice(2000 ,-2) );
-    }
+    // else if(string[0] == "~도움") {
+    //   var str="";
+    //   console.log(dbT);
+    //   for(var i = 0; i < dbK.length; i++) {
+    //     if(dbK[i].includes(string[1]) || dbT[i].includes(string[1])) {
+    //       str+=dbK[i] + ', ';
+    //     }
+    //   }
+    //   msg.channel.send(str.slice(0 ,2000) );
+    //   msg.channel.send(str.slice(2000 ,-2) );
+    // }
     for(var i = 0; i < dbK.length; i++) {
       if(msg.content.includes( '~'+dbK[i]) ) {
         msg.channel.send(dbE[i]);
