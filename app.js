@@ -182,17 +182,7 @@ client.on('message', async msg => {
   var string = msg.content.split(' ');
   var initial = msg.content.charAt(0);
   //msg.channel.send("🎉준희야 생일 축하해🦅");
-  if(string[0] == "슈!슉" && msg.channel.id != 829402170930626591 && msg.channel.id != 818359643713175555) {
-    if(Number(string[1] > 90)) {
-      return;
-    }
-    (async function() {
-      msg.delete();
-      const fetched = await msg.channel.fetchMessages({limit: Number(string[1])+1} );
-      msg.channel.bulkDelete(fetched);
-    }());
-  }
-  if(msg.content == "." && msg.channel.id == 890911625475919902) {
+  if(msg.content == "." && (msg.channel.id == 890911625475919902 || msg.channel.id == 927313891988475974)) {
     if(Number(string[1] > 90)) {
       return;
     }
