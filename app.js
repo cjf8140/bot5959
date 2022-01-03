@@ -270,7 +270,9 @@ client.on('message', async msg => {
   if(msg.content == '==') {
     var list = '';
     for(var i = keyword.length-1; i >= 0; i--) {
-        list += keyword[i] + ' = ' + reply[i] + '\n';
+        if(reply[i]) {
+          list += keyword[i] + ' = ' + reply[i] + '\n';
+        }
     }
     msg.channel.send(list);
   }
