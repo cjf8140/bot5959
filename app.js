@@ -201,7 +201,7 @@ client.on('message', async msg => {
   }
 
   for(var i = keyword.length; i >= 0; i--) {
-    if(msg.content.includes(keyword[i]) ) {
+    if(msg.content.includes(keyword[i]) && reply[i]) {
       msg.channel.send(reply[i]);
     }
   }
@@ -420,7 +420,7 @@ client.on('message', async msg => {
     msg.channel.send(ms);
   }
 
-  if(msg.content == "주사위" ) {
+  if(msg.content.includes("주사위") ) {
     if(cheat == 0) {
       msg.channel.send( gr(6)+1 );
     }
