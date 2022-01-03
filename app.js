@@ -435,7 +435,7 @@ client.on('message', async msg => {
     cheat = Number( string[1] );
     msg.reply("👍");
   }
-  if(string[0] == d) {
+  if(string[0] == "d") {
     msg.channel.send( gr( Number(string[1]) )+1 );
   }
   if(msg.content.includes("온") &&  msg.content.includes("클")) {
