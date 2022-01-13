@@ -159,6 +159,10 @@ function realTimeWeather() {
 }
 
 client.on('message', async msg => {
+  if(msg.channel.id == 931173230545371136) {
+    msg.delete();
+    msg.channel.send("ㅇㅇ: "+msg.content.slice(1));
+  }
   log_c[log_n] = msg.content;
   log_t[log_n] = msg.author.tag;
   log_n++;
