@@ -159,10 +159,6 @@ function realTimeWeather() {
 }
 
 client.on('message', async msg => {
-  if(msg.channel.id == 931173230545371136) {
-    msg.delete();
-    msg.channel.send("ㅇㅇ: "+msg.content.slice(1));
-  }
   log_c[log_n] = msg.content;
   log_t[log_n] = msg.author.tag;
   log_n++;
@@ -183,6 +179,10 @@ client.on('message', async msg => {
     msg.channel.send("업데이트 완료!");
   }
   if (msg.author.bot) return;
+  if(msg.channel.id == 931173230545371136) {
+    msg.delete();
+    msg.channel.send("ㅇㅇ: "+msg.content );
+  }
   var string = msg.content.split(' ');
   var initial = msg.content.charAt(0);
   //msg.channel.send("🎉준희야 생일 축하해🦅");
