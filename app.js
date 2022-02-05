@@ -181,7 +181,7 @@ client.on('message', async msg => {
   if (msg.author.bot) return;
   if(msg.channel.id == 931173230545371136) {
     msg.delete();
-    msg.channel.send("ㅇㅇ: "+msg.content );
+    msg.channel.send( msg.content );
   }
   var string = msg.content.split(' ');
   var initial = msg.content.charAt(0);
