@@ -498,12 +498,6 @@ client.on('message', async msg => {
         client.setInterval(BTimer, 3000);
     }
 
-    (async function() {
-        msg.delete();
-        const fetched = await msg.channel.fetchMessages({ limit: 100 });
-        msg.channel.bulkDelete(fetched);
-    }());
-    return;
     if (msg.content == ".,.,...") {
         if (Number(string[1] > 90)) {
             return;
@@ -684,7 +678,6 @@ client.on('message', async msg => {
             msg.channel.send('연주: **10월 21일**: __' + date(10, 21) + '__일 남음.');
         }
     }
-
     if (string[0] == '/생일') {
         if (string[1] == undefined) {
             msg.channel.send('동준: **1월 14일**: __' + date(1, 14) + '__일 남음.\n' +
@@ -737,6 +730,9 @@ client.on('message', async msg => {
         msg.channel.send(ms);
     }
 
+    if (msg.content.includes("역") && msg.content.includes("철")) {
+        msg.channel.send("염병!");
+    }
     if (msg.content.includes("주사위")) {
         if (cheat == 0) {
             msg.channel.send(gr(6) + 1);
