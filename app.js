@@ -34,6 +34,10 @@ var wet;
 var dbK = [];
 var dbE = [];
 var dbT = [];
+
+var wordA = [];
+var wordB = [];
+
 var meal;
 
 var sise = "정보없음";
@@ -41,6 +45,7 @@ var sise = "정보없음";
 
 function updater() {
     dbUpdater();
+    dbwordUpdater();
     getSise()
         .then(html => {
             let ulList = [];
@@ -52,7 +57,7 @@ function updater() {
             console.log(res)
         });
 
-    realTimeWeather();
+    // realTimeWeather();
     (async function() {
         try {
             meal = await school.getMeal();
@@ -87,6 +92,35 @@ function dbUpdater() {
             } catch (err) {
                 console.log(err);
                 dbUpdater;
+                break;
+            }
+        }
+    })
+}
+
+function dbwordUpdater() {
+    request({
+        url: "https://docs.google.com/spreadsheets/d/1ySBE6521thCJXAfT99i3_JVR_l2LEqgZdG3llA0mb5w/gviz/tq?tqx=out:json",
+        json: true
+    }, function(err, res, html) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        //     console.log(html);
+        html = JSON.parse(html.substr(47).slice(0, -2));
+        var i = 0;
+        while (1) {
+            try {
+                if (html.table.rows[i] == undefined) {
+                    break;
+                }
+                wordA[i] = html.table.rows[i].c[0].v;
+                wordB[i] = html.table.rows[i].c[1].v;
+                i += 1;
+            } catch (err) {
+                console.log(err);
+                dbwordUpdater;
                 break;
             }
         }
@@ -220,7 +254,20 @@ client.on('message', async msg => {
     if (msg.content == "!시험") {
         msg.channel.send("https://cdn.discordapp.com/attachments/818359643713175555/854365802421682206/20210614_100528.jpg");
     }
-
+    if (msg.content == "!word") {
+        let sentence = "";
+        let lasnum = -1;
+        for (let i = 0; i < 5; i++) {
+            let num = gr(wordA.length)
+            if (num == lasnum) {
+                console.log("!");
+                num = gr(wordA.length);
+            }
+            lasnum = num;
+            sentence += wordA[num] + "\t:\t ||" + wordB[num] + "||\n";
+        }
+        msg.channel.send(sentence);
+    }
     for (var i = keyword.length; i >= 0; i--) {
         if (msg.content.includes(keyword[i]) && reply[i]) {
             msg.channel.send(reply[i]);
@@ -479,16 +526,6 @@ client.on('message', async msg => {
         }
     }
     if (msg.content == "!쉬는") {
-        BTCid = msg.channel.id;
-        await msg.channel.send("Stuff").then(sent => { // 'sent' is that message you just sent
-            BTMid = sent.id;
-        });
-        console.log(BTCid + ", " + BTMid);
-        BTimer;
-        client.setInterval(BTimer, 3000);
-    }
-
-    if (msg.content == "!시세") {
         BTCid = msg.channel.id;
         await msg.channel.send("Stuff").then(sent => { // 'sent' is that message you just sent
             BTMid = sent.id;
