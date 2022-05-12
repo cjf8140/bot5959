@@ -598,7 +598,7 @@ var gr = function(max) {
 client.login('ODE2Mjg4NTc3MDI1MDgxMzQ0.YD4x-g.nuFX8V0I7JeQKWVsOe8SjVOi8u8');
 
 client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);
+    console.log(`Logged in as ${client.user.tag}! version word.`);
     updater();
     client.setInterval(updater, 10 * 60 * 1000);
 })
