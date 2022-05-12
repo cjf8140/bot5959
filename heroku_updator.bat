@@ -1,3 +1,4 @@
 git add .
 git commit -am upload1
-git push heroku master
+git push one master
+git push two master
