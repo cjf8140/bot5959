@@ -254,8 +254,7 @@ client.on('message', async msg => {
     if (msg.content == "!시험") {
         msg.channel.send("https://cdn.discordapp.com/attachments/818359643713175555/854365802421682206/20210614_100528.jpg");
     }
-    if (msg.content == "!word") {}
-    if (string[0] == '!생일') {
+    if (string[0] == '!word') {
         let sentence = "";
         if (isNaN.string[1]) {
             for (let i = 0; i < 5; i++) {
