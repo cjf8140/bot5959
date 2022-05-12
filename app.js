@@ -54,7 +54,7 @@ function updater() {
             return data;
         })
         .then(res => {
-            console.log(res)
+            // console.log(res)
         });
 
     // realTimeWeather();
@@ -260,7 +260,6 @@ client.on('message', async msg => {
         for (let i = 0; i < 5; i++) {
             let num = gr(wordA.length)
             if (num == lasnum) {
-                console.log("!");
                 num = gr(wordA.length);
             }
             lasnum = num;
@@ -598,7 +597,7 @@ var gr = function(max) {
 client.login('ODE2Mjg4NTc3MDI1MDgxMzQ0.YD4x-g.nuFX8V0I7JeQKWVsOe8SjVOi8u8');
 
 client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}! version word.`);
+    console.log(`Logged in as ${client.user.tag}! version word 1.1.`);
     updater();
     client.setInterval(updater, 10 * 60 * 1000);
 })
