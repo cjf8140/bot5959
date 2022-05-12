@@ -254,16 +254,24 @@ client.on('message', async msg => {
     if (msg.content == "!시험") {
         msg.channel.send("https://cdn.discordapp.com/attachments/818359643713175555/854365802421682206/20210614_100528.jpg");
     }
-    if (msg.content == "!word") {
+    if (msg.content == "!word") {}
+    if (string[0] == '!생일') {
         let sentence = "";
-        let lasnum = -1;
-        for (let i = 0; i < 5; i++) {
-            let num = gr(wordA.length)
-            if (num == lasnum) {
-                num = gr(wordA.length);
+        if (isNaN.string[1]) {
+            for (let i = 0; i < 5; i++) {
+                const num = gr(wordA.length)
+                sentence += wordA[num] + "\t:\t ||" + wordB[num] + "||\n";
             }
-            lasnum = num;
-            sentence += wordA[num] + "\t:\t ||" + wordB[num] + "||\n";
+        } else {
+            for (let i = 0; i < Number(string[1]); i++) {
+                if (isNaN.string[2]) {
+                    const num = gr(wordA.length);
+                    sentence += wordA[num] + "\t:\t ||" + wordB[num] + "||\n";
+                } else {
+                    const num = gr(50);
+                    sentence += wordA[Number(string[2]) + num] + "\t:\t ||" + wordB[Number(string[2]) + num] + "||\n";
+                }
+            }
         }
         msg.channel.send(sentence);
     }
