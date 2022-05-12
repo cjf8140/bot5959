@@ -256,14 +256,15 @@ client.on('message', async msg => {
     }
     if (string[0] == '!word') {
         let sentence = "";
-        if (isNaN.string[1]) {
+        if (string[1] == undefined) {
             for (let i = 0; i < 5; i++) {
                 const num = gr(wordA.length)
                 sentence += wordA[num] + "\t:\t ||" + wordB[num] + "||\n";
             }
         } else {
+            console.log("!");
             for (let i = 0; i < Number(string[1]); i++) {
-                if (isNaN.string[2]) {
+                if (string[2] == undefined) {
                     const num = gr(wordA.length);
                     sentence += wordA[num] + "\t:\t ||" + wordB[num] + "||\n";
                 } else {
