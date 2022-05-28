@@ -3,7 +3,6 @@ const client = new Discord.Client();
 
 const axios = require("axios");
 const request = require("request");
-const cheerio = require("cheerio");
 
 const School = require('school-kr');
 const school = new School();
@@ -115,80 +114,6 @@ function dbwordUpdater() {
     })
 }
 
-
-function realTimeWeather() {
-
-    var today = new Date();
-    var year = today.getFullYear();
-    var month = today.getMonth() + 1;
-    var day = today.getDate();
-    var hours = today.getHours();
-
-    if (hours % 3 != 2) {
-        hours = hours - hours % 3 - 1;
-    }
-    if (hours == -1) {
-        hours = 23;
-        day = day - 1;
-    }
-    /* example
-     * 9시 -> 09시 변경 필요
-     */
-
-    if (hours < 10) {
-        hours = '0' + hours;
-    }
-    if (month < 10) {
-        month = '0' + month;
-    }
-    if (day < 10) {
-        day = '0' + day;
-    }
-    today = year + "" + month + "" + day;
-
-    /* 좌표 */
-    var _nx = 37,
-        _ny = 128,
-        apikey = "HpE4VOym0e8V23olABUZKlCd211wjgOJD80u0F9SL7%2BHhXkLkO9AnZnpOoXR2y6wqTCwEZ2p%2F6oxIFmPnkJPGA%3D%3D",
-        ForecastGribURL = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst";
-    ForecastGribURL += "?ServiceKey=" + apikey;
-    ForecastGribURL += "&pageNo=1&numOfRows=8";
-    ForecastGribURL += "&dataType=JSON";
-    ForecastGribURL += "&base_date=" + today;
-    ForecastGribURL += "&base_time=" + hours + "00";
-    ForecastGribURL += "&nx=" + _nx + "&ny=" + _ny;
-    console.log(ForecastGribURL);
-    request({
-        url: ForecastGribURL,
-        json: true
-    }, function(err, res, html) {
-        if (err) {
-            wet = 100;
-            t3h = 0;
-            console.log(err);
-            return;
-        }
-        try {
-            if (html.response.body.items.item[0].fcstValue) {
-                wet = html.response.body.items.item[0].fcstValue;
-            }
-            if (hours % 2 == 0) {
-                if (t3h = html.response.body.items.item[6].fcstValue) {
-                    t3h = html.response.body.items.item[6].fcstValue;
-                }
-            } else {
-                if (t3h = html.response.body.items.item[4].fcstValue) {
-                    t3h = html.response.body.items.item[4].fcstValue;
-                }
-            }
-            console.log("날씨 업뎃 O");
-        } catch {
-            wet = "<오류>";
-            t3h = "<오류>";
-            console.log("날씨 업뎃 X");
-        }
-    })
-}
 
 client.on('message', async msg => {
     log_c[log_n] = msg.content;
@@ -540,7 +465,6 @@ client.on('message', async msg => {
 
 var BTCid;
 var BTMid;
-var nah = 0;
 
 function BTimer() {
     console.log("wow");
@@ -588,7 +512,7 @@ var gr = function(max) {
 client.login('ODE2Mjg4NTc3MDI1MDgxMzQ0.YD4x-g.nuFX8V0I7JeQKWVsOe8SjVOi8u8');
 
 client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}! version word 2.0`);
+    console.log(`Logged in as ${client.user.tag}! version word 1.4 no weather`);
     updater();
     client.setInterval(updater, 10 * 60 * 1000);
 })
