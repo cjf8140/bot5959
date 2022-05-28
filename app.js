@@ -8,8 +8,6 @@ const cheerio = require("cheerio");
 const School = require('school-kr');
 const school = new School();
 
-const ytdl = require('ytdl-core');
-
 var dayadder;
 school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288") //효문
 
@@ -42,24 +40,11 @@ var wordB = [];
 
 var meal;
 
-var sise = "정보없음";
 
-const queue = new Map();
 
 function updater() {
     dbUpdater();
     dbwordUpdater();
-    getSise()
-        .then(html => {
-            let ulList = [];
-            const $ = cheerio.load(html.data);
-            const data = $("main.pt-2").children("article.container pages pages-shop").find('td.item-transaction text-right')
-            return data;
-        })
-        .then(res => {
-            // console.log(res)
-        });
-
     // realTimeWeather();
     (async function() {
         try {
@@ -130,13 +115,6 @@ function dbwordUpdater() {
     })
 }
 
-const getSise = async() => {
-    try {
-        return await axios.get("https://lostark.game.onstove.com/Market");
-    } catch (error) {
-        console.error(error);
-    }
-};
 
 function realTimeWeather() {
 
@@ -252,22 +230,6 @@ client.on('message', async msg => {
         }());
         return;
     }
-
-    const serverQueue = queue.get(message.guild.id);
-
-    if (string[0] == "!p") {
-        execute(msg, serverQueue);
-        return;
-    }
-    if (string[0] == "!s") {
-        skip(msg, serverQueue);
-        return;
-    }
-    if (string[0] == "!st") {
-        disconnet(msg, serverQueue);
-        return;
-    }
-
 
     if (msg.content.includes("날씨")) {
         msg.channel.send("기온: " + t3h + "˚c\n강수 확률: " + wet + "%");
@@ -626,7 +588,7 @@ var gr = function(max) {
 client.login('ODE2Mjg4NTc3MDI1MDgxMzQ0.YD4x-g.nuFX8V0I7JeQKWVsOe8SjVOi8u8');
 
 client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}! version word 1.1.`);
+    console.log(`Logged in as ${client.user.tag}! version word 2.0`);
     updater();
     client.setInterval(updater, 10 * 60 * 1000);
 })
@@ -637,95 +599,4 @@ async function getHTML() {
     } catch (error) {
         console.error(error);
     }
-}
-
-async function execute(message, serverQueue) {
-    const args = message.content.split(" ");
-
-    const voiceChannel = message.member.voice.channel;
-    if (!voiceChannel)
-        return message.channel.send("보챈 드가");
-    const permissions = voiceChannel.permissionsFor(message.client.user);
-    if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
-        return message.channel.send("권한 필요!");
-    }
-    const songInfo = await ytdl.getInfo(args[1]);
-    const song = {
-        title: songInfo.videoDetails.title,
-        url: songInfo.videoDetails.video_url,
-    };
-    if (!serverQueue) {
-
-    } else {
-        serverQueue.songs.push(song);
-        console.log(serverQueue.songs);
-        return message.channel.send(`${song.title} 가 추가됨`);
-    }
-    // Creating the contract for our queue
-    const queueContruct = {
-        textChannel: message.channel,
-        voiceChannel: voiceChannel,
-        connection: null,
-        songs: [],
-        volume: 5,
-        playing: true,
-    };
-    // Setting the queue using our contract
-    queue.set(message.guild.id, queueContruct);
-    // Pushing the song to our songs array
-    queueContruct.songs.push(song);
-
-    try {
-        // Here we try to join the voicechat and save our connection into our object.
-        var connection = await voiceChannel.join();
-        queueContruct.connection = connection;
-        // Calling the play function to start a song
-        play(message.guild, queueContruct.songs[0]);
-    } catch (err) {
-        // Printing the error message if the bot fails to join the voicechat
-        console.log(err);
-        queue.delete(message.guild.id);
-        return message.channel.send(err);
-    }
-}
-
-function play(guild, song) {
-    const serverQueue = queue.get(guild.id);
-    if (!song) {
-        serverQueue.voiceChannel.leave();
-        queue.delete(guild.id);
-        return;
-    }
-    const dispatcher = serverQueue.connection
-        .play(ytdl(song.url))
-        .on("finish", () => {
-            serverQueue.songs.shift();
-            play(guild, serverQueue.songs[0]);
-        })
-        .on("error", error => console.error(error));
-    dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
-    serverQueue.textChannel.send(`현재: **${song.title}** 플레이 중`);
-}
-
-function skip(message, serverQueue) {
-    if (!message.member.voice.channel)
-        return message.channel.send(
-            "보챈 드가"
-        );
-    if (!serverQueue)
-        return stop(message, serverQueue);
-    serverQueue.connection.dispatcher.end();
-}
-
-function stop(message, serverQueue) {
-    if (!message.member.voice.channel)
-        return message.channel.send(
-            "보챈 드가"
-        );
-
-    if (!serverQueue)
-        return message.channel.send("노래 안나오는 중");
-
-    serverQueue.songs = [];
-    serverQueue.connection.dispatcher.end();
 }
