@@ -144,7 +144,7 @@ client.on('message', async msg => {
     var string = msg.content.split(' ');
     var initial = msg.content.charAt(0);
     //msg.channel.send("🎉준희야 생일 축하해🦅");
-    if (msg.content == "." && (msg.channel.id == 890911625475919902 || msg.channel.id == 927313891988475974 || 981555925586415656)) {
+    if (msg.content == "." && (msg.channel.id == 890911625475919902 || msg.channel.id == 927313891988475974 || msg.channel.id == 981555925586415656)) {
         if (Number(string[1] > 90)) {
             return;
         }
