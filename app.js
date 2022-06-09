@@ -12,7 +12,7 @@ school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288") //효문
 
 logword = "!log5959";
 
-const version = "v 2.0.1 물결티콘 ~도움 검색 null버그 수정"
+const version = "v 2.0.1 물결티콘 ~도움 검색 왜 두번 나오지 수정"
 
 var keyword = [];
 var reply = [];
@@ -257,9 +257,9 @@ client.on('message', async msg => {
             }
             msg.channel.send(str.slice(0, 2000));
             if (str.length > 2000)
-                msg.channel.send(str.slice(2000, -2));
+                msg.channel.send(str.slice(2000, 4000));
             if (str.length > 4000)
-                msg.channel.send(str.slice(4000, 1998));
+                msg.channel.send(str.slice(4000, 6000));
 
         } else if (string[0] == "~도움") {
             var str = "";
@@ -272,7 +272,7 @@ client.on('message', async msg => {
             }
             msg.channel.send(str.slice(0, 2000));
             if (str.length > 2000)
-                msg.channel.send(str.slice(2000, -2));
+                msg.channel.send(str.slice(2000, 4000));
         }
 
         for (var i = 0; i < dbK.length; i++) {
