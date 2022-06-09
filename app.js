@@ -12,7 +12,7 @@ school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288") //효문
 
 logword = "!log5959";
 
-const version = "v 2.0 물결티콘 ~도움 태깅 추가 & 고등학교때 썼던 코드 정리"
+const version = "v 2.0.1 물결티콘 ~도움 검색 null버그 수정"
 
 var keyword = [];
 var reply = [];
@@ -265,9 +265,10 @@ client.on('message', async msg => {
             var str = "";
             console.log(dbT);
             for (var i = 0; i < dbK.length; i++) {
-                if (dbK[i].includes(string[1]) || dbT[i].includes(string[1])) {
-                    str += dbK[i] + ', ';
-                }
+                if (dbK[i] && dbT[i])
+                    if (dbK[i].includes(string[1]) || dbT[i].includes(string[1])) {
+                        str += dbK[i] + ', ';
+                    }
             }
             msg.channel.send(str.slice(0, 2000));
             if (str.length > 2000)
