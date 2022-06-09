@@ -12,6 +12,8 @@ school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288") //효문
 
 logword = "!log5959";
 
+const version = "v 2.0 물결티콘 ~도움 태깅 추가 & 고등학교때 썼던 코드 정리"
+
 var keyword = [];
 var reply = [];
 
@@ -25,10 +27,6 @@ var log_t = [];
 var log_n = 0;
 
 var cheat = 0;
-const { MessageAttachment } = require('discord.js')
-
-var t3h;
-var wet;
 
 var dbK = [];
 var dbE = [];
@@ -44,7 +42,6 @@ var meal;
 function updater() {
     dbUpdater();
     dbwordUpdater();
-    // realTimeWeather();
     (async function() {
         try {
             meal = await school.getMeal();
@@ -156,12 +153,10 @@ client.on('message', async msg => {
         return;
     }
 
-    if (msg.content.includes("날씨")) {
-        msg.channel.send("기온: " + t3h + "˚c\n강수 확률: " + wet + "%");
+    if (msg.content == "!v") {
+        msg.channel.send(version);
     }
-    if (msg.content == "!시험") {
-        msg.channel.send("https://cdn.discordapp.com/attachments/818359643713175555/854365802421682206/20210614_100528.jpg");
-    }
+
     if (string[0] == '!word') {
         let sentence = "";
         if (string[1] == undefined) {
@@ -252,6 +247,8 @@ client.on('message', async msg => {
         }
         msg.channel.send(list);
     }
+
+
     if (msg.content.includes('~')) {
         if (msg.content == '~도움') {
             var str = "";
@@ -259,21 +256,26 @@ client.on('message', async msg => {
                 str += dbK[i] + ', ';
             }
             msg.channel.send(str.slice(0, 2000));
-            msg.channel.send(str.slice(2000, -2));
+            if (str.length > 2000)
+                msg.channel.send(str.slice(2000, -2));
+            if (str.length > 4000)
+                msg.channel.send(str.slice(4000, 1998));
+
+        } else if (string[0] == "~도움") {
+            var str = "";
+            console.log(dbT);
+            for (var i = 0; i < dbK.length; i++) {
+                if (dbK[i].includes(string[1]) || dbT[i].includes(string[1])) {
+                    str += dbK[i] + ', ';
+                }
+            }
+            msg.channel.send(str.slice(0, 2000));
+            if (str.length > 2000)
+                msg.channel.send(str.slice(2000, -2));
         }
-        // else if(string[0] == "~도움") {
-        //   var str="";
-        //   console.log(dbT);
-        //   for(var i = 0; i < dbK.length; i++) {
-        //     if(dbK[i].includes(string[1]) || dbT[i].includes(string[1])) {
-        //       str+=dbK[i] + ', ';
-        //     }
-        //   }
-        //   msg.channel.send(str.slice(0 ,2000) );
-        //   msg.channel.send(str.slice(2000 ,-2) );
-        // }
+
         for (var i = 0; i < dbK.length; i++) {
-            if (msg.content.includes('~' + dbK[i])) {
+            if (msg.content == ('~' + dbK[i])) {
                 msg.channel.send(dbE[i]);
                 break;
             }
@@ -291,10 +293,6 @@ client.on('message', async msg => {
 
     if (msg.content == '!사관') {
         msg.channel.send('\'즐거움\'까지 ' + date(1, 1) + '일 .')
-    }
-
-    if (msg.content == '!수능') {
-        msg.channel.send('까지 ' + date(11, 18) + '일 남음.')
     }
 
     if (string[0] == '!생일') {
@@ -413,42 +411,10 @@ client.on('message', async msg => {
     if (string[0] == "d" && msg.content != "d") {
         msg.channel.send(gr(Number(string[1])) + 1);
     }
-    if (msg.content.includes("온") && msg.content.includes("클")) {
-        msg.channel.send("https://www.ebsoc.co.kr/");
-    }
     if (msg.content == '.') {
         msg.channel.send(".\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.");
     }
-    if (msg.content.includes("쉬는") && msg.content.includes("시간")) {
-        var now = new Date();
-        var hour = now.getHours();
-        var minute = now.getMinutes();
-        var second = now.getSeconds();
-        if (hour < 12 || (hour == 12 && minute < 10)) {
-            if (minute > 20) {
-                msg.channel.send((69 - minute) + "분 " + (60 - second) + "초 남음");
-            } else if (minute < 10) {
-                msg.channel.send((9 - minute) + "분 " + (60 - second) + "초 남음");
-            } else {
-                msg.channel.send((19 - minute) + "분 " + (60 - second) + "초 남음");
-            }
-        } else if (hour < 16) {
-            if (minute > 10) {
-                msg.channel.send((59 - minute) + "분 " + (60 - second) + "초 남음");
-            } else {
-                msg.channel.send((9 - minute) + "분 " + (60 - second) + "초 남음");
-            }
-        }
-    }
-    if (msg.content == "!쉬는") {
-        BTCid = msg.channel.id;
-        await msg.channel.send("Stuff").then(sent => { // 'sent' is that message you just sent
-            BTMid = sent.id;
-        });
-        console.log(BTCid + ", " + BTMid);
-        BTimer;
-        client.setInterval(BTimer, 3000);
-    }
+
 
     if (msg.content == ".,.,...") {
         if (Number(string[1] > 90)) {
@@ -465,6 +431,47 @@ client.on('message', async msg => {
 
 var BTCid;
 var BTMid;
+
+function legacy() {
+
+
+    // if (msg.content == '!수능') {
+    //     msg.channel.send('까지 ' + date(11, 18) + '일 남음.')
+    // }
+    // if (msg.content.includes("온") && msg.content.includes("클")) {
+    //     msg.channel.send("https://www.ebsoc.co.kr/");
+    // }
+    // if (msg.content.includes("쉬는") && msg.content.includes("시간")) {
+    //     var now = new Date();
+    //     var hour = now.getHours();
+    //     var minute = now.getMinutes();
+    //     var second = now.getSeconds();
+    //     if (hour < 12 || (hour == 12 && minute < 10)) {
+    //         if (minute > 20) {
+    //             msg.channel.send((69 - minute) + "분 " + (60 - second) + "초 남음");
+    //         } else if (minute < 10) {
+    //             msg.channel.send((9 - minute) + "분 " + (60 - second) + "초 남음");
+    //         } else {
+    //             msg.channel.send((19 - minute) + "분 " + (60 - second) + "초 남음");
+    //         }
+    //     } else if (hour < 16) {
+    //         if (minute > 10) {
+    //             msg.channel.send((59 - minute) + "분 " + (60 - second) + "초 남음");
+    //         } else {
+    //             msg.channel.send((9 - minute) + "분 " + (60 - second) + "초 남음");
+    //         }
+    //     }
+    // }
+    // if (msg.content == "!쉬는") {
+    //     BTCid = msg.channel.id;
+    //     await msg.channel.send("Stuff").then(sent => { // 'sent' is that message you just sent
+    //         BTMid = sent.id;
+    //     });
+    //     console.log(BTCid + ", " + BTMid);
+    //     BTimer;
+    //     client.setInterval(BTimer, 3000);
+    // }
+}
 
 function BTimer() {
     console.log("wow");
@@ -512,7 +519,7 @@ var gr = function(max) {
 client.login('ODE2Mjg4NTc3MDI1MDgxMzQ0.YD4x-g.nuFX8V0I7JeQKWVsOe8SjVOi8u8');
 
 client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}! version word 1.4 no weather`);
+    console.log(`Logged in as ${client.user.tag}! `, version);
     updater();
     client.setInterval(updater, 10 * 60 * 1000);
 })
