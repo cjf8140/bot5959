@@ -12,7 +12,7 @@ school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288") //효문
 
 logword = "!log5959";
 
-const version = "v 2.1.0 .치면 없어지는 스패밍 에러 수정"
+const version = "v 2.1.1 안고침 ㅅㄱㅂ"
 
 var keyword = [];
 var reply = [];
@@ -116,6 +116,30 @@ client.on('message', async msg => {
     log_c[log_n] = msg.content;
     log_t[log_n] = msg.author.tag;
     log_n++;
+
+    if (msg.author.bot) return;
+    if (msg.channel.id == 931173230545371136) {
+        msg.delete();
+        msg.channel.send(msg.content);
+    }
+
+    try {
+        if (msg.content == "." && (msg.channel.id == 890911625475919902 || msg.channel.id == 927313891988475974 || msg.channel.id == 981555925586415656)) {
+            if (Number(string[1] > 90)) {
+                return;
+            }
+            (async function() {
+                msg.delete();
+                const fetched = await msg.channel.fetchMessages({ limit: 100 });
+                msg.channel.bulkDelete(fetched);
+            }());
+            return;
+        }
+    } catch (err) {
+        console.log(err);
+    }
+
+
     if (msg.content == logword) {
         var message = [];
         for (i = 0; i < log_n - 1; i++) {
@@ -132,30 +156,10 @@ client.on('message', async msg => {
         updater();
         msg.channel.send("업데이트 완료!");
     }
-    if (msg.author.bot) return;
-    if (msg.channel.id == 931173230545371136) {
-        msg.delete();
-        msg.channel.send(msg.content);
-    }
 
     var string = msg.content.split(' ');
     var initial = msg.content.charAt(0);
     //점 치면 사라지는 방
-    if (msg.content == "." && (msg.channel.id == 890911625475919902 || msg.channel.id == 927313891988475974 || msg.channel.id == 981555925586415656)) {
-        if (Number(string[1] > 90)) {
-            return;
-        }
-        (async function() {
-            try {
-                msg.delete();
-                const fetched = await msg.channel.fetchMessages({ limit: 100 });
-                msg.channel.bulkDelete(fetched);
-            } catch (err) {
-                msg.channel.send("!점을 치면 사라지는 기능 에러!");
-            }
-        }());
-        return;
-    }
 
     if (msg.content == "!v") {
         msg.channel.send(version);
