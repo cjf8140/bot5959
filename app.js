@@ -12,7 +12,7 @@ school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288") //효문
 
 logword = "!log5959";
 
-const version = "v 2.1.1 안고침 ㅅㄱㅂ"
+const version = "v 2.1.2 점을 치면 사라지는 기능이 기간내의 모든 메세지를 삭제"
 
 var keyword = [];
 var reply = [];
@@ -123,22 +123,28 @@ client.on('message', async msg => {
         msg.channel.send(msg.content);
     }
 
-    try {
-        if (msg.content == "." && (msg.channel.id == 890911625475919902 || msg.channel.id == 927313891988475974 || msg.channel.id == 981555925586415656)) {
-            if (Number(string[1] > 90)) {
-                return;
-            }
-            (async function() {
-                msg.delete();
-                const fetched = await msg.channel.fetchMessages({ limit: 100 });
+    if (msg.content == "." && (msg.channel.id == 890911625475919902 || msg.channel.id == 927313891988475974 || msg.channel.id == 981555925586415656 || msg.channel.id == 990531518155853824)) {
+        (async function() {
+            let fetched;
+            do {
+                fetched = await msg.channel.fetchMessages({ limit: 100 });
                 msg.channel.bulkDelete(fetched);
-            }());
-            return;
-        }
-    } catch (err) {
-        console.log(err);
+            }
+            while (fetched.size >= 2);
+        }());
+        return;
     }
-
+    if (msg.content == ".,.,...") {
+        (async function() {
+            let fetched;
+            do {
+                fetched = await msg.channel.fetchMessages({ limit: 100 });
+                msg.channel.bulkDelete(fetched);
+            }
+            while (fetched.size >= 2);
+        }());
+        return;
+    }
 
     if (msg.content == logword) {
         var message = [];
@@ -426,19 +432,6 @@ client.on('message', async msg => {
     }
     if (msg.content == '.') {
         msg.channel.send(".\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.");
-    }
-
-
-    if (msg.content == ".,.,...") {
-        if (Number(string[1] > 90)) {
-            return;
-        }
-        (async function() {
-            msg.delete();
-            const fetched = await msg.channel.fetchMessages({ limit: 100 });
-            msg.channel.bulkDelete(fetched);
-        }());
-        return;
     }
 });
 
