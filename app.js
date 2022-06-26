@@ -123,7 +123,7 @@ client.on('message', async msg => {
         msg.channel.send(msg.content);
     }
 
-    if (msg.content == "." && (msg.channel.id == 890911625475919902 || msg.channel.id == 927313891988475974 || msg.channel.id == 981555925586415656 || msg.channel.id == 990531518155853824)) {
+    if (msg.content == "." && (msg.channel.id == 890911625475919902 || msg.channel.id == 927313891988475974 || msg.channel.id == 981555925586415656)) {
         (async function() {
             let fetched;
             do {
@@ -134,7 +134,7 @@ client.on('message', async msg => {
         }());
         return;
     }
-    if (msg.content == ".,.,...") {
+    if (msg.content == ".,.,...13471347") {
         (async function() {
             let fetched;
             do {
