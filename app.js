@@ -509,7 +509,7 @@ function allD(ch, ms) {
     // console.log(ms);
     if (ms > 1) {
         // console.log("ch!");
-        ch.bulkDelete(3, 1)
+        ch.bulkDelete(100, 1)
             .then(messages => allD(ch, messages.size))
             .catch(console.error);
     }
