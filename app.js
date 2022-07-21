@@ -12,32 +12,32 @@ school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288") //효문
 
 logword = "!log5959";
 
-const version = "v 2.2.0 점 사라지는 기능: All delete, 빠른 삭제, 느려지는 문제 해결"
+const version = "v 2.3.0 *추천&소재* 추가"
 
 var keyword = [];
 var reply = [];
 
 
-var adr = 0;
+var adr = 0; //word
 
 var url = [];
 
-var log_c = [];
-var log_t = [];
-var log_n = 0;
+var log_c = []; //contents
+var log_t = []; //tag (User name)
+var log_n = 0; //Number Index
 
 var cheat = 0;
 
-var dbK = [];
-var dbE = [];
-var dbT = [];
+var dbK = []; //KeyWord
+var dbE = []; //Emoticon (Answer)
+var dbT = []; //Tag
 
 var wordA = [];
 var wordB = [];
 
 var meal;
 
-
+let chuchu = [];
 
 function updater() {
     dbUpdater();
@@ -96,7 +96,7 @@ function dbwordUpdater() {
         var i = 0;
         while (1) {
             try {
-                if (html.table.rows[i] == undefined) {
+                if (html.table.rows[i].c[0] == undefined) {
                     break;
                 }
                 wordA[i] = html.table.rows[i].c[0].v;
@@ -154,26 +154,48 @@ client.on('message', async msg => {
         msg.channel.send(version);
     }
 
-    if (string[0] == '!word') {
+    if (string[0] == '!소재') {
         let sentence = "";
         if (string[1] == undefined) {
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 3; i++) {
                 const num = gr(wordA.length)
-                sentence += wordA[num] + "\t:\t ||" + wordB[num] + "||\n";
+                sentence += wordA[num] + "\n";
             }
         } else {
-            console.log("!");
-            for (let i = 0; i < Number(string[1]); i++) {
-                if (string[2] == undefined) {
-                    const num = gr(wordA.length);
-                    sentence += wordA[num] + "\t:\t ||" + wordB[num] + "||\n";
-                } else {
-                    const num = gr(50);
-                    sentence += wordA[Number(string[2]) + num] + "\t:\t ||" + wordB[Number(string[2]) + num] + "||\n";
+            let arr = [];
+            for (let i = 0; i < wordA.length; i++) {
+                if (wordB[i] == msg.content.substring(4)) {
+                    arr.push(wordA[i]);
                 }
+            }
+            if (arr[0] == undefined) {
+                msg.channel.send("없는데쇼");
+                return;
+            }
+            for (let i = 0; i < 3; i++) {
+                const num = gr(arr.length);
+                sentence += arr[num] + "\n";
             }
         }
         msg.channel.send(sentence);
+    }
+
+    if (string[0] == "!추천") {
+        if (string[1] != undefined) {
+            if (string[1] == "뽑기") {
+                let sentence = [];
+                for (let i = 0; i < 1; i++) {
+                    const num = gr(chuchu.length)
+                    sentence += chuchu[num] + "\n";
+                }
+                msg.channel.send(sentence);
+            } else {
+                chuchu.push(msg.content.substring(4));
+                msg.channel.send("\"" + msg.content.substring(4) + "\"이/가 추가된 👍")
+            }
+        } else {
+            msg.channel.send("뭘");
+        }
     }
     for (var i = keyword.length; i >= 0; i--) {
         if (msg.content.includes(keyword[i]) && reply[i]) {
