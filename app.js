@@ -148,7 +148,6 @@ client.on('message', async msg => {
 
     var string = msg.content.split(' ');
     var initial = msg.content.charAt(0);
-    //점 치면 사라지는 방
 
     if (msg.content == "!v") {
         msg.channel.send(version);
