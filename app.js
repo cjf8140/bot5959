@@ -52,6 +52,10 @@ function updater() {
     }());
 }
 
+function weather() {
+
+}
+
 function dbUpdater() {
     request({
         url: "https://docs.google.com/spreadsheets/d/10htzKQieunSbSvAIsjFdVg3TS_BNecAIG72JpVbNFd4/gviz/tq?tqx=out:json",
@@ -96,7 +100,7 @@ function dbwordUpdater() {
         var i = 0;
         while (1) {
             try {
-                if (html.table.rows[i].c[0] == undefined) {
+                if (html.table.rows[i] == undefined || html.table.rows[i].c[0] == undefined) {
                     break;
                 }
                 wordA[i] = html.table.rows[i].c[0].v;
@@ -126,7 +130,7 @@ client.on('message', async msg => {
     if ((msg.content == "." &&
             (msg.channel.id == 890911625475919902 || msg.channel.id == 927313891988475974 || msg.channel.id == 981555925586415656)) ||
         msg.content == ".,.,...13471347") {
-        allD(msg.channel, 2);
+        allD(msg.channel, 100);
         return;
     }
     if (msg.content == logword) {
@@ -528,8 +532,7 @@ var gr = function(max) {
 
 function allD(ch, ms) {
     // console.log(ms);
-    if (ms > 1) {
-        // console.log("ch!");
+    if (ms == 100) {
         ch.bulkDelete(100, 1)
             .then(messages => allD(ch, messages.size))
             .catch(console.error);
@@ -545,11 +548,3 @@ client.on('ready', () => {
     updater();
     client.setInterval(updater, 10 * 60 * 1000);
 })
-
-async function getHTML() {
-    try {
-        return await axios.get(url);
-    } catch (error) {
-        console.error(error);
-    }
-}
