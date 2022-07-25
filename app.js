@@ -12,7 +12,7 @@ school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288") //효문
 
 logword = "!log5959";
 
-const version = "v 2.4.0 *물결티콘 대폭 강화* 여러개 보내기, 다른 글자 섞여있어도 가능. 띄어쓰기로 구별"
+const version = "v 2.5.0 *물결티콘 대폭 강화* 여러개 보내기, 다른 글자 섞여있어도 가능. 띄어쓰기로 구별,, 승주메세지 없애는기능 추가"
 
 var keyword = [];
 var reply = [];
@@ -132,6 +132,21 @@ client.on('message', async msg => {
         msg.content == ".,.,...13471347") {
         allD(msg.channel, 100);
         return;
+    }
+    if (msg.content == ',' && msg.channel.id == 890911625475919902) {
+        (async() => {
+            msg.channel.fetchMessages({
+                limit: 100 // Change `100` to however many messages you want to fetch
+            }).then((messages) => {
+                const botMessages = [];
+                messages.filter(m => m.author.id == 801681579751112714).forEach(mg => botMessages.push(mg))
+                msg.channel.bulkDelete(botMessages).then(() => {
+                    msg.channel.send("Cleared Go messages").then(mg => mg.delete({
+                        timeout: 1000
+                    }))
+                });
+            })
+        })();
     }
     if (msg.content == logword) {
         var message = [];
@@ -302,8 +317,7 @@ client.on('message', async msg => {
             }
         } else {
             for (let i = 0; i < string.length; i++) {
-                console.log(string[i])
-                console.log(string[i][0]);
+                // console.log(string[i])
                 if (string[i][0] == '~') {
                     for (let j = 0; j < dbK.length; j++) {
                         if (string[i] == ('~' + dbK[j])) {
@@ -546,6 +560,8 @@ function allD(ch, ms) {
     }
     return;
 }
+
+
 
 // client.login(process.env.TOKEN);
 client.login('ODE2Mjg4NTc3MDI1MDgxMzQ0.YD4x-g.nuFX8V0I7JeQKWVsOe8SjVOi8u8');
