@@ -12,7 +12,7 @@ school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288") //효문
 
 logword = "!log5959";
 
-const version = "v 2.3.0 *추천&소재* 추가"
+const version = "v 2.4.0 *물결티콘 대폭 강화* 여러개 보내기, 다른 글자 섞여있어도 가능. 띄어쓰기로 구별"
 
 var keyword = [];
 var reply = [];
@@ -300,13 +300,20 @@ client.on('message', async msg => {
             } else {
                 msg.channel.send("! __검색결과 없음__ !");
             }
-        } else
-            for (var i = 0; i < dbK.length; i++) {
-                if (msg.content == ('~' + dbK[i])) {
-                    msg.channel.send(dbE[i]);
-                    break;
+        } else {
+            for (let i = 0; i < string.length; i++) {
+                console.log(string[i])
+                console.log(string[i][0]);
+                if (string[i][0] == '~') {
+                    for (let j = 0; j < dbK.length; j++) {
+                        if (string[i] == ('~' + dbK[j])) {
+                            msg.channel.send(dbE[j]);
+                            break;
+                        }
+                    }
                 }
             }
+        }
     }
 
     if (initial == "&") {
