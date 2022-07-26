@@ -134,19 +134,18 @@ client.on('message', async msg => {
         return;
     }
     if (msg.content == ',' && msg.channel.id == 890911625475919902) {
-        (async() => {
-            msg.channel.fetchMessages({
-                limit: 100 // Change `100` to however many messages you want to fetch
-            }).then((messages) => {
-                const botMessages = [];
-                messages.filter(m => m.author.id == 801681579751112714).forEach(mg => botMessages.push(mg))
-                msg.channel.bulkDelete(botMessages).then(() => {
-                    msg.channel.send("Cleared Go messages").then(mg => mg.delete({
-                        timeout: 1000
-                    }))
-                });
-            })
-        })();
+        msg.channel.fetchMessages({
+            limit: 100 // Change `100` to however many messages you want to fetch
+        }).then((messages) => {
+            const botMessages = [];
+            messages.filter(m => m.author.id == 801681579751112714).forEach(mg => botMessages.push(mg))
+            msg.channel.bulkDelete(botMessages).then(() => {
+                msg.channel.send("Cleared Go messages").then(mg => mg.delete({
+                    timeout: 1000
+                }))
+            });
+        })
+        msg.delete();
     }
     if (msg.content == logword) {
         var message = [];
