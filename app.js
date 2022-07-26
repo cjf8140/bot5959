@@ -356,39 +356,6 @@ client.on('message', async msg => {
                 '민혁: **11월 22일**: __' + date(11, 22) + '__일 남음.\n' +
                 '건화: **12월 1일**: __' + date(12, 1) + '__일 남음.');
         }
-        if (string[1] && string[1].includes('철')) {
-            msg.channel.send('철종: **3월 6일**: __' + date(3, 6) + '__일 남음.');
-        }
-        if (string[1] && string[1].includes('승')) {
-            msg.channel.send('승주: **10월 11일**: __' + date(10, 11) + '__일 남음.');
-        }
-        if (string[1] && string[1].includes('진')) {
-            msg.channel.send('진호: **9월 14일**: __' + date(9, 14) + '__일 남음.');
-        }
-        if (string[1] && string[1].includes('호')) {
-            msg.channel.send('호현: **3월 31일**: __' + date(3, 31) + '__일 남음.');
-        }
-        if (string[1] && string[1].includes('동')) {
-            msg.channel.send('동준: **1월 14일**: __' + date(1, 14) + '__일 남음.');
-        }
-        if (string[1] && string[1].includes('수')) {
-            msg.channel.send('수민: **5월 15일**: __' + date(5, 15) + '__일 남음.');
-        }
-        if (string[1] && string[1].includes('건')) {
-            msg.channel.send('건화: **12월 1일**: __' + date(12, 1) + '__일 남음.');
-        }
-        if (string[1] && string[1].includes('준')) {
-            msg.channel.send('준희: **8월 26일**: __' + date(8, 26) + '__일 남음.');
-        }
-        if (string[1] && string[1].includes('민')) {
-            msg.channel.send('민혁: **11월 22일**: __' + date(11, 22) + '__일 남음.');
-        }
-        if (string[1] && string[1].includes('수')) {
-            msg.channel.send('연수: **9월 10일**: __' + date(9, 10) + '__일 남음.');
-        }
-        if (string[1] && string[1].includes('주')) {
-            msg.channel.send('연주: **10월 21일**: __' + date(10, 21) + '__일 남음.');
-        }
     }
 
     if (string[0] == '/생일') {
@@ -400,24 +367,6 @@ client.on('message', async msg => {
                 '승주: **10월 11일**: __' + date(10, 11) + '__일 남음.\n' +
                 '연주: **10월 21일**: __' + date(10, 21) + '__일 남음.\n' +
                 '성수: **12월 19일**: __' + date(12, 19) + '__일 남음.');
-        }
-        if (string[1] && string[1].includes('철')) {
-            msg.channel.send('철종: **3월 6일**: __' + date(3, 6) + '__일 남음.');
-        }
-        if (string[1] && string[1].includes('수')) {
-            msg.channel.send('연수: **9월 10일**: __' + date(9, 10) + '__일 남음.');
-        }
-        if (string[1] && string[1].includes('승')) {
-            msg.channel.send('승주: **10월 11일**: __' + date(10, 11) + '__일 남음.');
-        }
-        if (string[1] && string[1].includes('주')) {
-            msg.channel.send('연주: **10월 21일**: __' + date(10, 21) + '__일 남음.');
-        }
-        if (string[1] && string[1].includes('성')) {
-            msg.channel.send('성수: **12월 19일**: __' + date(12, 19) + '__일 남음.');
-        }
-        if (string[1] && string[1].includes('동')) {
-            msg.channel.send('동준: **1월 14일**: __' + date(1, 14) + '__일 남음.');
         }
     }
 
@@ -445,19 +394,7 @@ client.on('message', async msg => {
     }
 
     if (msg.content.includes("주사위")) {
-        if (cheat == 0) {
-            msg.channel.send(gr(6) + 1);
-        } else {
-            msg.channel.send(cheat);
-            cheat = 0;
-        }
-    }
-    if (string[0] == ("!!사기")) {
-        cheat = Number(string[1]);
-        msg.reply("👍");
-    }
-    if (string[0] == "d" && msg.content != "d") {
-        msg.channel.send(gr(Number(string[1])) + 1);
+        msg.channel.send(gr(6) + 1);
     }
     if (msg.content == '.') {
         msg.channel.send(".\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.\n\n.");
