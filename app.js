@@ -401,11 +401,10 @@ client.on('message', async msg => {
     }
 });
 
-var BTCid;
-var BTMid;
 
 function legacy() {
-
+    // var BTCid;
+    // var BTMid;
 
     // if (msg.content == '!수능') {
     //     msg.channel.send('까지 ' + date(11, 18) + '일 남음.')
@@ -445,32 +444,32 @@ function legacy() {
     // }
 }
 
-function BTimer() {
-    console.log("wow");
-    var now = new Date();
-    var hour = now.getHours();
-    var minute = now.getMinutes();
-    var second = now.getSeconds();
-    var min, sec;
-    sec = 60 - second;
-    if (hour > 7 && (hour < 12 || (hour == 12 && minute < 10))) {
-        if (minute > 20) {
-            min = 69 - minute;
-        } else if (minute < 10) {
-            min = 9 - minute;
-        } else {
-            min = 19 - minute;
-        }
-        client.channels.get(BTCid).fetchMessage(BTMid).then(msg => msg.edit(min + "분 " + sec + "초 남음"));
-    } else if (hour < 16) {
-        if (minute > 10) {
-            min = 59 - minute;
-        } else {
-            min = 9 - minute;
-        }
-        client.channels.get(BTCid).fetchMessage(BTMid).then(msg => msg.edit(min + "분 " + sec + "초 남음"));
-    }
-}
+// function BTimer() {
+//     console.log("wow");
+//     var now = new Date();
+//     var hour = now.getHours();
+//     var minute = now.getMinutes();
+//     var second = now.getSeconds();
+//     var min, sec;
+//     sec = 60 - second;
+//     if (hour > 7 && (hour < 12 || (hour == 12 && minute < 10))) {
+//         if (minute > 20) {
+//             min = 69 - minute;
+//         } else if (minute < 10) {
+//             min = 9 - minute;
+//         } else {
+//             min = 19 - minute;
+//         }
+//         client.channels.get(BTCid).fetchMessage(BTMid).then(msg => msg.edit(min + "분 " + sec + "초 남음"));
+//     } else if (hour < 16) {
+//         if (minute > 10) {
+//             min = 59 - minute;
+//         } else {
+//             min = 9 - minute;
+//         }
+//         client.channels.get(BTCid).fetchMessage(BTMid).then(msg => msg.edit(min + "분 " + sec + "초 남음"));
+//     }
+// }
 
 function date(month, day) {
     var tday = new Date();
