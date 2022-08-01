@@ -12,7 +12,7 @@ school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288") //효문
 
 logword = "!log5959";
 
-const version = "v 2.5.0 *물결티콘 대폭 강화* 여러개 보내기, 다른 글자 섞여있어도 가능. 띄어쓰기로 구별,, 승주메세지 없애는기능 추가"
+const version = "v 2.6.0 Go Command"
 
 var keyword = [];
 var reply = [];
@@ -115,7 +115,7 @@ function dbwordUpdater() {
     })
 }
 
-
+let gomsg = 0;
 client.on('message', async msg => {
     log_c[log_n] = msg.content;
     log_t[log_n] = msg.author.tag;
@@ -126,11 +126,13 @@ client.on('message', async msg => {
         msg.delete();
         msg.channel.send(msg.content);
     }
-
-    if ((msg.content == "." &&
-            (msg.channel.id == 890911625475919902 || msg.channel.id == 927313891988475974 || msg.channel.id == 981555925586415656)) ||
-        msg.content == ".,.,...13471347") {
-        allD(msg.channel, 100);
+    //Go명령어
+    if (msg.content == "!go") {
+        gomsg = !gomsg;
+        console.log(gomsg);
+    }
+    if (gomsg == 1 && (msg.author.id == 801681579751112714 || msg.author.id == 510780448599703553)) {
+        msg.delete();
         return;
     }
     if (msg.content == ',' && msg.channel.id == 890911625475919902) {
@@ -146,6 +148,12 @@ client.on('message', async msg => {
             });
         })
         msg.delete();
+    }
+    if ((msg.content == "." &&
+            (msg.channel.id == 890911625475919902 || msg.channel.id == 927313891988475974 || msg.channel.id == 981555925586415656)) ||
+        msg.content == ".,.,...13471347") {
+        allD(msg.channel, 100);
+        return;
     }
     if (msg.content == logword) {
         var message = [];
