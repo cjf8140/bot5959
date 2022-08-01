@@ -12,7 +12,7 @@ school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288") //효문
 
 logword = "!log5959";
 
-const version = "v 2.6.0 Go Command"
+const version = "v 2.6.1 Go Command 부-본계"
 
 var keyword = [];
 var reply = [];
@@ -129,7 +129,7 @@ client.on('message', async msg => {
     //Go명령어
     if (msg.content == "!go") {
         gomsg = !gomsg;
-        console.log(gomsg);
+        // console.log(gomsg);
     }
     if (gomsg == 1 && (msg.author.id == 801681579751112714 || msg.author.id == 510780448599703553)) {
         msg.delete();
@@ -140,7 +140,7 @@ client.on('message', async msg => {
             limit: 100 // Change `100` to however many messages you want to fetch
         }).then((messages) => {
             const botMessages = [];
-            messages.filter(m => m.author.id == 801681579751112714).forEach(mg => botMessages.push(mg))
+            messages.filter(m => m.author.id == 510780448599703553).forEach(mg => botMessages.push(mg))
             msg.channel.bulkDelete(botMessages).then(() => {
                 msg.channel.send("Cleared Go messages").then(mg => mg.delete({
                     timeout: 1000
