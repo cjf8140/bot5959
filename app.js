@@ -12,7 +12,7 @@ school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288") //효문
 
 logword = "!log5959";
 
-const version = "v 2.6.1 Go Command 부-본계"
+const version = "v 2.7.1 도움 마지막 콤마 삭제, &히토미 검색 url 추가"
 
 var keyword = [];
 var reply = [];
@@ -299,6 +299,7 @@ client.on('message', async msg => {
             for (var i = 0; i < dbK.length; i++) {
                 str += dbK[i] + ', ';
             }
+            str = str.slice(0, -2);
             msg.channel.send(str.slice(0, 2000));
             if (str.length > 2000)
                 msg.channel.send(str.slice(2000, 4000));
@@ -307,7 +308,7 @@ client.on('message', async msg => {
 
         } else if (string[0] == "~도움") {
             var str = "";
-            console.log(dbT);
+            // console.log(dbT);
             for (var i = 0; i < dbK.length; i++) {
                 if (dbK[i] && dbT[i])
                     if (dbK[i].includes(string[1]) || dbT[i].includes(string[1])) {
@@ -315,6 +316,7 @@ client.on('message', async msg => {
                     }
             }
             if (str) {
+                str = str.slice(0, -2);
                 msg.channel.send(str.slice(0, 2000));
                 if (str.length > 2000) {
                     msg.channel.send(str.slice(2000, 4000));
@@ -339,7 +341,11 @@ client.on('message', async msg => {
 
     if (initial == "&") {
         msg.delete();
-        msg.channel.send("https://hitomi.la/galleries/" + msg.content.slice(1) + ".html");
+        if (isNaN(msg.content.slice(1))) {
+            msg.channel.send("https://hitomi.la/galleries/" + msg.content.slice(1) + ".html");
+        } else {
+            msg.channel.send("https://hitomi.la/search.html" + msg.content.slice(1));
+        }
     }
 
     if (msg.content.includes("처갓집")) {
