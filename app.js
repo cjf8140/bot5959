@@ -52,8 +52,12 @@ function updater() {
     }());
 }
 
-function weather() {
-
+const getforecast = function() {
+    axios.get("https://www.weather.go.kr/w/weather/forecast/short-term.do?stnId=109").then(
+        (response) => {
+            console.log(response);
+        }
+    )
 }
 
 function dbUpdater() {
