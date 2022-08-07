@@ -12,7 +12,7 @@ school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288") //효문
 
 logword = "!log5959";
 
-const version = "v 2.7.1 도움 마지막 콤마 삭제, &히토미 검색 url 추가"
+const version = "v 2.7.2 isNaN 은 숫자가 아닌지 체크"
 
 var keyword = [];
 var reply = [];
@@ -342,9 +342,9 @@ client.on('message', async msg => {
     if (initial == "&") {
         msg.delete();
         if (isNaN(msg.content.slice(1))) {
-            msg.channel.send("https://hitomi.la/galleries/" + msg.content.slice(1) + ".html");
-        } else {
             msg.channel.send("https://hitomi.la/search.html" + msg.content.slice(1));
+        } else {
+            msg.channel.send("https://hitomi.la/galleries/" + msg.content.slice(1) + ".html");
         }
     }
 
