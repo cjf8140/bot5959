@@ -2,9 +2,12 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 const axios = require("axios");
+const cheerio = require("cheerio");
+
 const request = require("request");
 
 const School = require('school-kr');
+const { get } = require('request');
 const school = new School();
 
 var dayadder;
@@ -12,7 +15,7 @@ school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288") //효문
 
 logword = "!log5959";
 
-const version = "v 2.7.2 isNaN 은 숫자가 아닌지 체크"
+const version = "v 2.8.0 !날씨 서울 요약본 추가"
 
 var keyword = [];
 var reply = [];
@@ -39,9 +42,12 @@ var meal;
 
 let chuchu = [];
 
+let gomsg = 0;
+
 function updater() {
     dbUpdater();
     dbwordUpdater();
+    getforecast();
     (async function() {
         try {
             meal = await school.getMeal();
@@ -52,13 +58,6 @@ function updater() {
     }());
 }
 
-const getforecast = function() {
-    axios.get("https://www.weather.go.kr/w/weather/forecast/short-term.do?stnId=109").then(
-        (response) => {
-            console.log(response);
-        }
-    )
-}
 
 function dbUpdater() {
     request({
@@ -119,16 +118,34 @@ function dbwordUpdater() {
     })
 }
 
-let gomsg = 0;
+let ws;
+
+function getforecast() {
+    axios.get("https://www.weather.go.kr/w/weather/forecast/short-term.do?stnId=109")
+        .then(
+            (response) => {
+                const $ = cheerio.load(response.data);
+                ws = $("#after-dfs-forecast > div:nth-child(2) > section > div.cmp-view-content > p > span:nth-child(1)").text() +
+                    "\n  " + $("#after-dfs-forecast > div:nth-child(2) > section > div.cmp-view-content > p > span:nth-child(2)").text() +
+                    "\n  " + $("#after-dfs-forecast > div:nth-child(2) > section > div.cmp-view-content > p > span:nth-child(3)").text();
+            }
+        )
+        .catch(err => {
+            console.error(err);
+        })
+}
+
 client.on('message', async msg => {
     log_c[log_n] = msg.content;
     log_t[log_n] = msg.author.tag;
     log_n++;
-
     if (msg.author.bot) return;
     if (msg.channel.id == 931173230545371136) {
         msg.delete();
         msg.channel.send(msg.content);
+    }
+    if (msg.content == "!날씨") {
+        msg.channel.send(ws);
     }
     //Go명령어
     if (msg.content == "!go") {
