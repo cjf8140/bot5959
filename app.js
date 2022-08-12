@@ -15,7 +15,7 @@ school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288") //효문
 
 logword = "!log5959";
 
-const version = "v 2.8.0 !날씨 서울 요약본 추가"
+const version = "v 2.8.1 물결이 영어 대소문자 상관없음, 업데이트 상시되메 !업뎉 삭제"
 
 var keyword = [];
 var reply = [];
@@ -76,7 +76,7 @@ function dbUpdater() {
                 if (html.table.rows[i] == undefined) {
                     break;
                 }
-                dbK[i] = html.table.rows[i].c[0].v;
+                dbK[i] = html.table.rows[i].c[0].v.toLocaleLowerCase();
                 dbE[i] = html.table.rows[i].c[1].v;
                 dbT[i] = html.table.rows[i].c[3].v;
                 i += 1;
@@ -136,9 +136,12 @@ function getforecast() {
 }
 
 client.on('message', async msg => {
+    const lwcon = msg.content.toLocaleLowerCase();
+    updater();
     log_c[log_n] = msg.content;
     log_t[log_n] = msg.author.tag;
     log_n++;
+
     if (msg.author.bot) return;
     if (msg.channel.id == 931173230545371136) {
         msg.delete();
@@ -187,10 +190,6 @@ client.on('message', async msg => {
             }
             msg.channel.send(message.substring(i, i + 2000));
         }
-    }
-    if (msg.content == "!업뎉") {
-        updater();
-        msg.channel.send("업데이트 완료!");
     }
 
     var string = msg.content.split(' ');
@@ -350,7 +349,9 @@ client.on('message', async msg => {
                 // console.log(string[i])
                 if (string[i][0] == '~') {
                     for (let j = 0; j < dbK.length; j++) {
-                        if (string[i] == ('~' + dbK[j])) {
+                        console.log(string[i].toLocaleLowerCase());
+                        console.log('~' + dbK[j]);
+                        if (string[i].toLocaleLowerCase() == ('~' + dbK[j])) {
                             msg.channel.send(dbE[j]);
                             break;
                         }
