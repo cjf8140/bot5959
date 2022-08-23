@@ -348,13 +348,11 @@ client.on('message', async msg => {
             for (let i = 0; i < string.length; i++) {
                 // console.log(string[i])
                 if (string[i][0] == '~') {
-                    for (let j = 0; j < dbK.length; j++) {
-                        console.log(string[i].toLocaleLowerCase());
-                        console.log('~' + dbK[j]);
-                        if (string[i].toLocaleLowerCase() == ('~' + dbK[j])) {
-                            msg.channel.send(dbE[j]);
-                            break;
+                    for(let j = 0; j < dbK.length; j++) {
+                        if (dbk[j] == string[i].toLocaleLowerCase().slice(1)) {
+                            msg.channel.send( dbE[ind]);
                         }
+                        break;
                     }
                 }
             }
@@ -363,6 +361,13 @@ client.on('message', async msg => {
 
     if (initial == "&") {
         msg.delete();
+        msg.channel.send({
+            files: [{
+               attachment: "https://www.gstatic.com/webp/gallery/1.sm.webp",
+               name: "SPOILER_FILE.jpg"
+            }]
+        });
+        msg.channel.send("atn.hitomi.la/webpbigtn/3/94/fcc19811905347bbcad5da5348557dd702c1c901fe92f04167bc4e9ce095c943.webp");
         if (isNaN(msg.content.slice(1))) {
             msg.channel.send("https://hitomi.la/search.html" + msg.content.slice(1));
         } else {
