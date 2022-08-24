@@ -346,13 +346,12 @@ client.on('message', async msg => {
             }
         } else {
             for (let i = 0; i < string.length; i++) {
-                // console.log(string[i])
                 if (string[i][0] == '~') {
                     for(let j = 0; j < dbK.length; j++) {
-                        if (dbk[j] == string[i].toLocaleLowerCase().slice(1)) {
-                            msg.channel.send( dbE[ind]);
+                        if (dbK[j] == string[i].toLocaleLowerCase().slice(1)) {
+                            msg.channel.send( dbE[j]);
+                            break;
                         }
-                        break;
                     }
                 }
             }
