@@ -1,4 +1,4 @@
-git add app.js
+git add .
 git commit -am upload
 git push one master
 git push two master
