@@ -362,7 +362,7 @@ client.on('message', async msg => {
     }
 
     if (initial == "&") {
-        // msg.delete();
+        msg.delete();
         msg.channel.send({
             files: [{
                 attachment: "https://www.gstatic.com/webp/gallery/1.sm.webp",
