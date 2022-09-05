@@ -640,10 +640,5 @@ client.login('TOKEN');
 
 client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}! `, version);
-    updater(); <<
-    << << < HEAD
-}); ===
-=== =
-client.setInterval(updater, 5 * 60 * 1000);
-}) >>>
->>> > cbf7fc29e8215df02eda81c09c7a906a63cb2191
+    updater();
+});
