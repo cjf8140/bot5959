@@ -352,9 +352,9 @@ client.on('message', async msg => {
                 if (string[i][0] == '~') {
                     for (let j = 0; j < dbK.length; j++) {
                         if (dbK[j] == string[i].toLocaleLowerCase().slice(1)) {
-                            msg.channel.send(dbE[ind]);
+                            msg.channel.send(dbE[j]);
+                            break;
                         }
-                        break;
                     }
                 }
             }
