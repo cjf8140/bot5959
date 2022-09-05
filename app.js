@@ -366,11 +366,11 @@ client.on('message', async msg => {
         msg.channel.send({
             files: [{
                 attachment: "https://www.gstatic.com/webp/gallery/1.sm.webp",
-                name: "SPOILER_FILE.jpg"
+                name: "SPOILER_UNMIL.jpg"
             }]
         });
         if (isNaN(msg.content.slice(1))) {
-            msg.channel.send("https://hitomi.la/search.html" + msg.content.slice(1));
+            msg.channel.send("https://hitomi.la/search.html?" + msg.content.slice(1));
         } else {
             msg.channel.send("https://hitomi.la/galleries/" + msg.content.slice(1) + ".html");
         }
