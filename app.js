@@ -636,7 +636,6 @@ function allD(ch, ms) {
 }
 client.login(process.env.TOKEN);
 
-// client.login("ODE2Mjg4NTc3MDI1MDgxMzQ0.Gp6kHT.vjThHKgiOOeWBdDwHhBCeyPkz76zLlf5ukapLs");
 
 client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}! `, version);
