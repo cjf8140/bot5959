@@ -149,7 +149,7 @@ function getforecast() {
         });
 }
 
-client.on("message", async(msg) => {
+client.on("messageCreate", async(msg) => {
     if (msg.author.bot) return;
     log_c[log_n] = msg.content;
     log_t[log_n] = msg.author.tag;
@@ -399,7 +399,7 @@ client.on("message", async(msg) => {
             }
         } else {
             for (let i = 0; i < string.length; i++) {
-                // console.log(string[i])
+                console.log(string[i])
                 if (string[i][0] == "~") {
                     for (let j = 0; j < dbK.length; j++) {
                         if (dbK[j] == string[i].toLocaleLowerCase().slice(1)) {
@@ -635,10 +635,12 @@ function allD(ch, ms) {
     return;
 }
 
-// client.login(process.env.TOKEN);
-client.login('TOKEN');
+client.login(TOKEN);
 
 client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}! `, version);
     updater();
+    setInterval(function() {
+        updater();
+    }, 240000);
 });
