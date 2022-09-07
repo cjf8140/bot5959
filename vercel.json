@@ -2,9 +2,9 @@
     "version": 2,
     "name": "bot5959",
     "builds": [
-        { "src": "build/app.js", "use": "@vercel/node" }
+        { "src": "app.js", "use": "@vercel/node" }
     ],
     "routes": [
-        { "src": "/(.*)", "dest": "build/app.js" }
+        { "src": "/(.*)", "dest": "app.js" }
     ]
 }
