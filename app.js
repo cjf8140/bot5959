@@ -626,7 +626,7 @@ var gr = function(max) {
 };
 
 function allD(ch, ms) {
-    // console.log(ms);a
+    // console.log(ms);
     if (ms == 100) {
         ch.bulkDelete(100, 1)
             .then((messages) => allD(ch, messages.size))
