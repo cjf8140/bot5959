@@ -1,5 +1,5 @@
 {
-    "version": 3,
+    "version": 1,
     "name": "bot5959",
     "builds": [
         { "src": "app.js", "use": "@vercel/node" }
