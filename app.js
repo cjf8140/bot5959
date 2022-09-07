@@ -635,7 +635,7 @@ function allD(ch, ms) {
     return;
 }
 
-client.login(TOKEN);
+client.login(process.env.TOKEN);
 
 client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}! `, version);
