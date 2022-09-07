@@ -3,5 +3,8 @@
     "name": "bot5959",
     "builds": [
         { "src": "app.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+        { "src": "app.js", "dest": "app.js" }
     ]
 }
