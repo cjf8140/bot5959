@@ -10,6 +10,8 @@ const School = require("school-kr");
 const { get } = require("request");
 const school = new School();
 
+require('dotenv').config()
+
 var dayadder;
 school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288"); //효문
 
