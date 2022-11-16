@@ -17,7 +17,7 @@ school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288"); //효문
 
 const logword = "!log5959";
 
-const version = 'v 2.8.2.1 "1"로 업데이트';
+const version = 'v 2.8.2.1 minor update';
 
 var keyword = [];
 var reply = [];
