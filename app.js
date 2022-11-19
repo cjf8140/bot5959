@@ -32,7 +32,7 @@ var log_n = 0; //Number Index
 
 var cheat = 0;
 
-var dbK = []; //KeyWord
+var dbK = []; //KeyWord --
 var dbE = []; //Emoticon (Answer)
 var dbT = []; //Tag
 
