@@ -17,7 +17,7 @@ school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288"); //효문
 
 const logword = "!log5959";
 
-const version = 'v 2.8.2.1 minor update';
+const version = 'v0 테스트용 버전';
 
 var keyword = [];
 var reply = [];
@@ -46,7 +46,7 @@ let chuchu = [];
 let gomsg = 0;
 
 function updater() {
-    console.log(1);
+    // console.log(1);
     dbUpdater();
     dbwordUpdater();
     getforecast();
@@ -70,7 +70,6 @@ function dbUpdater() {
                 console.log(err);
                 return;
             }
-            //     console.log(html);
             html = JSON.parse(html.substr(47).slice(0, -2));
             var i = 0;
             while (1) {
@@ -126,6 +125,7 @@ function dbwordUpdater() {
     );
 }
 
+let ws_info;
 let ws;
 
 function getforecast() {
@@ -133,22 +133,34 @@ function getforecast() {
         .get("https://www.weather.go.kr/w/weather/forecast/short-term.do?stnId=109")
         .then((response) => {
             const $ = cheerio.load(response.data);
-            ws =
+            ws_info =
                 $(
-                    "#after-dfs-forecast > div:nth-child(2) > section > div.cmp-view-content > p > span:nth-child(1)"
+                    "#after-dfs-forecast > div:nth-child(1) > section > div.cmp-view-content > p > span:nth-child(1)"
                 ).text() +
                 "\n  " +
                 $(
-                    "#after-dfs-forecast > div:nth-child(2) > section > div.cmp-view-content > p > span:nth-child(2)"
+                    "#after-dfs-forecast > div:nth-child(1) > section > div.cmp-view-content > p > span:nth-child(2)"
                 ).text() +
                 "\n  " +
                 $(
-                    "#after-dfs-forecast > div:nth-child(2) > section > div.cmp-view-content > p > span:nth-child(3)"
-                ).text();
+                    "#after-dfs-forecast > div:nth-child(1) > section > div.cmp-view-content > p > span:nth-child(3)"
+                ).text()
         })
         .catch((err) => {
             console.error(err);
         });
+    axios
+        .get("https://www.kma.go.kr/cgi-bin/aws/nph-aws_txt_min_guide_test?0&0&MINDB_01M&4108&a&M")
+        .then((response) => {
+            const $ = cheerio.load(response.data);
+            if ($("body > p > table:nth-child(3) > tbody > tr > td > table > tbody > tr:nth-child(11) > td:nth-child(4) > font").attr().color == "red") {
+                ws = "강북 / 도봉\n온도: " + $("body > p > table:nth-child(3) > tbody > tr > td > table > tbody > tr:nth-child(11) > td:nth-child(11)").text() +
+                    "\n강수 여부: 비 안옴";
+            } else {
+                ws = "강북 / 도봉\n온도: " + $("body > p > table:nth-child(3) > tbody > tr > td > table > tbody > tr:nth-child(11) > td:nth-child(11)").text() +
+                    "\n강수 여부: 비옴";
+            }
+        })
 }
 
 client.on("messageCreate", async(msg) => {
@@ -166,6 +178,9 @@ client.on("messageCreate", async(msg) => {
     if (msg.channel.id == 931173230545371136) {
         msg.delete();
         msg.channel.send(msg.content);
+    }
+    if (msg.content == "!!날씨") {
+        msg.channel.send(ws_info);
     }
     if (msg.content == "!날씨") {
         msg.channel.send(ws);
@@ -210,6 +225,7 @@ client.on("messageCreate", async(msg) => {
         msg.content == ".,.,...13471347"
     ) {
         allD(msg.channel, 100);
+        console.log("지워졌어!");
         return;
     }
     if (msg.content == logword) {
@@ -636,7 +652,7 @@ function allD(ch, ms) {
     }
     return;
 }
-client.login(process.env.TOKEN);
+client.login('ODE2Mjg4NTc3MDI1MDgxMzQ0.GiCNtu.SrDFOKVx21BnunTkb6huMGBWEKuATBbQcSlqCc');
 //a
 
 client.on("ready", () => {
