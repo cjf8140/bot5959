@@ -12,12 +12,14 @@ const school = new School();
 
 require('dotenv').config()
 
+client.login(process.env.TOKEN);
+
 var dayadder;
 school.init(School.Type.HIGH, School.Region.SEOUL, "B100005288"); //효문
 
 const logword = "!log5959";
 
-const version = 'v0 테스트용 버전';
+const version = 'v0 테스트용 버전 - !날씨';
 
 var keyword = [];
 var reply = [];
@@ -225,7 +227,6 @@ client.on("messageCreate", async(msg) => {
         msg.content == ".,.,...13471347"
     ) {
         allD(msg.channel, 100);
-        console.log("지워졌어!");
         return;
     }
     if (msg.content == logword) {
@@ -649,10 +650,10 @@ function allD(ch, ms) {
         ch.bulkDelete(100, 1)
             .then((messages) => allD(ch, messages.size))
             .catch(console.error);
+        ch.send("지워졌어!");
     }
     return;
 }
-client.login('ODE2Mjg4NTc3MDI1MDgxMzQ0.GiCNtu.SrDFOKVx21BnunTkb6huMGBWEKuATBbQcSlqCc');
 //a
 
 client.on("ready", () => {
