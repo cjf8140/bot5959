@@ -171,9 +171,16 @@ function getforecast() {
 }
 
 client.on("messageCreate", async(msg) => {
+    if (msg.author.bot)
+        console.log("봇\t\t:", msg.content);
+    else
+        console.log(msg.author.username, "\t\t:", msg.content);
     if (msg.author.bot) return;
+    if (msg.content == "냠") {
+        msg.channel.send("<:emoji_7:985780509558841425>");
+    }
     log_c[log_n] = msg.content;
-    log_t[log_n] = msg.author.tag;
+    log_t[log_n] = msg.author.username;
     log_n++;
     var string = msg.content.split(" ");
     var initial = msg.content.charAt(0);
@@ -423,7 +430,7 @@ client.on("messageCreate", async(msg) => {
             }
         } else {
             for (let i = 0; i < string.length; i++) {
-                console.log(string[i])
+                // console.log(string[i])
                 if (string[i][0] == "~") {
                     for (let j = 0; j < dbK.length; j++) {
                         if (dbK[j] == string[i].toLocaleLowerCase().slice(1)) {
@@ -434,6 +441,10 @@ client.on("messageCreate", async(msg) => {
                 }
             }
         }
+    }
+
+    if ((msg.content.includes("그천") || msg.content.includes("금손") || msg.content.includes("만신")) && !msg.author.username == "febell") {
+        msg.channel.send("억빠 ㄴ");
     }
 
     if (initial == "&") {
